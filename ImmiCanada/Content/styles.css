@@ -1,0 +1,670 @@
+body {
+    
+}
+
+.top-banner {
+    background-color: #99CCFF;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 3;
+}
+
+.main-logo {
+    width: 120px;
+}
+
+.slogan {
+    color: #000099;
+    font-weight: 600;
+    font-size: 25px;
+    margin-left: -70px;
+    padding-top: 17px;
+}
+
+.main-menu {
+    /* background-color: #E9E9E9; */
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 4;
+    padding-left: 15px;
+}
+
+    .main-menu .menu-item {
+        margin-right: 30px;
+        border-top-width: 0px;
+        border-top-style: solid;
+        border-top-color: #FFFFFF;
+        transition: all 0.5s;
+    }
+
+        .main-menu .menu-item:hover,
+        .main-menu .menu-item:active {
+            border-top-width: 3px;
+            border-top-color: #ed2025;
+        }
+
+        .main-menu .menu-item a {
+            color: #ed2025;
+        }
+
+            .main-menu .menu-item a:hover {
+                text-decoration: none;
+            }
+
+.full-width {
+    width: 100%;
+}
+
+.introduction {
+    color: #FFFFFF;
+    background-color: #1A9BD7;
+    font-size: 18px;
+    text-align: center;
+    padding: 50px;
+    margin-top: -90px;
+}
+
+#divCanadaDetails,
+#divCanadaStates {
+    position: absolute;
+    width: 60vw;
+    background-color: #FFFFFF;
+    z-index: 1;
+    border-radius: 0px 0px 10px 10px;
+    padding-bottom: 2px;
+}
+
+#divImmigrationService {
+    position: absolute;
+    width: 40vw;
+    background-color: #FFFFFF;
+    z-index: 1;
+    border-radius: 0px 0px 10px 10px;
+    padding-bottom: 2px;
+}
+
+.pos-rel {
+    position: relative;
+}
+
+.canada-detail-background {
+    background-color: #0E386C;
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 0;
+}
+
+    .canada-detail-background .main-pri-text {
+        font-size: 20px;
+        line-height: 2;
+        padding-left: 10px;
+    }
+
+    .canada-detail-background .secondary-text {
+        line-height: 2;
+        padding-left: 10px;
+    }
+
+.pri-text {
+    font-weight: 700;
+    line-height: 2;
+    color: #000000;
+    font-size: 12px;
+}
+
+.sec-text {
+    line-height: 1.5;
+    font-size: 13px;
+    color: slategray;
+    font-size: 10px;
+}
+
+.bor-right {
+    border-right: 1px solid #CCC;
+}
+
+.remove-width {
+    width: unset !important;
+}
+
+.pad-left65px {
+    padding-left: 65px;
+}
+
+.pad-bot10px {
+    padding-bottom: 10px;
+}
+
+.pad-top40px {
+    padding-top: 40px;
+}
+
+.mar-bottom30px {
+    margin-bottom: 30px;
+}
+
+.mar-bottom3px {
+    margin-bottom: 3px;
+}
+
+.mar-right3px {
+    margin-right: 3px;
+}
+
+.mar-top25px {
+    margin-top: 25px;
+}
+
+.main-banner {
+    /*background-image: url(../Content/images/banner-homepage.png);*/
+    height: 630px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.main-header {
+    background-image: url(../Content/images/Banner.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.homepage-title-service {
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 55px;
+    color: blue;
+}
+
+.homepage-title-settle {
+    background-color: #003470;
+    color: #FFFFFF;
+    padding: 8px 1px 8px 3px;
+    font-weight: 600;
+    font-size: 28px;
+    border-radius: 4px;
+}
+
+.homepage-title-canada {
+    color: #FD0000;
+    font-weight: 600;
+    font-size: 80px;
+    line-height: 1;
+}
+
+.homepage-title-success {
+    color: #006190;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.market-title {
+    color: #ed2025;
+    font-size: 25px;
+    font-weight: 700;
+    padding-top: 100px;
+}
+
+.homepage-contact-button input {
+    background: #1B1464;
+    color: #FFFFFF;
+    padding: 5px 22px;
+    border-radius: 5px;
+    margin-top: 12px;
+    border: none;
+}
+
+.hoz-line {
+    border-bottom: 3px solid #ed2025;
+    width: 20%;
+    margin: unset;
+    border-top: none;
+}
+
+.hoz-line-fee {
+    border-bottom: 3px solid #ed2025;
+    width: 10%;
+    margin: unset;
+    border-top: none;
+}
+
+.card-highlight {
+    width: 18rem;
+    min-height: 33rem;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+    .card-highlight .card-img-top {
+        min-height: 190px;
+    }
+
+    .card-highlight .card-main-title {
+        position: absolute;
+        background: #FFFFFF;
+        font-weight: 800;
+        font-size: 30px;
+        color: #ed2025;
+        top: -30px;
+        border-radius: 5px;
+        padding: 5px 46px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 210px;
+        text-align: center;
+        border: 1px solid #CCCCCC;
+        box-shadow: 5px 10px 18px #888888;
+    }
+
+    .card-highlight .card-main-outstanding-title {
+        position: absolute;
+        background: #FFFFFF;
+        font-weight: 800;
+        font-size: 16px;
+        color: #ed2025;
+        top: -30px;
+        border-radius: 5px;
+        padding: 5PX;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 210px;
+        text-align: center;
+        border: 1px solid #CCCCCC;
+        box-shadow: 5px 10px 18px #888888;
+    }
+
+    .card-highlight .card-text {
+        text-align: center;
+    }
+
+.card-highlight-homepage {
+    border: none !important;
+}
+
+    .card-highlight-homepage .card-title {
+        font-size: 17px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+.statistics {
+    background-color: #2B4663;
+    min-height: 165px;
+    margin-top: 20px;
+    border-radius: 4px;
+    padding-top: 40px;
+}
+
+    .statistics .fa {
+        font-size: 25px;
+        color: #FFB600;
+    }
+
+    .statistics span.number {
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 35px;
+    }
+
+    .statistics span.notes {
+        color: #FFFFFF;
+        font-size: 17px;
+    }
+
+.lnk-highlight {
+    display: contents;
+    color: #10b3de;
+}
+
+.talent-title {
+    font-size: 25px;
+    font-weight: 700;
+    padding-top: 30px;
+}
+
+.talent-detail-notes {
+    margin-top: 30px;
+    padding-top: 30px;
+    background-color: #B1022C;
+    font-weight: 600;
+    padding-left: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 10px 18px #888888;
+}
+
+.text-white {
+    color: #FFFFFF;
+}
+
+.low-fee .low-fee-title {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.card-fee-highlight {
+    width: 18rem;
+    border: none;
+    /*box-shadow: 5px 10px 18px #888888;*/
+}
+
+    .card-fee-highlight .fa {
+        font-size: 150px;
+        text-align: center;
+    }
+
+.canada-true {
+    margin-top: 30px;
+    border-left: 8px solid #ed2025;
+}
+
+.footer {
+    margin-top: 30px;
+}
+
+    .footer img {
+        max-height: 600px;
+    }
+
+.introduction-icon {
+    text-align: center;
+    border: 1px solid #cccccc;
+    padding: 25px;
+    transform: rotate(45deg);
+    margin-bottom: 20px;
+}
+
+    .introduction-icon i {
+        font-size: 75px;
+        text-align: center;
+        transform: rotate(-45deg);
+    }
+
+.red-background {
+    background-color: #ed2025;
+}
+
+.canada-deserve-to-life .canada-deserve-to-life-title {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+    .canada-deserve-to-life .canada-deserve-to-life-title p {
+        color: #ed2025;
+    }
+
+.canada-deserve-to-life .row img {
+    height: 100%;
+}
+
+.box-shadow-chatluongcuocsong {
+    box-shadow: 8px 8px 1px 0px #FFCC33;
+}
+
+.box-shadow-quyencongdan {
+    box-shadow: 8px 8px 1px 0px #669ACC;
+}
+
+.box-shadow-quyenluc {
+    box-shadow: 8px 8px 1px 0px #66CCCE;
+}
+
+.box-shadow-mochodoanhnghiep {
+    box-shadow: 8px 8px 1px 0px #FF6666;
+}
+
+.box-shadow-giaoduc {
+    box-shadow: 8px 8px 1px 0px #99CC33;
+}
+
+.box-shadow-nuoidayconcai {
+    box-shadow: 8px 8px 1px 0px #FF66FF;
+}
+
+.box-shadow-minhbach {
+    box-shadow: 8px 8px 1px 0px #c3c4f1;
+}
+
+.box-shadow-trusochinhcuatongcongty {
+    box-shadow: 8px 8px 1px 0px #F2C399;
+}
+
+.box-shadow-phunu {
+    box-shadow: 8px 8px 1px 0px #ed2025;
+}
+
+.ranking-criteria {
+    color: #ed2025;
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.center-note {
+    font-weight: 700;
+    position: absolute;
+    color: #FFFFFF;
+    padding: 15px;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    background-color: #006190;
+    margin-bottom: 0;
+    width: 92%;
+    opacity: 0.8;
+    ;
+}
+
+.outstanding-form {
+    margin-top: 50px;
+}
+
+    .outstanding-form i {
+        font-size: 30px;
+        color: #0043ff;
+    }
+
+.outstanding-form-footer {
+    display: block;
+    text-align: center;
+}
+
+    .outstanding-form-footer input {
+        padding: 5px 60px;
+        border-radius: 30px;
+        background-color: #c7c7e2;
+        font-size: 20px;
+        background-image: linear-gradient(to right, #1000ff, #b8bcef);
+        color: #FFFFFF;
+        border: none;
+    }
+
+.outstanding-form-violet {
+    margin-top: 50px;
+}
+
+    .outstanding-form-violet i {
+        font-size: 30px;
+        color: #9c27b0;
+    }
+
+.outstanding-form-violet-footer {
+    display: block;
+    text-align: center;
+}
+
+
+    .outstanding-form-violet-footer input {
+        padding: 5px 60px;
+        border-radius: 30px;
+        background-color: #c7c7e2;
+        font-size: 20px;
+        background-image: linear-gradient(to right, #9c27b0, #b8bcef);
+        color: #FFFFFF;
+        border: none;
+    }
+
+.outstanding-form-orrange {
+    margin-top: 50px;
+}
+
+    .outstanding-form-orrange i {
+        font-size: 30px;
+        color: #f44336;
+    }
+
+.outstanding-form-orrange-footer {
+    display: block;
+    text-align: center;
+}
+
+
+    .outstanding-form-orrange-footer input {
+        padding: 5px 60px;
+        border-radius: 30px;
+        background-color: #c7c7e2;
+        font-size: 20px;
+        background-image: linear-gradient(to right, #f44336, #b8bcef);
+        color: #FFFFFF;
+        border: none;
+    }
+
+.document-handling {
+    background-color: #EEF5FB;
+    border-radius: 10px;
+}
+
+    .document-handling .document-handling-pri-text {
+        font-weight: 700;
+        text-align: center;
+        padding: 20px 20px 10px 20px;
+        color: #006190;
+    }
+
+    .document-handling .document-handling-sec-text {
+        text-align: center;
+    }
+
+.document-handling-section-detail {
+    margin-top: 20px;
+}
+
+    .document-handling-section-detail i {
+        font-size: 65px;
+        color: #ed2025;
+    }
+
+    .document-handling-section-detail .document-handling-section-detail-sec-text {
+        font-size: 13px;
+        padding-left: 30px;
+    }
+
+    .document-handling-section-detail .document-handling-section-detail-sec-title {
+        font-weight: bold;
+        margin-bottom: 0px;
+    }
+
+.canada-map-des {
+    position: absolute;
+    right: 22%;
+    top: 0;
+}
+
+    .canada-map-des .canada-map-first-text {
+        color: #ed2025;
+        font-size: 35px;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+
+    .canada-map-des .canada-map-sec-text {
+        font-weight: 700;
+        font-size: 20px;
+        color: #006190;
+    }
+
+.contact-form {
+    /* background-image: url(../Content/images/Lienhe.jpg); */
+    min-height: 630px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.contact-form-fields {
+    background-color: #FFFFFF;
+    padding: 10px 10px 0px 24px;
+    text-align: center;
+    border-radius: 5px;
+    height: 280px;
+}
+
+.btn-sendmail {
+    background-color: #ed2025;
+    border-radius: 4px;
+    font-weight: 600;
+    padding: 5px 40px;
+    border: none;
+}
+
+.section-interested .interested-main-surground {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 2px #cd2122;
+    position: relative;
+}
+
+
+.section-interested .interested-main-icon {
+    font-size: 22px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #cd2122;
+    transition: color .2s ease-out .1s;
+}
+
+.main-interested-section:hover .interested-main-surground {
+    box-shadow: inset 0 0 0 40px #cd2122;
+    transition: all .15s ease-out;
+}
+
+.main-interested-section .interested-main-surground:after {
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: 40px;
+    height: calc(200% - 20px);
+    width: 1px;
+    background-color: rgba(0,0,0,.07);
+}
+
+.main-interested-section:hover .interested-main-surground .interested-main-icon {
+    color: #FFF;
+    transition: color .2s ease-out .1s;
+}
+
+.btn-interested {
+    background-color: #cd2122;
+}
+
+    .btn-interested:hover {
+        background-color: #66020E;
+    }
+
+.pad-left35px {
+    padding-left: 35px;
+}
+
+.interested-text {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
