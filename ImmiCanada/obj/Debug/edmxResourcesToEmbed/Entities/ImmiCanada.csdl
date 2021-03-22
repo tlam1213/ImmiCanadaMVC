@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ImmiCanadaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ImmigrationService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="Int32" />
+    <Property Name="PermanentResident" Type="Int32" />
+    <Property Name="Fee" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="Overview" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Base64Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Base64Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Base64Image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Base64Image4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Base64Image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PermanentResident1" Relationship="Self.FK__Immigrati__Perma__29572725" FromRole="ImmigrationService" ToRole="PermanentResident" />
+    <NavigationProperty Name="State1" Relationship="Self.FK__Immigrati__State__2D27B809" FromRole="ImmigrationService" ToRole="State" />
+    <NavigationProperty Name="ImmigrationServiceType" Relationship="Self.FK__Immigratio__Type__2A4B4B5E" FromRole="ImmigrationService" ToRole="ImmigrationServiceType" />
+  </EntityType>
+  <EntityType Name="ImmigrationServiceType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ImmigrationServices" Relationship="Self.FK__Immigratio__Type__2A4B4B5E" FromRole="ImmigrationServiceType" ToRole="ImmigrationService" />
+  </EntityType>
+  <EntityType Name="PermanentResident">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ImmigrationServices" Relationship="Self.FK__Immigrati__Perma__29572725" FromRole="PermanentResident" ToRole="ImmigrationService" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ImmigrationServices" Relationship="Self.FK__Immigrati__State__2D27B809" FromRole="State" ToRole="ImmigrationService" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Immigrati__Perma__29572725">
+    <End Role="PermanentResident" Type="Self.PermanentResident" Multiplicity="0..1" />
+    <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermanentResident">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImmigrationService">
+        <PropertyRef Name="PermanentResident" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Immigrati__State__2D27B809">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImmigrationService">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Immigratio__Type__2A4B4B5E">
+    <End Role="ImmigrationServiceType" Type="Self.ImmigrationServiceType" Multiplicity="0..1" />
+    <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImmigrationServiceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImmigrationService">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ImmiCanadaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ImmigrationServices" EntityType="Self.ImmigrationService" />
+    <EntitySet Name="ImmigrationServiceTypes" EntityType="Self.ImmigrationServiceType" />
+    <EntitySet Name="PermanentResidents" EntityType="Self.PermanentResident" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__Immigrati__Perma__29572725" Association="Self.FK__Immigrati__Perma__29572725">
+      <End Role="PermanentResident" EntitySet="PermanentResidents" />
+      <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Immigrati__State__2D27B809" Association="Self.FK__Immigrati__State__2D27B809">
+      <End Role="State" EntitySet="States" />
+      <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Immigratio__Type__2A4B4B5E" Association="Self.FK__Immigratio__Type__2A4B4B5E">
+      <End Role="ImmigrationServiceType" EntitySet="ImmigrationServiceTypes" />
+      <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ImmiCanadaModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ImmiCanadaModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

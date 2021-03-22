@@ -1,0 +1,118 @@
+﻿@model IEnumerable<ImmiCanada.Entities.ImmigrationService>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Overview)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base64Image1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base64Image2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base64Image3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base64Image4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base64Image5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PermanentResident1.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State1.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImmigrationServiceType.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Overview)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base64Image1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base64Image2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base64Image3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base64Image4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base64Image5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PermanentResident1.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State1.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImmigrationServiceType.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
