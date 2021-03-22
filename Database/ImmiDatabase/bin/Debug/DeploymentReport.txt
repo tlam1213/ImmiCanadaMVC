@@ -1,0 +1,29 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[ImmigrationServiceType]
+       [dbo].[PermanentResident]
+       [dbo].[State]
+       [dbo].[ImmigrationService]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[ImmigrationService] (Foreign Key)
+       unnamed constraint on [dbo].[ImmigrationService] (Foreign Key)
+       unnamed constraint on [dbo].[ImmigrationService] (Foreign Key)
+     Table rebuild
+       [dbo].[ImmigrationServiceType] (Table)
+       [dbo].[PermanentResident] (Table)
+       [dbo].[State] (Table)
+       [dbo].[ImmigrationService] (Table)
+
+** Supporting actions
+     Create
+       Foreign Key: <unnamed> (Foreign Key)
+       Foreign Key: <unnamed> (Foreign Key)
+       Foreign Key: <unnamed> (Foreign Key)

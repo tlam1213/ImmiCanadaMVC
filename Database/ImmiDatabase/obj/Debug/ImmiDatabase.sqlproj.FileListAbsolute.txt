@@ -1,0 +1,5 @@
+R:\lamtan\working\projects\phuc\git\ImmiCanadaMVC\Database\ImmiDatabase\bin\Debug\ImmiDatabase.dacpac
+R:\lamtan\working\projects\phuc\git\ImmiCanadaMVC\Database\ImmiDatabase\bin\Debug\ImmiDatabase.dll
+R:\lamtan\working\projects\phuc\git\ImmiCanadaMVC\Database\ImmiDatabase\bin\Debug\ImmiDatabase.pdb
+R:\lamtan\working\projects\phuc\git\ImmiCanadaMVC\Database\ImmiDatabase\obj\Debug\ImmiDatabase.dll
+R:\lamtan\working\projects\phuc\git\ImmiCanadaMVC\Database\ImmiDatabase\obj\Debug\ImmiDatabase.pdb
