@@ -1,5 +1,4 @@
 body {
-    
 }
 
 .top-banner {
@@ -363,10 +362,16 @@ body {
 
 .footer {
     margin-top: 30px;
+    background-image: url(../Content/images/footer1.jpg);
+    min-height: 460px;
+    padding: 30px;
+    color: #FFFFFF;
 }
 
     .footer img {
-        max-height: 600px;
+        background-color: #FFFFFF;
+        width: 90%;
+        border-radius: 10px;
     }
 
 .introduction-icon {
@@ -667,4 +672,36 @@ body {
 .interested-text {
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     font-size: 13px;
+}
+
+.news-line-top {
+    margin-top: 85px;
+    border-width: 2px;
+    border-color: #cd2122;
+}
+
+.main-text-foot {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: 12px;
+}
+
+.sec-text-foot {
+    color: #ffffff;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.contact-info-line {
+    border-color: #ffffff;
+    width: 50%;
+    text-align: left;.
+    margin-left: 0;
+    border-width: 2px;
+}
+
+.footer .client-support a {
+    color: #FFFFFF;
 }

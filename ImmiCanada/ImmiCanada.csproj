@@ -180,6 +180,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\carousel.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\banner-homepage.png" />
@@ -198,6 +199,14 @@
     <Content Include="Content\images\map canada.png" />
     <Content Include="Content\images\minhbach.png" />
     <Content Include="Content\images\mochodoanhnghiep.jpg" />
+    <Content Include="Content\images\News\News1.jpg" />
+    <Content Include="Content\images\News\News2.png" />
+    <Content Include="Content\images\News\News3.jpg" />
+    <Content Include="Content\images\News\News4.jpg" />
+    <Content Include="Content\images\News\News5.jpg" />
+    <Content Include="Content\images\News\News6.png" />
+    <Content Include="Content\images\News\News7.jpg" />
+    <Content Include="Content\images\News\News8.png" />
     <Content Include="Content\images\nuoidayconcai.png" />
     <Content Include="Content\images\phunu.png" />
     <Content Include="Content\images\quyencongdan.png" />

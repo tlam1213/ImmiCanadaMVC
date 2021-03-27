@@ -25,7 +25,8 @@ namespace ImmiCanada
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/styles.css",
-                      "~/Content/font-awesome.css"));
+                      "~/Content/font-awesome.css",
+                      "~/Content/carousel.css"));
         }
     }
 }

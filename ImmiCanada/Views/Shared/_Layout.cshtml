@@ -2,12 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=140057183061041&autoLogAppEvents=1" nonce="yRruhlDd"></script>
     <div class="full-width">
         <div class="row top-banner">
             <div class="offset-2 col-sm-3">CHUYENVIENTUVANCANADA@GMAIL.COM</div>
@@ -258,10 +260,39 @@
     </div>
     <div class="container footer">
         <div class="row">
-            <img class="img-fluid full-width" src="Content/images/footer1.jpg" />
+            <div class="col-sm-3">
+                <div class="col-sm-12 text-center">
+                    <img src="Content/images/logo.png" class="img-fluid main-logo" />
+                </div>
+                <div class="col-sm-12">
+                    <p class="main-text-foot">Việc làm định cư đầu tư Canada</p>
+                    <p class="sec-text-foot">Chúng tôi hỗ trợ và hướng dẫn gia đình Việt Nam nhập cư Canada bằng cách hoàn thành các mục tiêu của họ về thường trú nhân.</p>
+                    <p class="sec-text-foot">Nếu bạn đang tìm kiếm một giải pháp nhập cư hoặc hỗ trợ nhập cư vào Canada, hãy liên hệ với chúng tôi.</p>
+                </div>
+            </div>
+            <div class="col-sm-3 contact-info">
+                <h5>Thông Tin Liên Hệ</h5>
+                <hr class="contact-info-line" />
+                <p>Tầng 14 Tòa nhà HM, 421 Nguyễn Thị Minh Khai, Q3, TP.HCM</p>
+                <p>
+                    Hotline: <i class="fa fa-phone mar-right3px" aria-hidden="true"></i> (+84) 948 00 9988
+                </p>
+                <p>Email: <i class="fa fa-envelope-o" aria-hidden="true"></i> info@canadavisa.vn</p>
+            </div>
+            <div class="col-sm-3 client-support">
+                <h5>Hỗ Trợ Khách Hàng</h5>
+                <hr class="contact-info-line" />
+                <a href="#">Liên hệ chúng tôi</a><br />
+                <a href="#">Về chúng tôi</a><br />
+                <a href="#">Chính sách bảo mật</a><br />
+                <a href="#">Câu hỏi thường gặp</a>
+            </div>
+            <div class="col-sm-3">
+                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="250" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+            </div>
         </div>
     </div>
-    
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
