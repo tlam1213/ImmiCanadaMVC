@@ -1,10 +1,5 @@
 ﻿@model IEnumerable<ImmiCanada.Entities.ImmigrationService>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <h2>Index</h2>
 
 <p>
@@ -12,107 +7,98 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
+        <th width="300">
+            Chương Trình
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fee)
+        <th width="220">
+            Loại Chương Trình
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Time)
+        <th width="200">
+            Địa Điểm
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
+        <th width="200">
+            Thường Trú Nhân
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
+        <th width="200">
+            Thời Gian
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Overview)
+        <th width="200">
+            Phí Dịch Vụ
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
+        <th width="150">
+            Hình 1
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Base64Image1)
+        <th width="150">
+            Hình 2
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Base64Image2)
+        <th width="150">
+            Hình 3
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Base64Image3)
+        <th width="150">
+            Hình 4
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Base64Image4)
+        <th width="150">
+            Hình 5
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Base64Image5)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PermanentResident1.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State1.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImmigrationServiceType.Name)
-        </th>
-        <th></th>
-    </tr>
+        <th width="250">
+</tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fee)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Overview)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Base64Image1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Base64Image2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Base64Image3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Base64Image4)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Base64Image5)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PermanentResident1.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State1.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImmigrationServiceType.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ImmigrationServiceType.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.State1.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PermanentResident1.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Time)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fee)
+    </td>
+    <td>
+        @if (@item.Base64Image1.Length != 0)
+        {
+            <img width="100" height="100" src="@item.Base64Image1" />
+        }
+    </td>
+    <td>
+        @if (@item.Base64Image2.Length != 0)
+        {
+            <img width="100" height="100" src="@item.Base64Image2" />
+        }
+    </td>
+    <td>
+        @if (@item.Base64Image3.Length != 0)
+        {
+            <img width="100" height="100" src="@item.Base64Image3" />
+        }
+    </td>
+    <td>
+        @if (@item.Base64Image4.Length != 0)
+        {
+            <img width="100" height="100" src="@item.Base64Image4" />
+        }
+    </td>
+    <td>
+        @if(@item.Base64Image5.Length != 0)
+        {
+            <img width="100" height="100" src="@item.Base64Image5" />
+        }
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>
