@@ -1,4 +1,7 @@
 ﻿$(document).ready(function () {
+    AOS.init({
+        duration: 1100
+    });
     $(".main-menu .menu-item a").click(function () {
         var currentItem = $(this);
         //$(".main-menu .menu-item div[aria-expanded='false']").removeClass("show");
