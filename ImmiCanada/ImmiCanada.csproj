@@ -190,8 +190,10 @@
     <Content Include="Content\images\Dichvunoibat1.png" />
     <Content Include="Content\images\Dichvunoibat2.png" />
     <Content Include="Content\images\Dichvunoibat3.png" />
+    <Content Include="Content\images\document-handling-background.png" />
     <Content Include="Content\images\footer.jpg" />
     <Content Include="Content\images\footer1.jpg" />
+    <Content Include="Content\images\footer2.jpg" />
     <Content Include="Content\images\giaoduc.jpg" />
     <Content Include="Content\images\Lienhe.jpg" />
     <Content Include="Content\images\logo.png" />
@@ -274,6 +276,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main-script.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
