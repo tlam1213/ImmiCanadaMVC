@@ -2,58 +2,18 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    @*<meta name="viewport" content="width=2000, initial-scale=1.0">*@
+    <meta name="viewport" content="width=1024, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    @Scripts.Render("~/Scripts/tinymce/tinymce.min.js")
-    <!-- Script to wire up your TinyMCE editor -->
-    @*<script type="text/javascript">
-            // Initialize your tinyMCE Editor with your preferred options
-            tinyMCE.init({
-                // General options
-                mode: "textareas",
-                theme: "modern",
-                // Theme options
-                theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,
-                          strikethrough,|, justifyleft, justifycenter, justifyright, justifyfull,|,
-                styleselect, formatselect, fontselect, fontsizeselect",
-                        theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,
-                          search, replace,|, bullist, numlist,|, outdent, indent, blockquote,|, undo, redo,|,
-                link, unlink, anchor, image, cleanup, help, code,|, insertdate, inserttime, preview,|,
-                forecolor, backcolor",
-                        theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,
-                          sub, sup,|, charmap, emotions, iespell, media, advhr,|, print,|, ltr, rtl,|, fullscreen",
-                        theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,
-                         styleprops, spellchecker,|, cite, abbr, acronym, del, ins, attribs,|,
-                visualchars, nonbreaking, template, blockquote, pagebreak,|, insertfile, insertimage",
-                        theme_advanced_toolbar_location: "top",
-                theme_advanced_toolbar_align: "left",
-                theme_advanced_statusbar_location: "bottom",
-                theme_advanced_resizing: true
-                    });
-        </script>*@
+    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js")
 </head>
 <body>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=140057183061041&autoLogAppEvents=1" nonce="yRruhlDd"></script>
     <div class="full-width">
         <div class="row top-banner">
-            @*<div class="offset-1 col-sm-3">CHUYENVIENTUVANCANADA@GMAIL.COM</div>
-                <div class="col-sm-2">
-                    <i class="fa fa-phone mar-right3px" aria-hidden="true"></i>090 191 4768
-                </div>
-                <div class="col-sm-5">
-                    <div class="row">
-                        <div class="col-sm">
-                            <i class="fa fa-key mar-right3px" aria-hidden="true"></i>CHÍNH SÁCH BẢO MẬT
-                        </div>
-                        <div class="col-sm">
-                            <i class="fa fa-money mar-right3px" aria-hidden="true"></i>CHÍNH SÁCH HOÀN TIỀN
-                        </div>
-                    </div>
-                </div>*@
             <div class="col-sm-6">&nbsp;</div>
             <div class="col-sm-6 text-right pad-right30px">
                 Liên hệ với chúng tôi: &nbsp;&nbsp;&nbsp;<i class="fa fa-phone mar-right3px" aria-hidden="true"></i>0948 00 9988 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -64,15 +24,15 @@
     <div class="full-width main-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="offset-1 col-sm-2">
+                <div class="col-sm-2">
                     <img src="Content/images/logo.png" class="img-fluid main-logo" />
                 </div>
-                <div class="col-sm-9 slogan">
+                <div class="col-sm-10 slogan">
                     TẦM NHÌN CỦA BẠN, TƯƠNG LAI GIA ĐÌNH BẠN
                 </div>
             </div>
             <div class="row main-menu">
-                <div class="menu-item offset-1"><a href="#">TRANG CHỦ</a></div>
+                <div class="menu-item"><a href="#">TRANG CHỦ</a></div>
                 <div class="menu-item pos-rel">
                     <a href="#divCanadaDetails" for="divCanadaDetails" data-toggle="collapse"
                        aria-controls="divCanadaDetails" aria-expanded="false" class="collapsed">CANADA</a>
@@ -236,34 +196,34 @@
                     <a href="#divImmigrationService" for="divImmigrationService" data-toggle="collapse"
                        aria-controls="divImmigrationService" aria-expanded="false" class="collapsed">DỊCH VỤ NHẬP CƯ</a>
                     @*<div id="divImmigrationService" aria-expanded="false" class="collapse row">
-                        <div class="col-sm canada-detail-background">
-                            <div class="main-pri-text">CHƯƠNG TRÌNH NHẬP CƯ CANADA</div>
-                            <img src="Content/images/chatluongcuocsong.jpg" class="full-width" />
-                        </div>
-                        <div class="col-sm">
-                            <div class="row pad-bot10px">
-                                <span class="col-sm-12 pri-text">SACATCHEWAN EXPERIENCE</span>
-                                <span class="col-sm-12 sec-text">
-                                    Được phép hợp pháp sống, làm việc và ở bất kỳ nơi đâu tại
-                                    Canada
-                                </span>
+                            <div class="col-sm canada-detail-background">
+                                <div class="main-pri-text">CHƯƠNG TRÌNH NHẬP CƯ CANADA</div>
+                                <img src="Content/images/chatluongcuocsong.jpg" class="full-width" />
                             </div>
-                            <div class="row pad-bot10px">
-                                <span class="col-sm-12 pri-text">EXISTING WORK PERMIT</span>
-                                <span class="col-sm-12 sec-text">
-                                    Được phép hợp pháp sống, làm việc và ở bất kỳ nơi đâu tại
-                                    Canada
-                                </span>
+                            <div class="col-sm">
+                                <div class="row pad-bot10px">
+                                    <span class="col-sm-12 pri-text">SACATCHEWAN EXPERIENCE</span>
+                                    <span class="col-sm-12 sec-text">
+                                        Được phép hợp pháp sống, làm việc và ở bất kỳ nơi đâu tại
+                                        Canada
+                                    </span>
+                                </div>
+                                <div class="row pad-bot10px">
+                                    <span class="col-sm-12 pri-text">EXISTING WORK PERMIT</span>
+                                    <span class="col-sm-12 sec-text">
+                                        Được phép hợp pháp sống, làm việc và ở bất kỳ nơi đâu tại
+                                        Canada
+                                    </span>
+                                </div>
+                                <div class="row pad-bot10px">
+                                    <span class="col-sm-12 pri-text">HOSPITALITY SECTOR PROJECT</span>
+                                    <span class="col-sm-12 sec-text">
+                                        Được phép hợp pháp sống, làm việc và ở bất kỳ nơi đâu tại
+                                        Canada
+                                    </span>
+                                </div>
                             </div>
-                            <div class="row pad-bot10px">
-                                <span class="col-sm-12 pri-text">HOSPITALITY SECTOR PROJECT</span>
-                                <span class="col-sm-12 sec-text">
-                                    Được phép hợp pháp sống, làm việc và ở bất kỳ nơi đâu tại
-                                    Canada
-                                </span>
-                            </div>
-                        </div>
-                    </div>*@
+                        </div>*@
                 </div>
                 <div class="menu-item"><a href="#">VIỆC LÀM</a></div>
                 <div class="menu-item"><a href="#">TẠI SAO CHỌN CHÚNG TÔI</a></div>
@@ -271,7 +231,7 @@
                 <div class="menu-item"><a href="#">ĐÁNH GIÁ MIỄN PHÍ</a></div>
             </div>
             <div class="row main-banner">
-                <div class="col-sm-6 offset-1">
+                <div class="col-sm-6 pad-left65px">
                     <div class="homepage-title-service">DỊCH VỤ</div>
                     <div class="homepage-title-settle">VIỆC LÀM, ĐẦU TƯ ĐỊNH CƯ</div>
                     <div class="homepage-title-canada">CANADA</div>
@@ -291,7 +251,7 @@
     <div>
         @RenderBody()
     </div>
-    <div class="footer" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+    <div class="container-fluid footer">
         <div class="row">
             <div class="col-sm-3">
                 <div class="col-sm-12 text-center">
