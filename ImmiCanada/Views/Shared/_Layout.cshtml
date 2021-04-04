@@ -10,49 +10,54 @@
     @Scripts.Render("~/Scripts/tinymce/tinymce.min.js")
     <!-- Script to wire up your TinyMCE editor -->
     @*<script type="text/javascript">
-        // Initialize your tinyMCE Editor with your preferred options
-        tinyMCE.init({
-            // General options
-            mode: "textareas",
-            theme: "modern",
-            // Theme options
-            theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,
-                      strikethrough,|, justifyleft, justifycenter, justifyright, justifyfull,|,
-            styleselect, formatselect, fontselect, fontsizeselect",
-                    theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,
-                      search, replace,|, bullist, numlist,|, outdent, indent, blockquote,|, undo, redo,|,
-            link, unlink, anchor, image, cleanup, help, code,|, insertdate, inserttime, preview,|,
-            forecolor, backcolor",
-                    theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,
-                      sub, sup,|, charmap, emotions, iespell, media, advhr,|, print,|, ltr, rtl,|, fullscreen",
-                    theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,
-                     styleprops, spellchecker,|, cite, abbr, acronym, del, ins, attribs,|,
-            visualchars, nonbreaking, template, blockquote, pagebreak,|, insertfile, insertimage",
-                    theme_advanced_toolbar_location: "top",
-            theme_advanced_toolbar_align: "left",
-            theme_advanced_statusbar_location: "bottom",
-            theme_advanced_resizing: true
-                });
-    </script>*@
+            // Initialize your tinyMCE Editor with your preferred options
+            tinyMCE.init({
+                // General options
+                mode: "textareas",
+                theme: "modern",
+                // Theme options
+                theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,
+                          strikethrough,|, justifyleft, justifycenter, justifyright, justifyfull,|,
+                styleselect, formatselect, fontselect, fontsizeselect",
+                        theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,
+                          search, replace,|, bullist, numlist,|, outdent, indent, blockquote,|, undo, redo,|,
+                link, unlink, anchor, image, cleanup, help, code,|, insertdate, inserttime, preview,|,
+                forecolor, backcolor",
+                        theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,
+                          sub, sup,|, charmap, emotions, iespell, media, advhr,|, print,|, ltr, rtl,|, fullscreen",
+                        theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,
+                         styleprops, spellchecker,|, cite, abbr, acronym, del, ins, attribs,|,
+                visualchars, nonbreaking, template, blockquote, pagebreak,|, insertfile, insertimage",
+                        theme_advanced_toolbar_location: "top",
+                theme_advanced_toolbar_align: "left",
+                theme_advanced_statusbar_location: "bottom",
+                theme_advanced_resizing: true
+                    });
+        </script>*@
 </head>
 <body>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=140057183061041&autoLogAppEvents=1" nonce="yRruhlDd"></script>
     <div class="full-width">
         <div class="row top-banner">
-            <div class="offset-1 col-sm-3">CHUYENVIENTUVANCANADA@GMAIL.COM</div>
-            <div class="col-sm-2">
-                <i class="fa fa-phone mar-right3px" aria-hidden="true"></i>090 191 4768
-            </div>
-            <div class="col-sm-5">
-                <div class="row">
-                    <div class="col-sm">
-                        <i class="fa fa-key mar-right3px" aria-hidden="true"></i>CHÍNH SÁCH BẢO MẬT
-                    </div>
-                    <div class="col-sm">
-                        <i class="fa fa-money mar-right3px" aria-hidden="true"></i>CHÍNH SÁCH HOÀN TIỀN
-                    </div>
+            @*<div class="offset-1 col-sm-3">CHUYENVIENTUVANCANADA@GMAIL.COM</div>
+                <div class="col-sm-2">
+                    <i class="fa fa-phone mar-right3px" aria-hidden="true"></i>090 191 4768
                 </div>
+                <div class="col-sm-5">
+                    <div class="row">
+                        <div class="col-sm">
+                            <i class="fa fa-key mar-right3px" aria-hidden="true"></i>CHÍNH SÁCH BẢO MẬT
+                        </div>
+                        <div class="col-sm">
+                            <i class="fa fa-money mar-right3px" aria-hidden="true"></i>CHÍNH SÁCH HOÀN TIỀN
+                        </div>
+                    </div>
+                </div>*@
+            <div class="col-sm-6">&nbsp;</div>
+            <div class="col-sm-6 text-right pad-right30px">
+                Liên hệ với chúng tôi: &nbsp;&nbsp;&nbsp;<i class="fa fa-phone mar-right3px" aria-hidden="true"></i>0948 00 9988 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-envelope-o" aria-hidden="true"></i> Email: info@canadavisa.vn
             </div>
         </div>
     </div>
@@ -230,7 +235,7 @@
                 <div class="menu-item pos-rel">
                     <a href="#divImmigrationService" for="divImmigrationService" data-toggle="collapse"
                        aria-controls="divImmigrationService" aria-expanded="false" class="collapsed">DỊCH VỤ NHẬP CƯ</a>
-                    <div id="divImmigrationService" aria-expanded="false" class="collapse row">
+                    @*<div id="divImmigrationService" aria-expanded="false" class="collapse row">
                         <div class="col-sm canada-detail-background">
                             <div class="main-pri-text">CHƯƠNG TRÌNH NHẬP CƯ CANADA</div>
                             <img src="Content/images/chatluongcuocsong.jpg" class="full-width" />
@@ -258,7 +263,7 @@
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
                 <div class="menu-item"><a href="#">VIỆC LÀM</a></div>
                 <div class="menu-item"><a href="#">TẠI SAO CHỌN CHÚNG TÔI</a></div>
@@ -293,7 +298,7 @@
                     <img src="Content/images/logo.png" class="img-fluid main-logo" />
                 </div>
                 <div class="col-sm-12">
-                    <p class="main-text-foot">Việc làm định cư đầu tư Canada</p>
+                    <p class="main-text-foot">Việc làm - đầu tư - định cư Canada</p>
                     <p class="sec-text-foot">Chúng tôi hỗ trợ và hướng dẫn gia đình Việt Nam nhập cư Canada bằng cách hoàn thành các mục tiêu của họ về thường trú nhân.</p>
                     <p class="sec-text-foot">Nếu bạn đang tìm kiếm một giải pháp nhập cư hoặc hỗ trợ nhập cư vào Canada, hãy liên hệ với chúng tôi.</p>
                 </div>
@@ -303,9 +308,9 @@
                 <hr class="contact-info-line" />
                 <p>Tầng 14 Tòa nhà HM, 421 Nguyễn Thị Minh Khai, Q3, TP.HCM</p>
                 <p>
-                    Hotline: <i class="fa fa-phone mar-right3px" aria-hidden="true"></i> (+84) 948 00 9988
+                    <i class="fa fa-phone mar-right3px" aria-hidden="true"></i>Hotline:  (+84) 948 00 9988
                 </p>
-                <p>Email: <i class="fa fa-envelope-o" aria-hidden="true"></i> info@canadavisa.vn</p>
+                <p><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: info@canadavisa.vn</p>
             </div>
             <div class="col-sm-3 client-support">
                 <h5>Hỗ Trợ Khách Hàng</h5>
@@ -320,9 +325,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12 text-center canada-visa-copy-right">
-            Bản quyền thuộc về Canada Visa - Việc làm đầu tư định cư Canada @{ WriteLiteral("@"); }2021
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 text-center canada-visa-copy-right">
+                Bản quyền thuộc về Canada Visa - Việc làm đầu tư định cư Canada @{ WriteLiteral("@"); }2021
+            </div>
         </div>
     </div>
 

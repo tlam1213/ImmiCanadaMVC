@@ -5,7 +5,7 @@ body {
     background-color: #99CCFF;
     font-weight: 600;
     color: #FFFFFF;
-    line-height: 3;
+    line-height: 2.3;
 }
 
 .main-logo {
@@ -67,7 +67,7 @@ body {
 #divCanadaStates {
     position: absolute;
     width: 60vw;
-    background-color: #FFFFFF;
+    background-color: #f0f8fb;
     z-index: 1;
     border-radius: 0px 0px 10px 10px;
     padding-bottom: 2px;
@@ -76,7 +76,7 @@ body {
 #divImmigrationService {
     position: absolute;
     width: 40vw;
-    background-color: #FFFFFF;
+    background-color: #f0f8fb;
     z-index: 1;
     border-radius: 0px 0px 10px 10px;
     padding-bottom: 2px;
@@ -94,7 +94,7 @@ body {
 }
 
     .canada-detail-background .main-pri-text {
-        font-size: 20px;
+        font-size: 15px;
         line-height: 2;
         padding-left: 10px;
     }
@@ -130,6 +130,10 @@ body {
     padding-left: 65px;
 }
 
+.pad-right30px {
+    padding-right: 30px;
+}
+
 .pad-bot10px {
     padding-bottom: 10px;
 }
@@ -140,6 +144,10 @@ body {
 
 .mar-bottom30px {
     margin-bottom: 30px;
+}
+
+.mar-bottom60px {
+    margin-bottom: 60px;
 }
 
 .mar-bottom3px {
@@ -154,20 +162,23 @@ body {
     margin-top: 25px;
 }
 
+.mar-top60px {
+    margin-top: 60px;
+}
+
 .main-banner {
     /*background-image: url(../Content/images/banner-homepage.png);*/
-    height: 630px;
+    height: 560px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .main-header {
-    background-image: url(../Content/images/Banner.png);
+    background-image: url(../Content/images/Banner.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 1000px;
 }
 
 .homepage-title-service {
@@ -180,15 +191,16 @@ body {
 .homepage-title-settle {
     background-color: #003470;
     color: #FFFFFF;
-    padding: 8px 1px 8px 3px;
+    padding: 0px 1px 0px 3px;
     font-weight: 600;
-    font-size: 28px;
+    font-size: 30px;
     border-radius: 4px;
+    width: 75%;
 }
 
 .homepage-title-canada {
     color: #FD0000;
-    font-weight: 600;
+    font-weight: bolder;
     font-size: 80px;
     line-height: 1;
 }
@@ -230,14 +242,17 @@ body {
 }
 
 .card-highlight {
-    width: 26rem;
+    width: 20rem;
     min-height: 33rem;
     box-shadow: 5px 10px 18px #888888;
+    font-size: 12px;
+    width: 100%;
+    border: unset !important;
 }
 
     .card-highlight .card-img-top {
-        min-height: 190px;
-        height: 270px !important;
+        /*min-height: 190px;
+        height: 270px !important;*/
     }
 
     .card-highlight .card-main-title {
@@ -365,8 +380,8 @@ body {
 .footer {
     margin-top: 30px;
     background-image: url(../Content/images/footer1.jpg);
-    min-height: 460px;
-    padding: 30px;
+    min-height: 400px;
+    padding: 30px 30px 0px 30px;
     color: #FFFFFF;
 }
 
@@ -379,7 +394,7 @@ body {
 .introduction-icon {
     text-align: center;
     border: 1px solid #cccccc;
-    padding: 45px;
+    padding: 35px;
     transform: rotate(45deg);
     margin-bottom: 20px;
 }
@@ -401,8 +416,13 @@ body {
 
     .canada-deserve-to-life .canada-deserve-to-life-title {
         font-weight: 700;
-        font-size: 25px;
+        font-size: 30px;
     }
+
+        /*.canada-deserve-to-life .canada-deserve-to-life-title::before {
+            content: url(../Content/images/left-bg.jpg);
+            width: 40px;
+        }*/
 
         .canada-deserve-to-life .canada-deserve-to-life-title p {
             color: #ed2025;
@@ -410,6 +430,10 @@ body {
 
     .canada-deserve-to-life .row img {
         height: 100%;
+    }
+
+    .canada-deserve-to-life .canada-deserve-to-life-introduction {
+        padding-top: 40px !important;
     }
 
 .box-shadow-chatluongcuocsong {
@@ -460,16 +484,16 @@ body {
     color: #FFFFFF;
     padding: 15px;
     text-align: center;
-    left: 0;
+    left: 15px;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
     bottom: 0;
     background-color: #006190;
     margin-bottom: 0;
-    width: 92%;
+    width: 93%;
     opacity: 0.8;
-    ;
+    border-left: 3px solid red;
 }
 
 .outstanding-form {
@@ -568,6 +592,7 @@ body {
     z-index: 0;
     background-attachment: fixed;
     min-height: 500px;
+    padding-top: 35px !important;
 }
 
     .document-handling:before {
@@ -594,11 +619,11 @@ body {
     }
 
 .document-handling-section-detail {
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
     .document-handling-section-detail i {
-        font-size: 65px;
+        font-size: 45px;
         color: #96dbff;
     }
 
@@ -740,11 +765,13 @@ body {
     font-size: 15px;
     margin-bottom: 10px;
     margin-top: 12px;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .sec-text-foot {
     color: #ffffff;
-    font-size: 11px;
+    font-size: 13px;
     margin-bottom: 10px;
 }
 
@@ -764,6 +791,17 @@ body {
     background-color: #780001;
     color: #FFFFFF;
     font-weight: 700;
-    line-height: 3;
-    font-size: 21px;
+    line-height: 2;
+    font-size: 18px;
+}
+
+.row .col-sm-12 {
+    padding: 0 6%;
+}
+
+.img-left-icon {
+    width: 30px;
+    height: 30px !important;
+    margin-left: -10px;
+    margin-top: 10px;
 }

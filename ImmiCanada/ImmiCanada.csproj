@@ -184,7 +184,6 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\banner-homepage.png" />
-    <Content Include="Content\images\Banner.png" />
     <Content Include="Content\images\chatluongcuocsong.jpg" />
     <Content Include="Content\images\chatluongcuocsong1.jpg" />
     <Content Include="Content\images\Dichvunoibat1.png" />
@@ -195,6 +194,7 @@
     <Content Include="Content\images\footer1.jpg" />
     <Content Include="Content\images\footer2.jpg" />
     <Content Include="Content\images\giaoduc.jpg" />
+    <Content Include="Content\images\left-bg.jpg" />
     <Content Include="Content\images\Lienhe.jpg" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\main-photo.png" />
@@ -283,6 +283,15 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\aos-next\js\aos.js" />
+    <Content Include="Scripts\src\aos-next\js\helpers\detector.js" />
+    <Content Include="Scripts\src\aos-next\js\helpers\elements.js" />
+    <Content Include="Scripts\src\aos-next\js\helpers\getInlineOption.js" />
+    <Content Include="Scripts\src\aos-next\js\helpers\handleScroll.js" />
+    <Content Include="Scripts\src\aos-next\js\helpers\offsetCalculator.js" />
+    <Content Include="Scripts\src\aos-next\js\helpers\prepare.js" />
+    <Content Include="Scripts\src\aos-next\js\libs\observer.js" />
+    <Content Include="Scripts\src\aos-next\js\libs\offset.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
     <Content Include="Scripts\src\methods\disableEventListeners.js" />
@@ -378,6 +387,10 @@
     <Content Include="Views\ImmigrationServices\Details.cshtml" />
     <Content Include="Views\ImmigrationServices\Edit.cshtml" />
     <Content Include="Views\ImmigrationServices\Index.cshtml" />
+    <Content Include="Scripts\src\aos-next\sass\aos.scss" />
+    <Content Include="Scripts\src\aos-next\sass\_animations.scss" />
+    <Content Include="Scripts\src\aos-next\sass\_core.scss" />
+    <Content Include="Scripts\src\aos-next\sass\_easing.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
