@@ -54,7 +54,7 @@ namespace ImmiCanada.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "Id,Title,State,PermanentResident,Fee,Time,Type,CreatedDate,ModifiedDate,Overview,Description")] ImmigrationService immigrationService
+        public ActionResult Create([Bind(Include = "Id,Title,State,PermanentResident,Fee,Time,Type,CreatedDate,ModifiedDate,Overview,Description,IsOutstanding")] ImmigrationService immigrationService
             , HttpPostedFileBase Base64Image1
             , HttpPostedFileBase Base64Image2
             , HttpPostedFileBase Base64Image3
@@ -62,22 +62,15 @@ namespace ImmiCanada.Controllers
             , HttpPostedFileBase Base64Image5)
         {
             immigrationServiceOriginal = null;
-            if (ModelState.IsValid)
-            {
-                immigrationService.Base64Image1 = getBase64Image(Base64Image1, 1);
-                immigrationService.Base64Image2 = getBase64Image(Base64Image2, 2);
-                immigrationService.Base64Image3 = getBase64Image(Base64Image3, 3);
-                immigrationService.Base64Image4 = getBase64Image(Base64Image4, 4);
-                immigrationService.Base64Image5 = getBase64Image(Base64Image5, 5);
-                db.ImmigrationServices.Add(immigrationService);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.PermanentResident = new SelectList(db.PermanentResidents, "Id", "Name", immigrationService.PermanentResident);
-            ViewBag.State = new SelectList(db.States, "Id", "Name", immigrationService.State);
-            ViewBag.Type = new SelectList(db.ImmigrationServiceTypes, "Id", "Name", immigrationService.Type);
-            return View(immigrationService);
+            immigrationService.IsOutstanding = Request["IsOutstanding"] == "on";
+            immigrationService.Base64Image1 = getBase64Image(Base64Image1, 1);
+            immigrationService.Base64Image2 = getBase64Image(Base64Image2, 2);
+            immigrationService.Base64Image3 = getBase64Image(Base64Image3, 3);
+            immigrationService.Base64Image4 = getBase64Image(Base64Image4, 4);
+            immigrationService.Base64Image5 = getBase64Image(Base64Image5, 5);
+            db.ImmigrationServices.Add(immigrationService);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: ImmigrationServices/Edit/5
@@ -104,30 +97,22 @@ namespace ImmiCanada.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "Id,Title,State,PermanentResident,Fee,Time,Type,CreatedDate,ModifiedDate,Overview,Description")] ImmigrationService immigrationService
+        public ActionResult Edit([Bind(Include = "Id,Title,State,PermanentResident,Fee,Time,Type,CreatedDate,ModifiedDate,Overview,Description,IsOutstanding")] ImmigrationService immigrationService
             , HttpPostedFileBase Base64Image1
             , HttpPostedFileBase Base64Image2
             , HttpPostedFileBase Base64Image3
             , HttpPostedFileBase Base64Image4
             , HttpPostedFileBase Base64Image5)
         {
-            if (ModelState.IsValid)
-            {
-                immigrationService.Base64Image1 = getBase64Image(Base64Image1, 1);
-                immigrationService.Base64Image2 = getBase64Image(Base64Image2, 2);
-                immigrationService.Base64Image3 = getBase64Image(Base64Image3, 3);
-                immigrationService.Base64Image4 = getBase64Image(Base64Image4, 4);
-                immigrationService.Base64Image5 = getBase64Image(Base64Image5, 5);
+            immigrationService.Base64Image1 = getBase64Image(Base64Image1, 1);
+            immigrationService.Base64Image2 = getBase64Image(Base64Image2, 2);
+            immigrationService.Base64Image3 = getBase64Image(Base64Image3, 3);
+            immigrationService.Base64Image4 = getBase64Image(Base64Image4, 4);
+            immigrationService.Base64Image5 = getBase64Image(Base64Image5, 5);
 
-                db.Entry(immigrationService).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.PermanentResident = new SelectList(db.PermanentResidents, "Id", "Name", immigrationService.PermanentResident);
-            ViewBag.State = new SelectList(db.States, "Id", "Name", immigrationService.State);
-            ViewBag.Type = new SelectList(db.ImmigrationServiceTypes, "Id", "Name", immigrationService.Type);
-
-            return View(immigrationService);
+            db.Entry(immigrationService).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         private String getBase64Image(HttpPostedFileBase img, int number)
