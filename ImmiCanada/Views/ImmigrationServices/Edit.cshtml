@@ -1,14 +1,14 @@
 ﻿@model ImmiCanada.Entities.ImmigrationService
 
-<h2>Edit</h2>
+<h2 style="text-align: center ">Chỉnh sửa chương trình</h2>
 
 @using (Html.BeginForm("Edit", "ImmigrationServices", FormMethod.Post, new { enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     
-    <div class="container-fluid">
+<div class="container-fluid">
     <div class="form-group mt-3">
-        <input type="submit" value="Save" class="btn btn-default" />
+        <input type="submit" value="Chỉnh sửa" class="btn btn-primary" /> @Html.ActionLink("Trở về", "Index")
     </div>
     <div class="form-group row">
         <div class="col-6">
@@ -61,9 +61,15 @@
     <div class="custom-file mt-3">
         @Html.TextBox("Base64Image5", "", new { type = "file" }) <br />
     </div>
+    <div class="custom-file mt-3">
+        @Html.TextAreaFor(model => model.Overview, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="custom-file mt-3">
+        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <script>
+        CKEDITOR.replace('Overview');
+        CKEDITOR.replace('Description');
+    </script>
 </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
