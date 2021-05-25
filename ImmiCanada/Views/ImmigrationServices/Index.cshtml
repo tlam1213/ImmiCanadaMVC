@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<ImmiCanada.Entities.ImmigrationService>
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm chương trình", "Create")
 </p>
 <table class="table">
     <tr>
@@ -94,9 +92,8 @@
         }
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
     </td>
 </tr>
 }

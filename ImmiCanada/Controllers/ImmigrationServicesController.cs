@@ -15,6 +15,8 @@ namespace ImmiCanada.Controllers
     {
         private ImmiCanadaEntities db = new ImmiCanadaEntities();
 
+        private static ImmigrationService immigrationServiceOriginal;
+
         // GET: ImmigrationServices
         public ActionResult Index()
         {
@@ -51,30 +53,24 @@ namespace ImmiCanada.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,State,PermanentResident,Fee,Time,Type,CreatedDate,ModifiedDate,Overview,Description")] ImmigrationService immigrationService
+        [ValidateInput(false)]
+        public ActionResult Create([Bind(Include = "Id,Title,State,PermanentResident,Fee,Time,Type,CreatedDate,ModifiedDate,Overview,Description,IsOutstanding")] ImmigrationService immigrationService
             , HttpPostedFileBase Base64Image1
             , HttpPostedFileBase Base64Image2
             , HttpPostedFileBase Base64Image3
             , HttpPostedFileBase Base64Image4
             , HttpPostedFileBase Base64Image5)
         {
-            if (ModelState.IsValid)
-            {
-                immigrationService.Base64Image1 = getBase64Image(Base64Image1);
-                immigrationService.Base64Image2 = getBase64Image(Base64Image2);
-                immigrationService.Base64Image3 = getBase64Image(Base64Image3);
-                immigrationService.Base64Image4 = getBase64Image(Base64Image4);
-
-                immigrationService.Base64Image5 = getBase64Image(Base64Image5);
-                db.ImmigrationServices.Add(immigrationService);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.PermanentResident = new SelectList(db.PermanentResidents, "Id", "Name", immigrationService.PermanentResident);
-            ViewBag.State = new SelectList(db.States, "Id", "Name", immigrationService.State);
-            ViewBag.Type = new SelectList(db.ImmigrationServiceTypes, "Id", "Name", immigrationService.Type);
-            return View(immigrationService);
+            immigrationServiceOriginal = null;
+            immigrationService.IsOutstanding = Request["IsOutstanding"] == "on";
+            immigrationService.Base64Image1 = getBase64Image(Base64Image1, 1);
+            immigrationService.Base64Image2 = getBase64Image(Base64Image2, 2);
+            immigrationService.Base64Image3 = getBase64Image(Base64Image3, 3);
+            immigrationService.Base64Image4 = getBase64Image(Base64Image4, 4);
+            immigrationService.Base64Image5 = getBase64Image(Base64Image5, 5);
+            db.ImmigrationServices.Add(immigrationService);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: ImmigrationServices/Edit/5
@@ -84,15 +80,15 @@ namespace ImmiCanada.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ImmigrationService immigrationService = db.ImmigrationServices.Find(id);
-            if (immigrationService == null)
+            immigrationServiceOriginal = db.ImmigrationServices.Find(id);
+            if (immigrationServiceOriginal == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PermanentResident = new SelectList(db.PermanentResidents, "Id", "Name", immigrationService.PermanentResident);
-            ViewBag.State = new SelectList(db.States, "Id", "Name", immigrationService.State);
-            ViewBag.Type = new SelectList(db.ImmigrationServiceTypes, "Id", "Name", immigrationService.Type);
-            return View(immigrationService);
+            ViewBag.PermanentResident = new SelectList(db.PermanentResidents, "Id", "Name", immigrationServiceOriginal.PermanentResident);
+            ViewBag.State = new SelectList(db.States, "Id", "Name", immigrationServiceOriginal.State);
+            ViewBag.Type = new SelectList(db.ImmigrationServiceTypes, "Id", "Name", immigrationServiceOriginal.Type);
+            return View(immigrationServiceOriginal);
         }
 
         // POST: ImmigrationServices/Edit/5
@@ -100,38 +96,44 @@ namespace ImmiCanada.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,State,PermanentResident,Fee,Time,Type,CreatedDate,ModifiedDate,Overview,Description")] ImmigrationService immigrationService
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "Id,Title,State,PermanentResident,Fee,Time,Type,CreatedDate,ModifiedDate,Overview,Description,IsOutstanding")] ImmigrationService immigrationService
             , HttpPostedFileBase Base64Image1
             , HttpPostedFileBase Base64Image2
             , HttpPostedFileBase Base64Image3
             , HttpPostedFileBase Base64Image4
             , HttpPostedFileBase Base64Image5)
         {
-            
-            if (ModelState.IsValid)
-            {
-                immigrationService.Base64Image1 = getBase64Image(Base64Image1);
-                immigrationService.Base64Image2 = getBase64Image(Base64Image2);
-                immigrationService.Base64Image3 = getBase64Image(Base64Image3);
-                immigrationService.Base64Image4 = getBase64Image(Base64Image4);
-                immigrationService.Base64Image5 = getBase64Image(Base64Image5);
+            immigrationService.Base64Image1 = getBase64Image(Base64Image1, 1);
+            immigrationService.Base64Image2 = getBase64Image(Base64Image2, 2);
+            immigrationService.Base64Image3 = getBase64Image(Base64Image3, 3);
+            immigrationService.Base64Image4 = getBase64Image(Base64Image4, 4);
+            immigrationService.Base64Image5 = getBase64Image(Base64Image5, 5);
 
-                db.Entry(immigrationService).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.PermanentResident = new SelectList(db.PermanentResidents, "Id", "Name", immigrationService.PermanentResident);
-            ViewBag.State = new SelectList(db.States, "Id", "Name", immigrationService.State);
-            ViewBag.Type = new SelectList(db.ImmigrationServiceTypes, "Id", "Name", immigrationService.Type);
-
-            return View(immigrationService);
+            db.Entry(immigrationService).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
-        private String getBase64Image(HttpPostedFileBase img)
+        private String getBase64Image(HttpPostedFileBase img, int number)
         {
             if (img == null || img.ContentLength == 0)
             {
-                return "";
+                switch (number)
+                {
+                    case 1:
+                        return immigrationServiceOriginal != null ? immigrationServiceOriginal.Base64Image1 : "";
+                    case 2:
+                        return immigrationServiceOriginal != null ? immigrationServiceOriginal.Base64Image2 : "";
+                    case 3:
+                        return immigrationServiceOriginal != null ? immigrationServiceOriginal.Base64Image3 : "";
+                    case 4:
+                        return immigrationServiceOriginal != null ? immigrationServiceOriginal.Base64Image4 : "";
+                    case 5:
+                        return immigrationServiceOriginal != null ? immigrationServiceOriginal.Base64Image5 : "";
+                    default:
+                        break;
+                }
             }
             byte[] fileInBytes = new byte[img.ContentLength];
             using (BinaryReader theReader = new BinaryReader(img.InputStream))
