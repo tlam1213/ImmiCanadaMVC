@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ImmiCanada.Entities.ImmigrationServiceType>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Thêm loại chương trình", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Loại chương trình
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
