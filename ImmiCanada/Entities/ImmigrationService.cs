@@ -14,6 +14,12 @@ namespace ImmiCanada.Entities
     
     public partial class ImmigrationService
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ImmigrationService()
+        {
+            this.Works = new HashSet<Work>();
+        }
+    
         public int Id { get; set; }
         public string Title { get; set; }
         public Nullable<int> State { get; set; }
@@ -30,9 +36,12 @@ namespace ImmiCanada.Entities
         public string Base64Image3 { get; set; }
         public string Base64Image4 { get; set; }
         public string Base64Image5 { get; set; }
+        public Nullable<bool> IsOutstanding { get; set; }
     
         public virtual PermanentResident PermanentResident1 { get; set; }
         public virtual State State1 { get; set; }
         public virtual ImmigrationServiceType ImmigrationServiceType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Work> Works { get; set; }
     }
 }
