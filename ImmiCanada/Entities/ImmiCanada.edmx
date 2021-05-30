@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ImmiCanadaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ImmiCanadaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ImmigrationService">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,6 +25,7 @@
           <Property Name="Base64Image3" Type="varchar(max)" />
           <Property Name="Base64Image4" Type="varchar(max)" />
           <Property Name="Base64Image5" Type="varchar(max)" />
+          <Property Name="IsOutstanding" Type="bit" />
         </EntityType>
         <EntityType Name="ImmigrationServiceType">
           <Key>
@@ -33,18 +34,26 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="Noc">
+          <Key>
+            <PropertyRef Name="NocId" />
+          </Key>
+          <Property Name="NocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Skill" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="PermanentResident">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" />
           <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
@@ -58,7 +67,28 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK__Immigrati__Perma__29572725">
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="WorkId" />
+          </Key>
+          <Property Name="WorkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImmigrationServiceId" Type="int" />
+          <Property Name="NocId" Type="int" />
+          <Property Name="Income" Type="nvarchar" MaxLength="200" />
+          <Property Name="Experience" Type="nvarchar" MaxLength="200" />
+          <Property Name="Position" Type="nvarchar" MaxLength="200" />
+          <Property Name="Certificate" Type="nvarchar" MaxLength="200" />
+          <Property Name="WorkType" Type="nvarchar" MaxLength="200" />
+          <Property Name="NumberOfRecruitments" Type="int" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="200" />
+          <Property Name="Occupation" Type="nvarchar(max)" />
+          <Property Name="Age" Type="nvarchar" MaxLength="200" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="Benefic" Type="nvarchar(max)" />
+          <Property Name="NumberOfView" Type="int" />
+          <Property Name="Base64Image" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK__Immigrati__Perma__5070F446">
           <End Role="PermanentResident" Type="Self.PermanentResident" Multiplicity="0..1" />
           <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -70,7 +100,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Immigrati__State__2D27B809">
+        <Association Name="FK__Immigrati__State__5165187F">
           <End Role="State" Type="Self.State" Multiplicity="0..1" />
           <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -82,7 +112,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Immigratio__Type__2A4B4B5E">
+        <Association Name="FK_ImmigrationService_ImmigrationServiceType">
           <End Role="ImmigrationServiceType" Type="Self.ImmigrationServiceType" Multiplicity="0..1" />
           <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -91,6 +121,30 @@
             </Principal>
             <Dependent Role="ImmigrationService">
               <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Work_ImmigrationService">
+          <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="0..1" />
+          <End Role="Work" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImmigrationService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="ImmigrationServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Work_Noc">
+          <End Role="Noc" Type="Self.Noc" Multiplicity="0..1" />
+          <End Role="Work" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Noc">
+              <PropertyRef Name="NocId" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="NocId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -128,140 +182,37 @@
         <EntityContainer Name="ImmiCanadaModelStoreContainer">
           <EntitySet Name="ImmigrationService" EntityType="Self.ImmigrationService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImmigrationServiceType" EntityType="Self.ImmigrationServiceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Noc" EntityType="Self.Noc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PermanentResident" EntityType="Self.PermanentResident" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Immigrati__Perma__29572725" Association="Self.FK__Immigrati__Perma__29572725">
+          <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Immigrati__Perma__5070F446" Association="Self.FK__Immigrati__Perma__5070F446">
             <End Role="PermanentResident" EntitySet="PermanentResident" />
             <End Role="ImmigrationService" EntitySet="ImmigrationService" />
           </AssociationSet>
-          <AssociationSet Name="FK__Immigrati__State__2D27B809" Association="Self.FK__Immigrati__State__2D27B809">
+          <AssociationSet Name="FK__Immigrati__State__5165187F" Association="Self.FK__Immigrati__State__5165187F">
             <End Role="State" EntitySet="State" />
             <End Role="ImmigrationService" EntitySet="ImmigrationService" />
           </AssociationSet>
-          <AssociationSet Name="FK__Immigratio__Type__2A4B4B5E" Association="Self.FK__Immigratio__Type__2A4B4B5E">
+          <AssociationSet Name="FK_ImmigrationService_ImmigrationServiceType" Association="Self.FK_ImmigrationService_ImmigrationServiceType">
             <End Role="ImmigrationServiceType" EntitySet="ImmigrationServiceType" />
             <End Role="ImmigrationService" EntitySet="ImmigrationService" />
           </AssociationSet>
+          <AssociationSet Name="FK_Work_ImmigrationService" Association="Self.FK_Work_ImmigrationService">
+            <End Role="ImmigrationService" EntitySet="ImmigrationService" />
+            <End Role="Work" EntitySet="Work" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_Noc" Association="Self.FK_Work_Noc">
+            <End Role="Noc" EntitySet="Noc" />
+            <End Role="Work" EntitySet="Work" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ImmiCanadaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ImmigrationService">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="Int32" />
-          <Property Name="PermanentResident" Type="Int32" />
-          <Property Name="Fee" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Time" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Type" Type="Int32" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <Property Name="Overview" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Base64Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Base64Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Base64Image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Base64Image4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Base64Image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PermanentResident1" Relationship="Self.FK__Immigrati__Perma__29572725" FromRole="ImmigrationService" ToRole="PermanentResident" />
-          <NavigationProperty Name="State1" Relationship="Self.FK__Immigrati__State__2D27B809" FromRole="ImmigrationService" ToRole="State" />
-          <NavigationProperty Name="ImmigrationServiceType" Relationship="Self.FK__Immigratio__Type__2A4B4B5E" FromRole="ImmigrationService" ToRole="ImmigrationServiceType" />
-        </EntityType>
-        <EntityType Name="ImmigrationServiceType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ImmigrationServices" Relationship="Self.FK__Immigratio__Type__2A4B4B5E" FromRole="ImmigrationServiceType" ToRole="ImmigrationService" />
-        </EntityType>
-        <EntityType Name="PermanentResident">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ImmigrationServices" Relationship="Self.FK__Immigrati__Perma__29572725" FromRole="PermanentResident" ToRole="ImmigrationService" />
-        </EntityType>
-        <EntityType Name="State">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ImmigrationServices" Relationship="Self.FK__Immigrati__State__2D27B809" FromRole="State" ToRole="ImmigrationService" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <Association Name="FK__Immigrati__Perma__29572725">
-          <End Role="PermanentResident" Type="Self.PermanentResident" Multiplicity="0..1" />
-          <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PermanentResident">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ImmigrationService">
-              <PropertyRef Name="PermanentResident" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Immigrati__State__2D27B809">
-          <End Role="State" Type="Self.State" Multiplicity="0..1" />
-          <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="State">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ImmigrationService">
-              <PropertyRef Name="State" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Immigratio__Type__2A4B4B5E">
-          <End Role="ImmigrationServiceType" Type="Self.ImmigrationServiceType" Multiplicity="0..1" />
-          <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ImmigrationServiceType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ImmigrationService">
-              <PropertyRef Name="Type" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ImmiCanadaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ImmigrationServices" EntityType="Self.ImmigrationService" />
-          <EntitySet Name="ImmigrationServiceTypes" EntityType="Self.ImmigrationServiceType" />
-          <EntitySet Name="PermanentResidents" EntityType="Self.PermanentResident" />
-          <EntitySet Name="States" EntityType="Self.State" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK__Immigrati__Perma__29572725" Association="Self.FK__Immigrati__Perma__29572725">
-            <End Role="PermanentResident" EntitySet="PermanentResidents" />
-            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Immigrati__State__2D27B809" Association="Self.FK__Immigrati__State__2D27B809">
-            <End Role="State" EntitySet="States" />
-            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Immigratio__Type__2A4B4B5E" Association="Self.FK__Immigratio__Type__2A4B4B5E">
-            <End Role="ImmigrationServiceType" EntitySet="ImmigrationServiceTypes" />
-            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -292,7 +243,34 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-        </EntityContainer>
+          <EntitySet Name="ImmigrationServices" EntityType="ImmiCanadaModel.ImmigrationService" />
+          <EntitySet Name="ImmigrationServiceTypes" EntityType="ImmiCanadaModel.ImmigrationServiceType" />
+          <EntitySet Name="Nocs" EntityType="ImmiCanadaModel.Noc" />
+          <EntitySet Name="PermanentResidents" EntityType="ImmiCanadaModel.PermanentResident" />
+          <EntitySet Name="States" EntityType="ImmiCanadaModel.State" />
+          <EntitySet Name="sysdiagrams" EntityType="ImmiCanadaModel.sysdiagram" />
+          <EntitySet Name="Works" EntityType="ImmiCanadaModel.Work" />
+          <AssociationSet Name="FK__Immigrati__Perma__5070F446" Association="ImmiCanadaModel.FK__Immigrati__Perma__5070F446">
+            <End Role="PermanentResident" EntitySet="PermanentResidents" />
+            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Immigrati__State__5165187F" Association="ImmiCanadaModel.FK__Immigrati__State__5165187F">
+            <End Role="State" EntitySet="States" />
+            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImmigrationService_ImmigrationServiceType" Association="ImmiCanadaModel.FK_ImmigrationService_ImmigrationServiceType">
+            <End Role="ImmigrationServiceType" EntitySet="ImmigrationServiceTypes" />
+            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_ImmigrationService" Association="ImmiCanadaModel.FK_Work_ImmigrationService">
+            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_Noc" Association="ImmiCanadaModel.FK_Work_Noc">
+            <End Role="Noc" EntitySet="Nocs" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
+          </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -304,70 +282,165 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-      </Schema>
+        <EntityType Name="ImmigrationService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="PermanentResident" Type="Int32" />
+          <Property Name="Fee" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Overview" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Base64Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Base64Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Base64Image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Base64Image4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Base64Image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsOutstanding" Type="Boolean" />
+          <NavigationProperty Name="PermanentResident1" Relationship="ImmiCanadaModel.FK__Immigrati__Perma__5070F446" FromRole="ImmigrationService" ToRole="PermanentResident" />
+          <NavigationProperty Name="State1" Relationship="ImmiCanadaModel.FK__Immigrati__State__5165187F" FromRole="ImmigrationService" ToRole="State" />
+          <NavigationProperty Name="ImmigrationServiceType" Relationship="ImmiCanadaModel.FK_ImmigrationService_ImmigrationServiceType" FromRole="ImmigrationService" ToRole="ImmigrationServiceType" />
+          <NavigationProperty Name="Works" Relationship="ImmiCanadaModel.FK_Work_ImmigrationService" FromRole="ImmigrationService" ToRole="Work" />
+        </EntityType>
+        <EntityType Name="ImmigrationServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ImmigrationServices" Relationship="ImmiCanadaModel.FK_ImmigrationService_ImmigrationServiceType" FromRole="ImmigrationServiceType" ToRole="ImmigrationService" />
+        </EntityType>
+        <EntityType Name="Noc">
+          <Key>
+            <PropertyRef Name="NocId" />
+          </Key>
+          <Property Name="NocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Skill" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Works" Relationship="ImmiCanadaModel.FK_Work_Noc" FromRole="Noc" ToRole="Work" />
+        </EntityType>
+        <EntityType Name="PermanentResident">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ImmigrationServices" Relationship="ImmiCanadaModel.FK__Immigrati__Perma__5070F446" FromRole="PermanentResident" ToRole="ImmigrationService" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ImmigrationServices" Relationship="ImmiCanadaModel.FK__Immigrati__State__5165187F" FromRole="State" ToRole="ImmigrationService" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="WorkId" />
+          </Key>
+          <Property Name="WorkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImmigrationServiceId" Type="Int32" />
+          <Property Name="NocId" Type="Int32" />
+          <Property Name="Income" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Certificate" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="WorkType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfRecruitments" Type="Int32" />
+          <Property Name="Sex" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Occupation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Benefic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfView" Type="Int32" />
+          <Property Name="Base64Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ImmigrationService" Relationship="ImmiCanadaModel.FK_Work_ImmigrationService" FromRole="Work" ToRole="ImmigrationService" />
+          <NavigationProperty Name="Noc" Relationship="ImmiCanadaModel.FK_Work_Noc" FromRole="Work" ToRole="Noc" />
+        </EntityType>
+        <Association Name="FK__Immigrati__Perma__5070F446">
+          <End Type="ImmiCanadaModel.PermanentResident" Role="PermanentResident" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.ImmigrationService" Role="ImmigrationService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermanentResident">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ImmigrationService">
+              <PropertyRef Name="PermanentResident" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Immigrati__State__5165187F">
+          <End Type="ImmiCanadaModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.ImmigrationService" Role="ImmigrationService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ImmigrationService">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImmigrationService_ImmigrationServiceType">
+          <End Type="ImmiCanadaModel.ImmigrationServiceType" Role="ImmigrationServiceType" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.ImmigrationService" Role="ImmigrationService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImmigrationServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ImmigrationService">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Work_ImmigrationService">
+          <End Type="ImmiCanadaModel.ImmigrationService" Role="ImmigrationService" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.Work" Role="Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImmigrationService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="ImmigrationServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Work_Noc">
+          <End Type="ImmiCanadaModel.Noc" Role="Noc" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.Work" Role="Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Noc">
+              <PropertyRef Name="NocId" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="NocId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ImmiCanadaModelStoreContainer" CdmEntityContainer="ImmiCanadaEntities">
-          <EntitySetMapping Name="ImmigrationServices">
-            <EntityTypeMapping TypeName="ImmiCanadaModel.ImmigrationService">
-              <MappingFragment StoreEntitySet="ImmigrationService">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="PermanentResident" ColumnName="PermanentResident" />
-                <ScalarProperty Name="Fee" ColumnName="Fee" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="Overview" ColumnName="Overview" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Base64Image1" ColumnName="Base64Image1" />
-                <ScalarProperty Name="Base64Image2" ColumnName="Base64Image2" />
-                <ScalarProperty Name="Base64Image3" ColumnName="Base64Image3" />
-                <ScalarProperty Name="Base64Image4" ColumnName="Base64Image4" />
-                <ScalarProperty Name="Base64Image5" ColumnName="Base64Image5" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ImmigrationServiceTypes">
-            <EntityTypeMapping TypeName="ImmiCanadaModel.ImmigrationServiceType">
-              <MappingFragment StoreEntitySet="ImmigrationServiceType">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PermanentResidents">
-            <EntityTypeMapping TypeName="ImmiCanadaModel.PermanentResident">
-              <MappingFragment StoreEntitySet="PermanentResident">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="States">
-            <EntityTypeMapping TypeName="ImmiCanadaModel.State">
-              <MappingFragment StoreEntitySet="State">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ImmiCanadaModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ImmiCanadaModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ImmiCanadaModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ImmiCanadaModel.Store.sp_dropdiagram" />
@@ -392,7 +465,97 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ImmiCanadaModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ImmiCanadaModel.Store.sp_upgraddiagrams" />
-        </EntityContainerMapping>
+          <EntitySetMapping Name="ImmigrationServices">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.ImmigrationService">
+              <MappingFragment StoreEntitySet="ImmigrationService">
+                <ScalarProperty Name="IsOutstanding" ColumnName="IsOutstanding" />
+                <ScalarProperty Name="Base64Image5" ColumnName="Base64Image5" />
+                <ScalarProperty Name="Base64Image4" ColumnName="Base64Image4" />
+                <ScalarProperty Name="Base64Image3" ColumnName="Base64Image3" />
+                <ScalarProperty Name="Base64Image2" ColumnName="Base64Image2" />
+                <ScalarProperty Name="Base64Image1" ColumnName="Base64Image1" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Overview" ColumnName="Overview" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="PermanentResident" ColumnName="PermanentResident" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImmigrationServiceTypes">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.ImmigrationServiceType">
+              <MappingFragment StoreEntitySet="ImmigrationServiceType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nocs">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.Noc">
+              <MappingFragment StoreEntitySet="Noc">
+                <ScalarProperty Name="Skill" ColumnName="Skill" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NocId" ColumnName="NocId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermanentResidents">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.PermanentResident">
+              <MappingFragment StoreEntitySet="PermanentResident">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Works">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.Work">
+              <MappingFragment StoreEntitySet="Work">
+                <ScalarProperty Name="Base64Image" ColumnName="Base64Image" />
+                <ScalarProperty Name="NumberOfView" ColumnName="NumberOfView" />
+                <ScalarProperty Name="Benefic" ColumnName="Benefic" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="NumberOfRecruitments" ColumnName="NumberOfRecruitments" />
+                <ScalarProperty Name="WorkType" ColumnName="WorkType" />
+                <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="NocId" ColumnName="NocId" />
+                <ScalarProperty Name="ImmigrationServiceId" ColumnName="ImmigrationServiceId" />
+                <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
