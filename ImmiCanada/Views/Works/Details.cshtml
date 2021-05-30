@@ -1,0 +1,139 @@
+﻿@model ImmiCanada.Entities.Work
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Work</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Income)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Income)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Certificate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Certificate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfRecruitments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfRecruitments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Occupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Benefic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Benefic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfView)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfView)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Base64Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Base64Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImmigrationService.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImmigrationService.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Noc.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Noc.Title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WorkId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

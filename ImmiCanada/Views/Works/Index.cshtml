@@ -1,0 +1,115 @@
+﻿@model IEnumerable<ImmiCanada.Entities.Work>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Thêm mới việc làm", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mức lương
+        </th>
+        <th>
+            Kinh nghiệm
+        </th>
+        <th>
+            Chức vụ
+        </th>
+        <th>
+            Yêu cầu bằng cấp
+        </th>
+        <th>
+            Hình thức làm việc
+        </th>
+        <th>
+            Số lượng cần tuyển
+        </th>
+        <th>
+            Giới tính
+        </th>
+        <th>
+            Yêu cầu bằng cấp
+        </th>
+        <th>
+            Yêu cầu độ tuổi
+        </th>
+        <th>
+            Mổ tả công việc
+        </th>
+        <th>
+            Quyền lợi được hưởng
+        </th>
+        <th>
+            Lượt xem
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th>
+            Chương trình
+        </th>
+        <th>
+            NOC
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Income)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Experience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Certificate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfRecruitments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Occupation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Detail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Benefic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfView)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base64Image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImmigrationService.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Noc.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.WorkId }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.WorkId })
+        </td>
+    </tr>
+}
+
+</table>

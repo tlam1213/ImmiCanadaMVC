@@ -11,4 +11,7 @@
         });
        //$(this).find("+ div").addClass("show");
     });
+
+    //Load the banner based on URL
+    
 });

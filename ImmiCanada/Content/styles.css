@@ -6,6 +6,7 @@ body {
     font-weight: 600;
     color: #FFFFFF;
     line-height: 2.3;
+    margin-right: 0;
 }
 
 .main-logo {
@@ -142,6 +143,10 @@ body {
     padding-top: 40px;
 }
 
+.pad-top85px {
+    padding-top: 85px;
+}
+
 .mar-bottom30px {
     margin-bottom: 30px;
 }
@@ -175,10 +180,18 @@ body {
 }
 
 .main-header {
-    background-image: url(../Content/images/Banner.jpg);
+    /*background-image: url(../Content/images/Banner.jpg);*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.default-banner {
+    background-image: url(../Content/images/Banner.jpg);
+}
+
+.service-banner {
+    background-image: url(../Content/images/ServiceBanner.jpg);
 }
 
 .homepage-title-service {
@@ -392,12 +405,16 @@ body {
     }
 
 .introduction-icon {
-    text-align: center;
+    /*text-align: center;
     border: 1px solid #cccccc;
     padding: 35px;
     transform: rotate(45deg);
-    margin-bottom: 20px;
+    margin-bottom: 20px;*/
 }
+
+    .introduction-icon img {
+        border: none;
+    }
 
     .introduction-icon i {
         font-size: 75px;
@@ -804,4 +821,36 @@ body {
     height: 30px !important;
     margin-left: -10px;
     margin-top: 10px;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.service-search-container {
+    position: relative;
+    /*height: 125px;*/
+}
+
+.search-criteria {
+    position: absolute;
+    width: 70%;
+    top: -50px;
+    left: 15%;
+    background-color: #FFFfff;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 4px;
 }

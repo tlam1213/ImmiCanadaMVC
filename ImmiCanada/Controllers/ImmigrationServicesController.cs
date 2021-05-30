@@ -62,7 +62,7 @@ namespace ImmiCanada.Controllers
             , HttpPostedFileBase Base64Image5)
         {
             immigrationServiceOriginal = null;
-            immigrationService.IsOutstanding = Request["IsOutstanding"] == "on";
+            //immigrationService.IsOutstanding = Request["IsOutstanding"] == "on";
             immigrationService.Base64Image1 = getBase64Image(Base64Image1, 1);
             immigrationService.Base64Image2 = getBase64Image(Base64Image2, 2);
             immigrationService.Base64Image3 = getBase64Image(Base64Image3, 3);
