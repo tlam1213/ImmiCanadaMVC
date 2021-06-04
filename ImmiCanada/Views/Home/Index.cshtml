@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    var outstandingServices = (List<ImmiCanada.Entities.ImmigrationService>)ViewData["OutstandingServices"];
 }
 <style>
     .row {
@@ -143,151 +144,58 @@
             <p>DỊCH VỤ</p>
             &nbsp; NỔI BẬT
         </div>
-        @*<hr class="hoz-line-fee" />*@
         <div class="row col-sm-12 pad-top40px">
-            <div class="col-sm-4" data-aos="zoom-in-down">
-                <div class="card float-right card-highlight text-right">
-                    <img class="card-img-top" src="Content/images/Dichvunoibat1.jpg" alt="Card image cap">
-                    <div class="card-body pos-rel">
-                        <div class="card-main-outstanding-title">ĐẦU TƯ TỈNH BANG NEW BRUNKSWICKS</div>
-                        <div class="outstanding-form">
-                            <hr />
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
+            @foreach (var outstandingservice in outstandingServices)
+            {
+                <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
+                    <div class="card float-right card-highlight text-right">
+                        <img class="card-img-top" src="@outstandingservice.Base64Image1" alt="Card image cap">
+                        <div class="card-body pos-rel">
+                            <div class="card-main-outstanding-title">@outstandingservice.Title</div>
+                            <div class="outstanding-form">
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.State1.Name</div>
                                 </div>
-                                <div class="col-sm-6">New Brunkswicks</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.PermanentResident1.Name</div>
                                 </div>
-                                <div class="col-sm-6">Cho cả gia đình</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.Fee</div>
                                 </div>
-                                <div class="col-sm-6">500 - 600 triệu</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.Time</div>
                                 </div>
-                                <div class="col-sm-6">16 - 18 tháng</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.ImmigrationServiceType.Name</div>
                                 </div>
-                                <div class="col-sm-6">Đầu tư</div>
                             </div>
-                        </div>
-                        <div class="row outstanding-form-footer">
-                            <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" />
+                            <div class="row outstanding-form-footer">
+                                <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4" data-aos="zoom-in-down">
-                <div class="card card-highlight text-right">
-                    <img class="card-img-top" src="Content/images/Dichvunoibat2.jpg" alt="Card image cap">
-                    <div class="card-body pos-rel">
-                        <div class="card-main-outstanding-title">
-                            ĐỊNH CƯ AIPP
-                            <br />
-                            DIỆN TAY NGHỀ
-                        </div>
-                        <div class="outstanding-form-violet">
-                            <hr />
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
-                                </div>
-                                <div class="col-sm-6">New Brunkswicks</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
-                                </div>
-                                <div class="col-sm-6">Cho cả gia đình</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
-                                </div>
-                                <div class="col-sm-6">500 - 600 triệu</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
-                                </div>
-                                <div class="col-sm-6">16 - 18 tháng</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
-                                </div>
-                                <div class="col-sm-6">Đầu tư</div>
-                            </div>
-                        </div>
-                        <div class="row outstanding-form-violet-footer">
-                            <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" />
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-4 float-left" data-aos="zoom-in-down">
-                <div class="card card-highlight text-right">
-                    <img class="card-img-top" src="Content/images/Dichvunoibat3.jpg" alt="Card image cap">
-                    <div class="card-body pos-rel">
-                        <div class="card-main-outstanding-title">
-                            WORKPERMIT
-                            <br />
-                            LAO ĐỘNG VIỆC LÀM
-                        </div>
-                        <div class="outstanding-form-orrange">
-                            <hr />
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
-                                </div>
-                                <div class="col-sm-6">New Brunkswicks</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
-                                </div>
-                                <div class="col-sm-6">Cho cả gia đình</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
-                                </div>
-                                <div class="col-sm-6">500 - 600 triệu</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
-                                </div>
-                                <div class="col-sm-6">16 - 18 tháng</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 text-left">
-                                    <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
-                                </div>
-                                <div class="col-sm-6">Đầu tư</div>
-                            </div>
-                        </div>
-                        <div class="row outstanding-form-orrange-footer">
-                            <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
-
+        <div class="full-width pad-top20px text-center">
+            @Html.ActionLink("XEM TẤT CẢ", "Index", "Service", null, new { @class="btn-view-all-services"})
+        </div>
     </div>
 </div>
 <div class="row pad-top40px canada-deserve-to-life document-handling-container" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">

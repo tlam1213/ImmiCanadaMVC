@@ -8,6 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     @Scripts.Render("~/Scripts/ckeditor/ckeditor.js")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <div id="fb-root"></div>
@@ -32,7 +33,7 @@
                 </div>
             </div>
             <div class="row main-menu">
-                <div class="menu-item offset-1"><a href="#">TRANG CHỦ</a></div>
+                <div class="menu-item offset-1"><a href="/">TRANG CHỦ</a></div>
                 <div class="menu-item pos-rel">
                     <a href="#divCanadaDetails" for="divCanadaDetails" data-toggle="collapse"
                        aria-controls="divCanadaDetails" aria-expanded="false" class="collapsed">CANADA</a>
@@ -293,7 +294,6 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/mainscript")
     @RenderSection("scripts", required: false)

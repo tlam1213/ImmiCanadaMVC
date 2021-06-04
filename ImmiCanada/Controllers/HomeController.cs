@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImmiCanada.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,10 @@ namespace ImmiCanada.Controllers
 {
     public class HomeController : BaseController
     {
+        private ImmiCanadaEntities db = new ImmiCanadaEntities();
         public ActionResult Index()
         {
+            ViewData["OutstandingServices"] = db.ImmigrationServices.Where(i => i.IsOutstanding == true).ToList();
             return View();
         }
 

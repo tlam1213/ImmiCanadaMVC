@@ -85,6 +85,9 @@ namespace ImmiCanada.Controllers
             {
                 return HttpNotFound();
             }
+            if (immigrationServiceOriginal.IsOutstanding == null || immigrationServiceOriginal.IsOutstanding == false)
+                immigrationServiceOriginal.IsOutstanding = false;
+
             ViewBag.PermanentResident = new SelectList(db.PermanentResidents, "Id", "Name", immigrationServiceOriginal.PermanentResident);
             ViewBag.State = new SelectList(db.States, "Id", "Name", immigrationServiceOriginal.State);
             ViewBag.Type = new SelectList(db.ImmigrationServiceTypes, "Id", "Name", immigrationServiceOriginal.Type);

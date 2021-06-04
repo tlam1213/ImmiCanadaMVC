@@ -143,6 +143,14 @@ body {
     padding-top: 40px;
 }
 
+.pad-top20px {
+    padding-top: 20px;
+}
+
+.pad-bot10px {
+    padding-bottom: 10px;
+}
+
 .pad-top85px {
     padding-top: 85px;
 }
@@ -161,6 +169,10 @@ body {
 
 .mar-right3px {
     margin-right: 3px;
+}
+
+.mar-botttom6px {
+    margin-bottom: 6px;
 }
 
 .mar-top25px {
@@ -854,3 +866,30 @@ body {
     border: 1px solid #ccc;
     padding: 4px;
 }
+
+.immigration-service-type-title {
+    color: #000099 !important;
+}
+
+.service-search-container .search-criteria .text-search {
+    display: unset;
+    width: 90%;
+}
+
+.service-search-container .search-criteria .btn-search {
+    background-color: #dca447;
+    border: none;
+}
+
+.btn-view-all-services {
+    border: 1px #ccd49e solid;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #756f6f;
+}
+
+    .btn-view-all-services:hover {
+        text-decoration: none;
+    }

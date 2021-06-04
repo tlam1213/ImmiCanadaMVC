@@ -48,8 +48,8 @@
     </div>
     <div class="form-group row">
         <div class="col-6">
-            <label>Nổi bật</label>
-            <input type="checkbox" id="IsOutstanding" name="IsOutstanding" checked="@Model.IsOutstanding" />
+            <label>Nổi bật test @Model.IsOutstanding</label>
+            <input type="checkbox" id="IsOutstanding" name="IsOutstanding" @(Model.IsOutstanding == true ? "checked" : string.Empty) />
         </div>
     </div>
     <div class="custom-file">
@@ -79,3 +79,9 @@
     </script>
 </div>
 }
+<script type="text/javascript">
+    $("form").submit(function () {
+        $("#IsOutstanding").val($('input[id="IsOutstanding"]').is(':checked'));
+        return true;
+    });
+</script>

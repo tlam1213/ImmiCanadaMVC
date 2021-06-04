@@ -1,0 +1,220 @@
+﻿@{
+    @model ImmiCanada.Controllers.ServiceSearchCriteria
+
+    ViewBag.Title = "Chương trình đầu tư";
+
+    var metaData = (ImmiCanada.Controllers.MetaData)ViewData["MetaData"];
+    var outstandingServices = (List<ImmiCanada.Entities.ImmigrationService>)ViewData["OutstandingServices"];
+    var immigrationServices = (List<ImmiCanada.Controllers.ServiceByType>)ViewData["ImmigrationServices"];
+}
+<div class="container-fluid service-search-container">
+    @using (Html.BeginForm("Search", "Service", FormMethod.Post))
+    {
+
+        <div class="search-criteria">
+            <div class="form-group has-search">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input type="text" class="form-control text-search" placeholder="Nhập địa điểm, tên chương trình" name="q" value="@Model.q">
+                <input type="submit" value="Tìm Kiếm" class="btn btn-primary mar-botttom6px btn-search" />
+            </div>
+            <div class="form-group row">
+                <select class="form-control offset-1 col-2" name="StateId">
+                    <option value="-1">Địa điểm</option>
+                    @foreach (var state in metaData.States)
+                    {
+                        <option value="@state.Id" @(state.Id == Model.StateId ? "selected" :String.Empty) >@state.Name</option>
+                    }
+                </select>&nbsp;&nbsp;
+                <select class="form-control col-2" name="ImmigrationServiceTypeId">
+                    <option value="-1">Loại chương trình</option>
+                    @foreach (var immigrationServiceType in metaData.ImmigrationServiceTypes)
+                    {
+                        <option value="@immigrationServiceType.Id" @(immigrationServiceType.Id == Model.ImmigrationServiceTypeId ? "selected" :String.Empty)>@immigrationServiceType.Name</option>
+                    }
+                </select>&nbsp;&nbsp;
+                <select class="form-control  col-2">
+                    <option>Diện chương trình</option>
+                </select>&nbsp;&nbsp;
+                <select class="form-control  col-2">
+                    <option>Bằng cấp</option>
+                </select>&nbsp;&nbsp;
+                <select class="form-control  col-2">
+                    <option>Ngôn ngữ</option>
+                </select>
+            </div>
+        </div>
+    }
+    <div class="search-result">
+        <div class="row pad-top85px canada-deserve-to-life">
+            <div class="row col-sm-12 canada-deserve-to-life-title">
+                <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">CHƯƠNG TRÌNH NỔI BẬT</p>
+            </div>
+        </div>
+        <div class="row col-sm-10 offset-1">
+            @foreach (var outstandingservice in outstandingServices)
+            {
+                <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
+                    <div class="card float-right card-highlight text-right">
+                        <img class="card-img-top" src="@outstandingservice.Base64Image1" alt="Card image cap">
+                        <div class="card-body pos-rel">
+                            <div class="card-main-outstanding-title">@outstandingservice.Title</div>
+                            <div class="outstanding-form">
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.State1.Name</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.PermanentResident1.Name</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.Fee</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.Time</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 text-left">
+                                        <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
+                                    </div>
+                                    <div class="col-sm-6">@outstandingservice.ImmigrationServiceType.Name</div>
+                                </div>
+                            </div>
+                            <div class="row outstanding-form-footer">
+                                <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        @foreach (var serviceByType in immigrationServices)
+        {
+            <div class="row pad-top85px canada-deserve-to-life">
+                <div class="row col-sm-12 canada-deserve-to-life-title">
+                    <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">Chương Trình Tỉnh Bang</p> &nbsp; <p>@serviceByType.ImmigrationServiceType</p>
+                </div>
+            </div>
+            <div class="row col-sm-10 offset-1">
+                @foreach (var immigrationService in serviceByType.LstImmigrationServices)
+                {
+                    <div class="col-sm-4" data-aos="zoom-in-down">
+                        <div class="card float-right card-highlight text-right">
+                            <img class="card-img-top" src="@immigrationService.Base64Image1" alt="Card image cap">
+                            <div class="card-body pos-rel">
+                                <div class="card-main-outstanding-title">@immigrationService.Title</div>
+                                <div class="outstanding-form">
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-6 text-left">
+                                            <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
+                                        </div>
+                                        <div class="col-sm-6">@immigrationService.State1.Name</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-left">
+                                            <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
+                                        </div>
+                                        <div class="col-sm-6">@immigrationService.PermanentResident1.Name</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-left">
+                                            <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
+                                        </div>
+                                        <div class="col-sm-6">@immigrationService.Fee</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-left">
+                                            <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
+                                        </div>
+                                        <div class="col-sm-6">@immigrationService.Time</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-left">
+                                            <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
+                                        </div>
+                                        <div class="col-sm-6">@immigrationService.ImmigrationServiceType.Name</div>
+                                    </div>
+                                </div>
+                                <div class="row outstanding-form-footer">
+                                    <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        }
+
+
+    </div>
+</div>
+<div class="container-fluid pad-top40px">
+    <div class="row section-interested  mar-bottom60px" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        <div class="col-sm-12 row">
+            <div class="col-sm-6 ">
+                <div class="col-sm-12 row main-interested-section">
+                    <div class="col-sm-2">
+                        <div class="interested-main-surground"><i class="fa fa-pencil-square-o interested-main-icon" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="col-sm-10 mar-top25px pad-left35px">
+                        <h4>Ứng viên quan tâm</h4>
+                        <div class="interested-text">Tìm hiểu xem bạn đủ điều kiện đến Canada hay không bằng cách điền vào biểu mẫu đánh giá miễn phí của chúng tôi. Chúng tôi sẽ cung cấp cho bạn bảng đánh giá của chúng tôi trong vòng 1-2 ngày làm việc.</div>
+                        <button type="button" class="btn btn-danger mar-top25px btn-interested">Phiếu đánh giá miễn phí</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 ">
+                <div class="col-sm-12 row main-interested-section">
+                    <div class="col-sm-2">
+                        <div class="interested-main-surground"><i class="fa fa-pencil-square-o interested-main-icon" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="col-sm-10 mar-top25px pad-left35px">
+                        <h4>Nhà tuyển dụng quan tâm</h4>
+                        <div class="interested-text">Vui lòng liên hệ với chúng tôi để nhận thêm thông tin.</div>
+                        <button type="button" class="btn btn-danger mar-top25px btn-interested">Liên hệ chúng tôi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 row mar-top25px">
+            <div class="col-sm-6 ">
+                <div class="col-sm-12 row main-interested-section">
+                    <div class="col-sm-2">
+                        <div class="interested-main-surground"><i class="fa fa-pencil-square-o interested-main-icon" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="col-sm-10 mar-top25px pad-left35px">
+                        <h4>Đại lý quan tâm</h4>
+                        <div class="interested-text">Chúng tôi hoan nghênh các liên kết với các đại lý đủ điều kiện. Theo liên kết dưới đây để tìm hiểu thêm</div>
+                        <button type="button" class="btn btn-danger mar-top25px btn-interested">Liên hệ chúng tôi</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 ">
+                <div class="col-sm-12 row main-interested-section">
+                    <div class="col-sm-2">
+                        <div class="interested-main-surground"><i class="fa fa-pencil-square-o interested-main-icon" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="col-sm-10 mar-top25px pad-left35px">
+                        <h4>Tin tức</h4>
+                        <div class="interested-text">Đọc thêm tin tức về nhập cư Canada.</div>
+                        <button type="button" class="btn btn-danger mar-top25px btn-interested">Tin mới nhất</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
