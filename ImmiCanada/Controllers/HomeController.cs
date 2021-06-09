@@ -12,7 +12,7 @@ namespace ImmiCanada.Controllers
         private ImmiCanadaEntities db = new ImmiCanadaEntities();
         public ActionResult Index()
         {
-            ViewData["OutstandingServices"] = db.ImmigrationServices.Where(i => i.IsOutstanding == true).ToList();
+            ViewData["OutstandingServices"] = db.ImmigrationServices.Where(i => i.IsOutstanding == true).Take(3).ToList();
             return View();
         }
 
@@ -28,6 +28,11 @@ namespace ImmiCanada.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult InterestedSection()
+        {
+            return PartialView();
         }
     }
 }

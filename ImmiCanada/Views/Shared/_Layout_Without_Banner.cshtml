@@ -22,8 +22,8 @@
             </div>
         </div>
     </div>
-    <div class="full-width main-header @ViewData["banner"]">
-        <div class="container-fluid">
+    <div class="full-width main-header">
+        <div>
             <div class="row">
                 <div class="offset-1 col-sm-2">
                     <img src="~/Content/images/logo.png" class="img-fluid main-logo" />
@@ -196,56 +196,30 @@
                 <div class="menu-item pos-rel">
                     <a href="#divImmigrationService" for="divImmigrationService" data-toggle="collapse"
                        aria-controls="divImmigrationService" aria-expanded="false" class="collapsed">DỊCH VỤ NHẬP CƯ</a>
-                    @*<div id="divImmigrationService" aria-expanded="false" class="collapse row">
-                            <div class="col-sm canada-detail-background">
-                                <div class="main-pri-text">CHƯƠNG TRÌNH NHẬP CƯ CANADA</div>
-                                <img src="Content/images/chatluongcuocsong.jpg" class="full-width" />
-                            </div>
-                            <div class="col-sm">
-                                <div class="row pad-bot10px">
-                                    <span class="col-sm-12 pri-text">SACATCHEWAN EXPERIENCE</span>
-                                    <span class="col-sm-12 sec-text">
-                                        Được phép hợp pháp sống, làm việc và ở bất kỳ nơi đâu tại
-                                        Canada
-                                    </span>
-                                </div>
-                                <div class="row pad-bot10px">
-                                    <span class="col-sm-12 pri-text">EXISTING WORK PERMIT</span>
-                                    <span class="col-sm-12 sec-text">
-                                        Được phép hợp pháp sống, làm việc và ở bất kỳ nơi đâu tại
-                                        Canada
-                                    </span>
-                                </div>
-                                <div class="row pad-bot10px">
-                                    <span class="col-sm-12 pri-text">HOSPITALITY SECTOR PROJECT</span>
-                                    <span class="col-sm-12 sec-text">
-                                        Được phép hợp pháp sống, làm việc và ở bất kỳ nơi đâu tại
-                                        Canada
-                                    </span>
-                                </div>
-                            </div>
-                        </div>*@
                 </div>
                 <div class="menu-item"><a href="#">VIỆC LÀM</a></div>
                 <div class="menu-item"><a href="#">TẠI SAO CHỌN CHÚNG TÔI</a></div>
                 <div class="menu-item"><a href="#">BẢN TIN NHẬP CƯ</a></div>
                 <div class="menu-item"><a href="#">ĐÁNH GIÁ MIỄN PHÍ</a></div>
             </div>
-            <div class="row main-banner ">
-                <div class="col-sm-6  offset-1">
-                    <div class="homepage-title-service">DỊCH VỤ</div>
-                    <div class="homepage-title-settle">VIỆC LÀM, ĐẦU TƯ ĐỊNH CƯ</div>
-                    <div class="homepage-title-canada">CANADA</div>
-                    <div class="homepage-title-success">
-                        Thành công của khách hàng là động lực để chúng tôi phát triển và
-                        hoàn thiện mỗi ngày
-                    </div>
-                    <div class="homepage-contact-button">
-                        <input type="button" id="btnContact" value="LIÊN HỆ TƯ VẤN" />
-                    </div>
+            <div class="row">
+                <div class="full-width">
+                    <ul class="pgwSlider">
+                        <li><img src="https://static.pgwjs.com/img/pg/slider/paris.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
+                        <li><img src="https://static.pgwjs.com/img/pg/slider/shanghai.jpg" alt="Montréal, QC, Canada" data-description="Eiffel Tower and Champ de Mars"></li>
+                        <li>
+                            <img src="https://static.pgwjs.com/img/pg/slider/new-york.jpg">
+                            <span>Shanghai, China</span>
+                        </li>
+                        <li>
+                            <a href="http://www.nyc.gov" target="_blank">
+                                <img src="https://static.pgwjs.com/img/pg/slider/paris.jpg">
+                                <span>New York, NY, USA</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-
 
         </div>
     </div>
@@ -299,5 +273,14 @@
     @RenderSection("scripts", required: false)
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.pgwSlider').pgwSlider({
+                listPosition: 'right',
+                transitionEffect: 'sliding'
+            });
+        });
+    </script>
 </body>
 </html>

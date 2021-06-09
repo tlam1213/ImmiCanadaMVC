@@ -20,13 +20,13 @@ namespace ImmiCanada.Controllers
             ViewData["OutstandingServices"] = db.ImmigrationServices.Where(i => i.IsOutstanding == true).ToList();
             ViewData["MetaData"] = GetMetaData();
             var result = new List<ServiceByType>();
-            foreach (var immigrationServiceType in db.ImmigrationServiceTypes.ToList())
+            foreach (var state in db.States.ToList())
             {
-                var immigrationServices = db.ImmigrationServices.Where(i => i.Type == immigrationServiceType.Id).ToList();
+                var immigrationServices = db.ImmigrationServices.Where(i => i.State == state.Id).ToList();
                 if (immigrationServices.Count() > 0)
                 {
                     var obj = new ServiceByType();
-                    obj.ImmigrationServiceType = immigrationServices.FirstOrDefault().ImmigrationServiceType.Name;
+                    obj.ImmigrationServiceState = immigrationServices.FirstOrDefault().State1.Name;
                     obj.LstImmigrationServices = immigrationServices;
 
                     result.Add(obj);
@@ -57,7 +57,7 @@ namespace ImmiCanada.Controllers
                 if (immigrationServices.Count() > 0)
                 {
                     var obj = new ServiceByType();
-                    obj.ImmigrationServiceType = immigrationServices.FirstOrDefault().ImmigrationServiceType.Name;
+                    obj.ImmigrationServiceState = immigrationServices.FirstOrDefault().State1.Name;
                     obj.LstImmigrationServices = immigrationServices;
 
                     result.Add(obj);
@@ -65,6 +65,18 @@ namespace ImmiCanada.Controllers
             }
             ViewData["ImmigrationServices"] = result.ToList();
             return View("Index", criteria);
+        }
+
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var immigrationService = db.ImmigrationServices.FirstOrDefault(i => i.Id == id);
+
+            return View(immigrationService);
         }
 
         private MetaData GetMetaData()
@@ -87,7 +99,7 @@ namespace ImmiCanada.Controllers
 
     public class ServiceByType
     {
-        public string ImmigrationServiceType { get; set; }
+        public string ImmigrationServiceState { get; set; }
         public List<ImmigrationService> LstImmigrationServices { get; set; }
     }
 

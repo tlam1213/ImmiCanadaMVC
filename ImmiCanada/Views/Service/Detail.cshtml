@@ -1,0 +1,68 @@
+﻿@{
+    @model ImmiCanada.Entities.ImmigrationService
+
+    ViewBag.Title = "Chi Tiết Chương trình đầu tư";
+    Layout = "~/Views/Shared/_Layout_Without_Banner.cshtml";
+}
+<style>
+    .row {
+        margin-right: 0;
+    }
+</style>
+<div class="container-fluid service-detail-container">
+    <div class="row col-sm-10 offset-1 pad-top40px">
+        Tỉnh bang @Model.State1.Name, Canada
+    </div>
+    <div class="row canada-deserve-to-life">
+        <div class="row col-sm-12 canada-deserve-to-life-title">
+            <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">CHƯƠNG TRÌNH @Model.Title</p>
+        </div>
+    </div>
+    <div class="row col-sm-10 offset-1 general-info">
+        <div class="col-sm-4 row">
+            <div class="col-sm-6 text-left remove-paddingleft">
+                <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
+            </div>
+            <div class="col-sm-6">@Model.State1.Name</div>
+        </div>
+        <div class="col-sm-4 row">
+            <div class="col-sm-6 text-left">
+                <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
+            </div>
+            <div class="col-sm-6">@Model.ImmigrationServiceType.Name</div>
+        </div>
+        <div class="col-sm-4 row">
+            <div class="col-sm-6 text-left">
+                <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
+            </div>
+            <div class="col-sm-6">@Model.Fee</div>
+        </div>
+    </div>
+    <div class="row col-sm-10 offset-1 general-info mar-top25px">
+        <div class="col-sm-4 row">
+            <div class="col-sm-6 text-left remove-paddingleft">
+                <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
+            </div>
+            <div class="col-sm-6">@Model.PermanentResident1.Name</div>
+        </div>
+        <div class="col-sm-4 row">
+            <div class="col-sm-6 text-left">
+                <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
+            </div>
+            <div class="col-sm-6">@Model.Time</div>
+        </div>
+    </div>
+    <div class="row col-sm-10 offset-1"><hr class="full-width" /></div>
+    <div class="row col-sm-10 offset-1">
+        <div class="col-sm-9">
+            <div class="row">@Html.Raw(Model.Overview)</div>
+            <div class="row">@Html.Raw(Model.Description)</div>
+        </div>
+        <div class="col-sm-3">
+            Lien he
+        </div>
+    </div>
+</div>
+<div class="container-fluid pad-top40px mar-bottom60px">
+    @{Html.RenderAction("InterestedSection", "Home");}
+</div>

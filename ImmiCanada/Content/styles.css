@@ -127,6 +127,10 @@ body {
     width: unset !important;
 }
 
+.remove-paddingleft {
+    padding-left: 0px;
+}
+
 .pad-left65px {
     padding-left: 65px;
 }
@@ -893,3 +897,9 @@ body {
     .btn-view-all-services:hover {
         text-decoration: none;
     }
+
+.service-detail-container .general-info i {
+    font-size: 20px;
+    color: #96dbff;
+    margin-right: 5px;
+}
