@@ -203,7 +203,7 @@
                 <div class="menu-item"><a href="#">ĐÁNH GIÁ MIỄN PHÍ</a></div>
             </div>
             <div class="row">
-                <div class="full-width">
+                <div class="col-sm-10 offset-1">
                     <ul class="pgwSlider">
                         <li><img src="https://static.pgwjs.com/img/pg/slider/paris.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
                         <li><img src="https://static.pgwjs.com/img/pg/slider/shanghai.jpg" alt="Montréal, QC, Canada" data-description="Eiffel Tower and Champ de Mars"></li>
@@ -211,12 +211,12 @@
                             <img src="https://static.pgwjs.com/img/pg/slider/new-york.jpg">
                             <span>Shanghai, China</span>
                         </li>
-                        <li>
+                        @*<li>
                             <a href="http://www.nyc.gov" target="_blank">
                                 <img src="https://static.pgwjs.com/img/pg/slider/paris.jpg">
                                 <span>New York, NY, USA</span>
                             </a>
-                        </li>
+                        </li>*@
                     </ul>
                 </div>
             </div>
@@ -278,7 +278,8 @@
         $(document).ready(function () {
             $('.pgwSlider').pgwSlider({
                 listPosition: 'right',
-                transitionEffect: 'sliding'
+                transitionEffect: 'sliding',
+                maxHeight: 440
             });
         });
     </script>

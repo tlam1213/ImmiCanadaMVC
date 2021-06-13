@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<ImmiCanada.Entities.ImmigrationService>
-
+@{
+    ViewBag.Title = "CanadaVisa CMS";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
 <p>
     @Html.ActionLink("Thêm chương trình", "Create")
 </p>
@@ -39,63 +42,64 @@
             Hình 5
         </th>
         <th width="250">
-</tr>
+    </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ImmigrationServiceType.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.State1.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PermanentResident1.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Time)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Fee)
-    </td>
-    <td>
-        @if (@item.Base64Image1.Length != 0)
-        {
-            <img width="100" height="100" src="@item.Base64Image1" />
-        }
-    </td>
-    <td>
-        @if (@item.Base64Image2.Length != 0)
-        {
-            <img width="100" height="100" src="@item.Base64Image2" />
-        }
-    </td>
-    <td>
-        @if (@item.Base64Image3.Length != 0)
-        {
-            <img width="100" height="100" src="@item.Base64Image3" />
-        }
-    </td>
-    <td>
-        @if (@item.Base64Image4.Length != 0)
-        {
-            <img width="100" height="100" src="@item.Base64Image4" />
-        }
-    </td>
-    <td>
-        @if(@item.Base64Image5.Length != 0)
-        {
-            <img width="100" height="100" src="@item.Base64Image5" />
-        }
-    </td>
-    <td>
-        @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImmigrationServiceType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State1.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermanentResident1.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fee)
+            </td>
+            <td>
+                @if (@item.Base64Image1.Length != 0)
+                {
+                    <img width="100" height="100" src="@item.Base64Image1" />
+                }
+            </td>
+            <td>
+                @if (@item.Base64Image2.Length != 0)
+                {
+                    <img width="100" height="100" src="@item.Base64Image2" />
+                }
+            </td>
+            <td>
+                @if (@item.Base64Image3.Length != 0)
+                {
+                    <img width="100" height="100" src="@item.Base64Image3" />
+                }
+            </td>
+            <td>
+                @if (@item.Base64Image4.Length != 0)
+                {
+                    <img width="100" height="100" src="@item.Base64Image4" />
+                }
+            </td>
+            <td>
+                @if (@item.Base64Image5.Length != 0)
+                {
+                    <img width="100" height="100" src="@item.Base64Image5" />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -1,8 +1,8 @@
 ﻿@model ImmiCanada.Entities.ImmigrationServiceType
 
 @{
-    ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "CanadaVisa CMS";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
 <h2>Chỉnh sửa loại chương trình</h2>
@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

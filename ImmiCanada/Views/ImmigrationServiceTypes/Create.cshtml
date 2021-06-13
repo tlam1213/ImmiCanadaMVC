@@ -1,16 +1,16 @@
 ﻿@model ImmiCanada.Entities.ImmigrationServiceType
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "CanadaVisa CMS";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 
 <h2>Thêm mới loại chương trình</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

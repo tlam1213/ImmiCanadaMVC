@@ -896,6 +896,7 @@
     <Content Include="Views\Home\InterestedSection.cshtml" />
     <Content Include="Views\Shared\_Layout_Without_Banner.cshtml" />
     <Content Include="Views\Service\Detail.cshtml" />
+    <Content Include="Views\Shared\_Layout_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

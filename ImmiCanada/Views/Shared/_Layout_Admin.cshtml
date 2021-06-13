@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=900, initial-scale=1.0, shrink-to-fit=no">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=140057183061041&autoLogAppEvents=1" nonce="yRruhlDd"></script>
+    @*<div class="full-width main-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img src="~/Content/images/logo.png" class="img-fluid main-logo" />
+                </div>
+                <div class="col-sm-9 slogan">
+                    TẦM NHÌN CỦA BẠN, TƯƠNG LAI GIA ĐÌNH BẠN
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 text-center canada-visa-copy-right">
+                Bản quyền thuộc về Canada Visa - Việc làm đầu tư định cư Canada @{ WriteLiteral("@"); }2021
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/mainscript")
+    @RenderSection("scripts", required: false)
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+</body>
+</html>

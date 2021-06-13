@@ -1,16 +1,15 @@
 ﻿@model ImmiCanada.Entities.Work
 
 @{
-    ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "CanadaVisa CMS";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
-
 <h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Work</h4>
         <hr />

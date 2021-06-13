@@ -1,5 +1,8 @@
 ﻿@model ImmiCanada.Entities.ImmigrationService
-
+@{
+    ViewBag.Title = "CanadaVisa CMS";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
 <h3>Bạn có muốn delete chương trình này?</h3>
 <div>
     <h4>ImmigrationService</h4>
@@ -127,7 +130,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
