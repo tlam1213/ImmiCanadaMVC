@@ -894,9 +894,9 @@ body {
     color: #756f6f;
 }
 
-    .btn-view-all-services:hover {
-        text-decoration: none;
-    }
+.btn-view-all-services:hover {
+    text-decoration: none;
+}
 
 .service-detail-container .general-info {
     font-size: 14px;
@@ -907,3 +907,22 @@ body {
         color: #96dbff;
         margin-right: 5px;
     }
+
+
+/* Support for client - BEGIN */
+table.text-editor-supported {
+    border: 0;
+}
+
+table.text-editor-supported tr td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #E0E0E0;
+    vertical-align: text-top;
+}
+
+table.text-editor-supported tr td:first-child{
+    width: 30%;
+    font-weight: bolder;
+}
+/* Support for client - END */
