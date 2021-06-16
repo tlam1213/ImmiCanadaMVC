@@ -9,6 +9,33 @@
         margin-right: 0;
     }
 </style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.pgwSlider').pgwSlider({
+            listPosition: 'right',
+            transitionEffect: 'sliding',
+            maxHeight: 440
+        });
+    });
+</script>
+<div class="row">
+    <div class="col-sm-10 offset-1">
+        <ul class="pgwSlider">
+            <li><img src="@Model.Base64Image2" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
+            <li><img src="@Model.Base64Image3" alt="Montréal, QC, Canada" data-description="Eiffel Tower and Champ de Mars"></li>
+            <li>
+                <img src="@Model.Base64Image4">
+                <span>Shanghai, China</span>
+            </li>
+            @*<li>
+                    <a href="http://www.nyc.gov" target="_blank">
+                        <img src="https://static.pgwjs.com/img/pg/slider/paris.jpg">
+                        <span>New York, NY, USA</span>
+                    </a>
+                </li>*@
+        </ul>
+    </div>
+</div>
 <div class="container-fluid service-detail-container">
     <div class="row col-sm-10 offset-1 pad-top40px">
         Tỉnh bang @Model.State1.Name, Canada
@@ -19,35 +46,39 @@
         </div>
     </div>
     <div class="row col-sm-10 offset-1 general-info">
-        <div class="col-sm-4 row mar-bottom30px">
-            <div class="col-sm-6 text-left remove-paddingleft">
-                <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
+        <div class="col-sm-8 row">
+            <div class="col-sm-6 row mar-bottom30px">
+                <div class="col-sm-6 text-left remove-paddingleft">
+                    <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
+                </div>
+                <div class="col-sm-6">@Model.State1.Name</div>
             </div>
-            <div class="col-sm-6">@Model.State1.Name</div>
+            <div class="col-sm-6 row">
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
+                </div>
+                <div class="col-sm-6">@Model.ImmigrationServiceType.Name</div>
+            </div>            
+            <div class="col-sm-6 row">
+                <div class="col-sm-6 text-left remove-paddingleft">
+                    <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
+                </div>
+                <div class="col-sm-6">@Model.PermanentResident1.Name</div>
+            </div>
+            <div class="col-sm-6 row">
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
+                </div>
+                <div class="col-sm-6">@Model.Time</div>
+            </div>
         </div>
-        <div class="col-sm-4 row">
-            <div class="col-sm-6 text-left">
-                <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
+        <div class="col-sm-4 fee-border-left">
+            <div class="col-sm-12 row">
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
+                </div>
+                <div class="col-sm-6">@Model.Fee</div>
             </div>
-            <div class="col-sm-6">@Model.ImmigrationServiceType.Name</div>
-        </div>
-        <div class="col-sm-4 row">
-            <div class="col-sm-6 text-left">
-                <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
-            </div>
-            <div class="col-sm-6">@Model.Fee</div>
-        </div>
-        <div class="col-sm-4 row">
-            <div class="col-sm-6 text-left remove-paddingleft">
-                <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
-            </div>
-            <div class="col-sm-6">@Model.PermanentResident1.Name</div>
-        </div>
-        <div class="col-sm-4 row">
-            <div class="col-sm-6 text-left">
-                <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
-            </div>
-            <div class="col-sm-6">@Model.Time</div>
         </div>
     </div>
     <div class="row col-sm-10 offset-1"><hr class="full-width" /></div>

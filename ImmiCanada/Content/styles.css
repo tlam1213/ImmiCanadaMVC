@@ -1,6 +1,10 @@
 body {
 }
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    width: 100%;
+}
+
 .top-banner {
     background-color: #99CCFF;
     font-weight: 600;
@@ -907,3 +911,7 @@ body {
         color: #96dbff;
         margin-right: 5px;
     }
+
+.fee-border-left {
+    border-left: 1px solid #ccc;
+}
