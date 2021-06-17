@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,6 +14,8 @@ namespace ImmiCanada.Controllers
     public class WorksController : Controller
     {
         private ImmiCanadaEntities db = new ImmiCanadaEntities();
+
+        private static Work workOriginal;
 
         // GET: Works
         public ActionResult Index()
@@ -49,21 +52,33 @@ namespace ImmiCanada.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "WorkId,ImmigrationServiceId,NocId,Income,Experience,Position,Certificate,WorkType,NumberOfRecruitments,Sex,Occupation,Age,Detail,Benefic,NumberOfView,Base64Image")] Work work)
+        [ValidateInput(false)]
+        public ActionResult Create(Work work, HttpPostedFileBase Base64Image)
         {
-            if (ModelState.IsValid)
-            {
-                db.Works.Add(work);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.ImmigrationServiceId = new SelectList(db.ImmigrationServices, "Id", "Title", work.ImmigrationServiceId);
-            ViewBag.NocId = new SelectList(db.Nocs, "NocId", "Title", work.NocId);
-            return View(work);
+            workOriginal = null;
+            work.Base64Image = getBase64Image(Base64Image);
+            db.Works.Add(work);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Works/Edit/5
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Work work = db.Works.Find(id);
+        //    if (work == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.ImmigrationServiceId = new SelectList(db.ImmigrationServices, "Id", "Title", work.ImmigrationServiceId);
+        //    ViewBag.NocId = new SelectList(db.Nocs, "NocId", "Title", work.NocId);
+        //    return View(work);
+        //}
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,17 +100,13 @@ namespace ImmiCanada.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WorkId,ImmigrationServiceId,NocId,Income,Experience,Position,Certificate,WorkType,NumberOfRecruitments,Sex,Occupation,Age,Detail,Benefic,NumberOfView,Base64Image")] Work work)
+        [ValidateInput(false)]
+        public ActionResult Edit(Work work, HttpPostedFileBase Base64Image)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(work).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.ImmigrationServiceId = new SelectList(db.ImmigrationServices, "Id", "Title", work.ImmigrationServiceId);
-            ViewBag.NocId = new SelectList(db.Nocs, "NocId", "Title", work.NocId);
-            return View(work);
+            work.Base64Image = getBase64Image(Base64Image);            
+            db.Entry(work).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Works/Delete/5
@@ -131,6 +142,20 @@ namespace ImmiCanada.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private String getBase64Image(HttpPostedFileBase img)
+        {
+            if (img == null || img.ContentLength == 0)
+            {
+                return workOriginal != null ? workOriginal.Base64Image : "";
+            }
+            byte[] fileInBytes = new byte[img.ContentLength];
+            using (BinaryReader theReader = new BinaryReader(img.InputStream))
+            {
+                fileInBytes = theReader.ReadBytes(img.ContentLength);
+            }
+            return String.Format("data:{0};base64,{1}", img.ContentType, Convert.ToBase64String(fileInBytes));
         }
     }
 }
