@@ -183,8 +183,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-bottom: 6px;
 }
 
+.mar-bottom10px {
+    margin-bottom: 10px;
+}
+
 .mar-top25px {
     margin-top: 25px;
+}
+
+.mar-top10px {
+    margin-top: 10px;
 }
 
 .mar-top60px {
@@ -898,9 +906,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: #756f6f;
 }
 
-.btn-view-all-services:hover {
-    text-decoration: none;
-}
+    .btn-view-all-services:hover {
+        text-decoration: none;
+    }
 
 .service-detail-container .general-info {
     font-size: 14px;
@@ -915,20 +923,58 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .fee-border-left {
     border-left: 1px solid #ccc;
 }
+
+.right-contact {
+    width: 100%;
+    padding: 24px 24px 0;
+    -webkit-box-shadow: 0 2px 16px 0 rgb(170 170 170 / 20%);
+    box-shadow: 0 2px 16px 0 rgb(170 170 170 / 20%);
+    border: solid 1px rgba(204,204,204,.4);
+    padding-bottom: 20px;
+    position: sticky;
+    top: 30px;
+}
+
+.suppor-already-title {
+    font-size: 15px;
+}
+
+.suppor-already-title-sec {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.btn-call-support {
+    background-color: #c72528;
+    color: #FFFFFF;
+}
+
+    .btn-call-support:hover {
+        color: #FFFFFF;
+    }
+
+.chat-to-revert {
+    color: #337588;
+}
+
+    .chat-to-revert:hover {
+        text-decoration: none;
+        color: #265765;
+    }
 /* Support for client - BEGIN */
 table.text-editor-supported {
     border: 0;
 }
 
-table.text-editor-supported tr td {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #E0E0E0;
-    vertical-align: text-top;
-}
+    table.text-editor-supported tr td {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #E0E0E0;
+        vertical-align: text-top;
+    }
 
-table.text-editor-supported tr td:first-child{
-    width: 30%;
-    font-weight: bolder;
-}
+        table.text-editor-supported tr td:first-child {
+            width: 30%;
+            font-weight: bolder;
+        }
 /* Support for client - END */

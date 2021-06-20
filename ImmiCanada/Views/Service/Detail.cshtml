@@ -21,12 +21,13 @@
 <div class="row">
     <div class="col-sm-10 offset-1">
         <ul class="pgwSlider">
-            <li><img src="@Model.Base64Image2" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
-            <li><img src="@Model.Base64Image3" alt="Montréal, QC, Canada" data-description="Eiffel Tower and Champ de Mars"></li>
-            <li>
-                <img src="@Model.Base64Image4">
-                <span>Shanghai, China</span>
-            </li>
+            <li><img src="@Model.Base64Image2" alt="@Model.State1.Name, Canada" data-description="@Model.Title"></li>
+            <li><img src="@Model.Base64Image3" alt="@Model.State1.Name, Canada" data-description="@Model.Title"></li>
+            <li><img src="@Model.Base64Image4" alt="@Model.State1.Name, Canada" data-description="@Model.Title"></li>
+            @*<li>
+                    <img src="@Model.Base64Image4">
+                    <span>@Model.State1.Name, Canada</span>
+                </li>*@
             @*<li>
                     <a href="http://www.nyc.gov" target="_blank">
                         <img src="https://static.pgwjs.com/img/pg/slider/paris.jpg">
@@ -58,7 +59,7 @@
                     <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
                 </div>
                 <div class="col-sm-6">@Model.ImmigrationServiceType.Name</div>
-            </div>            
+            </div>
             <div class="col-sm-6 row">
                 <div class="col-sm-6 text-left remove-paddingleft">
                     <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
@@ -82,13 +83,34 @@
         </div>
     </div>
     <div class="row col-sm-10 offset-1"><hr class="full-width" /></div>
-    <div class="row col-sm-10 offset-1">
+    <div class="row col-sm-11 offset-1">
         <div class="col-sm-9">
             <div class="row">@Html.Raw(Model.Overview)</div>
             <div class="row">@Html.Raw(Model.Description)</div>
         </div>
         <div class="col-sm-3">
-            Lien he
+            <div class="right-contact">
+                <div class="row col-sm-12 mar-botttom6px"><h3>Liên hệ tư vấn</h3></div>
+                <div class=" row col-sm-8 offset-2 mar-botttom6px">
+                    <img src="https://s3-cdn.rever.vn/p/v2.38.4/images/isa-team-v2.png" class="img-fluid" />
+                </div>
+                <div class="row col-sm-12 mar-top10px"><h5 class="suppor-already-title">Chuyên viên đã sẵn sàng hỗ trợ</h5></div>
+                <div class="row col-sm-10 offset-1 suppor-already-title-sec mar-botttom6px">Tư vấn hoàn toàn miễn phí</div>
+                <div class="row mar-bottom3px">
+                    <div class="col-sm-12">
+                        <button class="btn btn-call-support full-width mar-top25px" onclick="javascript: window.location.href='tel:0948009988'"><i class="fa fa-phone mar-right3px" aria-hidden="true"></i>Gọi chuyên viên ngay</button>
+                    </div>
+                </div>
+                <div class="row mar-bottom10px mar-top10px">
+                    <div class="col-sm-12 text-center">Hoặc</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <a href="#" class="chat-to-revert">Chát với Rever</a>
+                    </div>
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>
