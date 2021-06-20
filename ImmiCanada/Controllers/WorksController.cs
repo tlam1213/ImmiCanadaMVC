@@ -62,37 +62,20 @@ namespace ImmiCanada.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Works/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Work work = db.Works.Find(id);
-        //    if (work == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    ViewBag.ImmigrationServiceId = new SelectList(db.ImmigrationServices, "Id", "Title", work.ImmigrationServiceId);
-        //    ViewBag.NocId = new SelectList(db.Nocs, "NocId", "Title", work.NocId);
-        //    return View(work);
-        //}
-
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Work work = db.Works.Find(id);
-            if (work == null)
+            workOriginal = db.Works.Find(id);
+            if (workOriginal == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ImmigrationServiceId = new SelectList(db.ImmigrationServices, "Id", "Title", work.ImmigrationServiceId);
-            ViewBag.NocId = new SelectList(db.Nocs, "NocId", "Title", work.NocId);
-            return View(work);
+            ViewBag.ImmigrationServiceId = new SelectList(db.ImmigrationServices, "Id", "Title", workOriginal.ImmigrationServiceId);
+            ViewBag.NocId = new SelectList(db.Nocs, "NocId", "Title", workOriginal.NocId);
+            return View(workOriginal);
         }
 
         // POST: Works/Edit/5

@@ -9,6 +9,7 @@
 @using (Html.BeginForm("Edit", "Works", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.WorkId)
 
     <div class="container-fluid">
         <div class="form-group mt-3">
