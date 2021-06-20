@@ -875,7 +875,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\ImmigrationServices\Create.cshtml" />
     <Content Include="Views\ImmigrationServices\Delete.cshtml" />
-    <Content Include="Views\ImmigrationServices\Details.cshtml" />
     <Content Include="Views\ImmigrationServices\Edit.cshtml" />
     <Content Include="Views\ImmigrationServices\Index.cshtml" />
     <Content Include="Scripts\src\aos-next\sass\aos.scss" />
@@ -889,7 +888,6 @@
     <Content Include="Views\ImmigrationServiceTypes\Index.cshtml" />
     <Content Include="Views\Works\Create.cshtml" />
     <Content Include="Views\Works\Delete.cshtml" />
-    <Content Include="Views\Works\Details.cshtml" />
     <Content Include="Views\Works\Edit.cshtml" />
     <Content Include="Views\Works\Index.cshtml" />
     <Content Include="Views\Service\Index.cshtml" />
