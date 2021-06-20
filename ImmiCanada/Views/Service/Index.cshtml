@@ -110,7 +110,7 @@
             <div class="row col-sm-10 offset-1">
                 @foreach (var immigrationService in serviceByType.LstImmigrationServices)
                 {
-                    <div class="col-sm-4" data-aos="zoom-in-down">
+                    <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
                         <div class="card float-right card-highlight text-right">
                             <img class="card-img-top" src="@immigrationService.Base64Image1" alt="Card image cap">
                             <div class="card-body pos-rel">
@@ -149,7 +149,7 @@
                                     </div>
                                 </div>
                                 <div class="row outstanding-form-footer">
-                                    <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" />
+                                    <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" onclick="javascript: window.location.href='/Service/Detail/@immigrationService.Id'"/>
                                 </div>
                             </div>
                         </div>
