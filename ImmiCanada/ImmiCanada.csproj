@@ -140,6 +140,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ComponentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImmigrationServicesController.cs" />
     <Compile Include="Controllers\ImmigrationServiceTypesController.cs" />
@@ -205,6 +206,7 @@
     <Content Include="Content\images\Banner-bk.png" />
     <Content Include="Content\images\banner-homepage.png" />
     <Content Include="Content\images\Banner.jpg" />
+    <Content Include="Content\images\businessman.jpg" />
     <Content Include="Content\images\chatluongcuocsong.jpg" />
     <Content Include="Content\images\chatluongcuocsong1.jpg" />
     <Content Include="Content\images\chuyengianhapcu.png" />
@@ -895,6 +897,7 @@
     <Content Include="Views\Shared\_Layout_Without_Banner.cshtml" />
     <Content Include="Views\Service\Detail.cshtml" />
     <Content Include="Views\Shared\_Layout_Admin.cshtml" />
+    <Content Include="Views\Component\Works.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -132,7 +132,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .remove-paddingleft {
-    padding-left: 0px;
+    padding-left: 0px !important;
 }
 
 .pad-left65px {
@@ -177,6 +177,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .mar-right3px {
     margin-right: 3px;
+}
+
+.mar-right15px {
+    margin-right: 15px;
 }
 
 .mar-botttom6px {
@@ -979,6 +983,37 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         background: #fff;
         padding: 0 6px;
     }
+
+.works-container .works-container-title {
+    color: #000099 !important;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.works-container .work-item-main-title {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.works-container .work-item-sec-title {
+    font-size: 14px;
+    color: #718bea;
+}
+
+.works-container .card-highlight {
+    min-height: 30rem;
+}
+
+.works-form-footer input {
+    padding: 5px 60px;
+    border-radius: 5px;
+    background-color: #c7c7e2;
+    font-size: 20px;
+    border: none;
+    font-weight: 700;
+    color: #3e3939;
+}
+
 /* Support for client - BEGIN */
 table.text-editor-supported {
     border: 0;
