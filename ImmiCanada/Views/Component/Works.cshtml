@@ -11,19 +11,34 @@
     {
         <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
             <div class="card float-right card-highlight text-right">
-                <img src="@work.Base64Image" class="card-img-top max-height245px" alt="Card image cap" style="height: 200px" />
-                <div class="card-body pos-rel text-left min-height225px">
+                <img src="@work.Base64Image" class="card-img-top" alt="Card image cap" style="height: 230px" />
+                <div class="card-body pos-rel text-left min-height210px remove-paddingbottom ">
                     <div class="work-item-main-title font-size14px">@work.Position</div>
-                    <div class="work-item-sec-title">@work.WorkType</div>
-                    <div class="col-sm-12 remove-paddingleft mar-top10px font-size14px">
-                        <i class="fa fa-map-marker mar-right15px" aria-hidden="true"></i> @work.ImmigrationService.State1.Name
+                    <hr />
+                    <div class="row mar-top10px mar-bottom10px">
+                        <div class="col-sm-6 text-left">
+                            <i class="fa fa-usd" aria-hidden="true"></i><strong>Mức lương</strong>
+                        </div>
+                        <div class="col-sm-6 text-right">@work.Income</div>
                     </div>
-                    <div class="col-sm-12 remove-paddingleft mar-top10px font-size14px">
-                        <i class="fa fa-usd mar-right15px" aria-hidden="true"></i>@work.Income
+                    <div class="row mar-top10px mar-bottom10px">
+                        <div class="col-sm-6 text-left">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i><strong>Yêu cầu ngôn ngữ</strong>
+                        </div>
+                        <div class="col-sm-6 text-right">N/A</div>
                     </div>
-                    <div class="col-sm-12 mar-bottom30px remove-paddingleft mar-top10px font-size14px">
-                        <i class="fa fa-bars mar-right15px" aria-hidden="true"></i>@work.Occupation
-                    </div>                   
+                    <div class="row mar-top10px mar-bottom10px">
+                        <div class="col-sm-6 text-left">
+                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i><strong>Kinh nghiệm</strong>
+                        </div>
+                        <div class="col-sm-6 text-right">@work.Experience</div>
+                    </div>
+                    <div class="row mar-top10px">
+                        <div class="col-sm-6 text-left">
+                            <i class="fa fa-university" aria-hidden="true"></i><strong>Yêu cầu bằng cấp</strong>
+                        </div>
+                        <div class="col-sm-6 text-right">@work.Certificate</div>
+                    </div>
                 </div>
                 <div class="works-form-footer text-center">
                     <hr />

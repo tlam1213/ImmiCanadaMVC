@@ -22,12 +22,12 @@
         <div class="row">
             <div class="col-sm-12 pad-top20px">
                 <button class="btn"><i class="fa fa-share" aria-hidden="true"></i>&nbsp;Chia sẻ</button>
-                <button class="btn"><i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;Chương trình đề cử tỉnh bang New Brunswick</button>
+                <button class="btn"><i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;@Model.ImmigrationService.Title</button>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 pad-top5px font-size13px">
-                Lượt xem: @Model.NumberOfView | Cấp độ kỹ năng: @Model.Noc.Title | Mã NOC: @Model.NocId | Loại chương trình: @Model.ImmigrationService.Title
+                Lượt xem: @Model.NumberOfView | Cấp độ kỹ năng: @Model.Noc.Title | Mã NOC: @Model.NocId | Loại chương trình: @Model.ImmigrationService.ImmigrationServiceType.Name
             </div>
         </div>
         <hr class="" />
@@ -37,7 +37,7 @@
                     <i class="fa fa-usd" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Mức lương:</strong> @Model.Income
                 </div>
                 <div class="col-sm-6 text-left">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Địa điểm làm việc:</strong> TPHCM
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Yêu cầu ngôn ngữ:</strong> N/A
                 </div>
             </div>
         </div>
