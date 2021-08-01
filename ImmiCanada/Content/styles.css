@@ -135,6 +135,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     padding-left: 0px !important;
 }
 
+.remove-paddingright {
+    padding-right: 0px !important;
+}
+
 .pad-left65px {
     padding-left: 65px;
 }
@@ -151,8 +155,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     padding-top: 40px;
 }
 
+.pad-top5px {
+    padding-top: 5px !important;
+}
+
 .pad-top20px {
-    padding-top: 20px;
+    padding-top: 20px !important;
 }
 
 .pad-bot10px {
@@ -201,6 +209,26 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .mar-top60px {
     margin-top: 60px;
+}
+
+.min-height225px {
+    min-height: 225px;
+}
+
+.max-height245px {
+    max-height: 245px;
+}
+
+.font-weight600 {
+    font-weight: 600;
+}
+
+.font-size13px {
+    font-size: 13px;
+}
+
+.font-size14px {
+    font-size: 14px !important;
 }
 
 .main-banner {
@@ -484,6 +512,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     .canada-deserve-to-life .canada-deserve-to-life-introduction {
         padding-top: 40px !important;
     }
+
+.main-line p {
+    color: #000099;
+    font-weight: 700;
+    font-size: 30px;
+}
 
 .box-shadow-chatluongcuocsong {
     box-shadow: 8px 8px 1px 0px #FFCC33;
@@ -918,7 +952,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-size: 14px;
 }
 
-    .service-detail-container .general-info i {
+    .service-detail-container .general-info i,
+    .works-container i {
         font-size: 20px;
         color: #96dbff;
         margin-right: 5px;
@@ -1001,7 +1036,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .works-container .card-highlight {
-    min-height: 30rem;
+    min-height: 33rem;
 }
 
 .works-form-footer input {
@@ -1014,6 +1049,56 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: #3e3939;
 }
 
+.works-form-footer hr {
+    width: 91%;
+}
+
+.work-defail-container {
+    background-color: #f6f6f6;
+}
+
+    .work-defail-container .work-detail-block {
+        background-color: #FFFFFF;
+        padding: 0 15px 30px 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+        .work-defail-container .work-detail-block hr {
+            width: 91%;
+        }
+
+        .work-defail-container .work-detail-block i {
+            font-size: 20px;
+            color: #96dbff;
+            width: 25px;
+        }
+
+        .work-defail-container .work-detail-block .btn i {
+            color: #5a5757 !important;
+        }
+
+        .work-defail-container .work-detail-block .work-detail-content {
+            color: #3ab7f9;
+            font-size: 15px;
+            font-weight: 500;
+            padding-top: 15px;
+        }
+
+    .work-defail-container .work-detail-banner img {
+        width: 100%;
+        height: 400px !important;
+    }
+
+.btn {
+    background-color: #FFFFFF;
+    color: #5a5757;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
 /* Support for client - BEGIN */
 table.text-editor-supported {
     border: 0;

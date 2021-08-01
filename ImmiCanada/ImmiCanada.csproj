@@ -145,6 +145,7 @@
     <Compile Include="Controllers\ImmigrationServicesController.cs" />
     <Compile Include="Controllers\ImmigrationServiceTypesController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\WorkInterfaceController.cs" />
     <Compile Include="Controllers\WorksController.cs" />
     <Compile Include="Entities\ImmiCanada.Context.cs">
       <AutoGen>True</AutoGen>
@@ -898,6 +899,9 @@
     <Content Include="Views\Service\Detail.cshtml" />
     <Content Include="Views\Shared\_Layout_Admin.cshtml" />
     <Content Include="Views\Component\Works.cshtml" />
+    <Content Include="Views\WorkInterface\Detail.cshtml" />
+    <Content Include="Views\WorkInterface\Index.cshtml" />
+    <Content Include="Views\Home\NewsSlide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

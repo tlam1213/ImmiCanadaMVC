@@ -1,0 +1,129 @@
+﻿@{
+    @model ImmiCanada.Entities.Work
+
+    ViewBag.Title = "Chi Tiết việc làm";
+    Layout = "~/Views/Shared/_Layout_Without_Banner.cshtml";
+}
+<style>
+    .row {
+        margin-right: 0;
+    }
+</style>
+<div class="row work-defail-container">
+    <div class="col-sm-8 offset-2 work-detail-block">
+        <div class="row main-line">
+            <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">@Model.Occupation</p>
+        </div>
+        <div class="row work-detail-banner">
+            <img src="@Model.Base64Image" class="img-fluid" />
+        </div>
+    </div>
+    <div class="col-sm-8 offset-2 work-detail-block">
+        <div class="row">
+            <div class="col-sm-12 pad-top20px">
+                <button class="btn"><i class="fa fa-share" aria-hidden="true"></i>&nbsp;Chia sẻ</button>
+                <button class="btn"><i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;Chương trình đề cử tỉnh bang New Brunswick</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 pad-top5px font-size13px">
+                Lượt xem: @Model.NumberOfView | Cấp độ kỹ năng: @Model.Noc.Title | Mã NOC: @Model.NocId | Loại chương trình: @Model.ImmigrationService.Title
+            </div>
+        </div>
+        <hr class="" />
+        <div class="row pad-top5px">
+            <div class="row col-sm-12">
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-usd" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Mức lương:</strong> @Model.Income
+                </div>
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Địa điểm làm việc:</strong> TPHCM
+                </div>
+            </div>
+        </div>
+        <div class="row pad-top5px">
+            <div class="row col-sm-12">
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Kinh nghiệm:</strong> @Model.Experience
+                </div>
+                <div class="col-sm-6 text-left">
+                    <div class="row">
+                        <div class="col-sm-4 remove-paddingright ">
+                            <i class="fa fa-id-badge" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Chức vụ:</strong> 
+                        </div>
+                        <div class="col-sm-8 remove-paddingleft">@Model.Position</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row pad-top5px">
+            <div class="row col-sm-12">
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-university" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Yêu cầu bằng cấp:</strong> @Model.Certificate
+                </div>
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Hình thức làm việc:</strong> @Model.WorkType
+                </div>
+            </div>
+        </div>
+        <div class="row pad-top5px">
+            <div class="row col-sm-12">
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-user" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Số lượng cần tuyển:</strong> @Model.NumberOfRecruitments
+                </div>
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-mars-stroke" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Yêu cầu giới tính:</strong> @Model.Sex
+                </div>
+            </div>
+        </div>
+        <div class="row pad-top5px">
+            <div class="row col-sm-12">
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-bars" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Ngành nghề:</strong> @Model.Occupation
+                </div>
+                <div class="col-sm-6 text-left">
+                    <i class="fa fa-birthday-cake" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Yêu cầu độ tuổi:</strong> @Model.Age
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 offset-2 work-detail-block">
+        <div class="row">
+            <div class="col-sm-12 work-detail-content">
+                Thông tin chi tiết tuyển dụng
+            </div>
+        </div>
+        <hr class="" />
+        <div class="row pad-top5px">
+            <div class="row col-sm-12">
+                <div class="col-sm-3 text-left font-weight600 font-size14px">
+                    MÔ TẢ CÔNG VIỆC
+                </div>
+                <div class="col-sm-9 text-left">
+                    @Html.Raw(Model.Detail)
+                </div>
+            </div>
+        </div>
+        <hr class="" />
+        <div class="row pad-top5px">
+            <div class="row col-sm-12">
+                <div class="col-sm-3 text-left font-weight600 font-size14px">
+                    QUYỀN LỢI ĐƯỢC HƯỞNG
+                </div>                
+                <div class="col-sm-9 text-left">
+                    @Html.Raw(Model.Benefic)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid service-detail-container">
+    <div class="row col-sm-10 offset-1">
+        @{Html.RenderAction("Works", "Component", new { ServiceId = Model.ImmigrationService.Id });}
+    </div>
+</div>
+<div class="container-fluid pad-top40px mar-bottom60px">
+    @{Html.RenderAction("InterestedSection", "Home");}
+</div>
+@{Html.RenderAction("NewsSlide", "Home");}

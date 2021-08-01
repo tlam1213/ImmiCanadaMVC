@@ -16,9 +16,10 @@ namespace ImmiCanada.Controllers
             return View();
         }
 
-        public ActionResult Works(string ServiceId)
+        public ActionResult Works(int ServiceId)
         {
-            return PartialView();
+            var works = db.Works.Where(p => p.ImmigrationServiceId == ServiceId).ToList();
+            return PartialView(works);
         }
     }
 }

@@ -34,5 +34,10 @@ namespace ImmiCanada.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult NewsSlide()
+        {
+            return PartialView();
+        }
     }
 }

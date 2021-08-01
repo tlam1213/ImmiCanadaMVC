@@ -1,76 +1,35 @@
-﻿<div class="pad-top85px full-width works-container">
+﻿@{
+    @model List<ImmiCanada.Entities.Work>
+}
+<div class="pad-top85px full-width works-container">
     <div class="row">
         <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="works-container-title">CÔNG VIỆC LIÊN QUAN</p>
     </div>
 </div>
 <div class="row pad-top40px works-container">
-    @*@foreach (var outstandingservice in outstandingServices)
-        {*@
-    <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
-        <div class="card float-right card-highlight text-right">
-            <img src="~/Content/images/businessman.jpg" class="card-img-top" alt="Card image cap" />
-            <div class="card-body pos-rel text-left">
-                <div class="work-item-main-title">Nhân viên nhập liệu</div>
-                <div class="work-item-sec-title">Việc làm IMIA Workpermit</div>
-                <div class="col-sm-12 remove-paddingleft mar-top10px">
-                    <i class="fa fa-address-card-o mar-right15px" aria-hidden="true"></i>New Brunswicks
+    @foreach (var work in Model)
+    {
+        <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
+            <div class="card float-right card-highlight text-right">
+                <img src="@work.Base64Image" class="card-img-top max-height245px" alt="Card image cap" />
+                <div class="card-body pos-rel text-left min-height225px">
+                    <div class="work-item-main-title font-size14px">@work.Position</div>
+                    <div class="work-item-sec-title">@work.WorkType</div>
+                    <div class="col-sm-12 remove-paddingleft mar-top10px font-size14px">
+                        <i class="fa fa-map-marker mar-right15px" aria-hidden="true"></i> @work.ImmigrationService.State1.Name
+                    </div>
+                    <div class="col-sm-12 remove-paddingleft mar-top10px font-size14px">
+                        <i class="fa fa-usd mar-right15px" aria-hidden="true"></i>@work.Income
+                    </div>
+                    <div class="col-sm-12 mar-bottom30px remove-paddingleft mar-top10px font-size14px">
+                        <i class="fa fa-bars mar-right15px" aria-hidden="true"></i>@work.Occupation
+                    </div>                   
                 </div>
-                <div class="col-sm-12 remove-paddingleft mar-top10px">
-                    <i class="fa fa-address-card-o mar-right15px" aria-hidden="true"></i>$16-$18/h
-                </div>
-                <div class="col-sm-12 mar-bottom30px remove-paddingleft mar-top10px">
-                    <i class="fa fa-address-card-o mar-right15px" aria-hidden="true"></i>Nhân viên
-                </div>
-                <hr />
                 <div class="works-form-footer text-center">
-                    <input type="button" id="btnJoinUrban" value="XEM CHI TIẾT" class="btn-join" onclick="javascript: window.location.href='#'" />
+                    <hr />
+                    <input type="button" id="btnJoinUrban" value="XEM CHI TIẾT" class="btn-join mar-bottom30px" onclick="javascript: window.location.href = '/WorkInterface/Detail/@work.WorkId'" />
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
-        <div class="card float-right card-highlight text-right">
-            <img src="~/Content/images/businessman.jpg" class="card-img-top" alt="Card image cap" />
-            <div class="card-body pos-rel text-left">
-                <div class="work-item-main-title">Nhân viên nhập liệu</div>
-                <div class="work-item-sec-title">Việc làm IMIA Workpermit</div>
-                <div class="col-sm-12 remove-paddingleft mar-top10px">
-                    <i class="fa fa-address-card-o mar-right15px" aria-hidden="true"></i>New Brunswicks
-                </div>
-                <div class="col-sm-12 remove-paddingleft mar-top10px">
-                    <i class="fa fa-address-card-o mar-right15px" aria-hidden="true"></i>$16-$18/h
-                </div>
-                <div class="col-sm-12 mar-bottom30px remove-paddingleft mar-top10px">
-                    <i class="fa fa-address-card-o mar-right15px" aria-hidden="true"></i>Nhân viên
-                </div>
-                <hr />
-                <div class="works-form-footer text-center">
-                    <input type="button" id="btnJoinUrban" value="XEM CHI TIẾT" class="btn-join" onclick="javascript: window.location.href='#'" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
-        <div class="card float-right card-highlight text-right">
-            <img src="~/Content/images/businessman.jpg" class="card-img-top" alt="Card image cap" />
-            <div class="card-body pos-rel text-left">
-                <div class="work-item-main-title">Nhân viên nhập liệu</div>
-                <div class="work-item-sec-title">Việc làm IMIA Workpermit</div>
-                <div class="col-sm-12 remove-paddingleft mar-top10px">
-                    <i class="fa fa-address-card-o mar-right15px" aria-hidden="true"></i>New Brunswicks
-                </div>
-                <div class="col-sm-12 remove-paddingleft mar-top10px">
-                    <i class="fa fa-address-card-o mar-right15px" aria-hidden="true"></i>$16-$18/h
-                </div>
-                <div class="col-sm-12 mar-bottom30px remove-paddingleft mar-top10px">
-                    <i class="fa fa-address-card-o mar-right15px" aria-hidden="true"></i>Nhân viên
-                </div>
-                <hr />
-                <div class="works-form-footer text-center">
-                    <input type="button" id="btnJoinUrban" value="XEM CHI TIẾT" class="btn-join" onclick="javascript: window.location.href='#'" />
-                </div>
-            </div>
-        </div>
-    </div>
-    @*}*@
+    }
 </div>
