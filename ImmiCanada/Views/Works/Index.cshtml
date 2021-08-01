@@ -19,8 +19,14 @@
 </p>
 <table class="table">
     <tr>
-        <th class="width-short-column">
+        <th class="width-long-column">
+            Tên công việc
+        </th>
+        <th class="width-long-column">
             Chương trình
+        </th>
+        <th class="width-short-column">
+            Ngôn ngữ
         </th>
         <th class="width-short-column">
             NOC
@@ -34,23 +40,23 @@
         <th class="width-short-column">
             Chức vụ
         </th>
-        <th class="width-long-column">
-            Yêu cầu bằng cấp
+        <th class="width-short-column">
+            Bằng cấp
         </th>
-        <th class="width-long-column">
-            Hình thức làm việc
+        <th class="width-short-column">
+            Hình thức
         </th>
-        <th class="width-long-column">
-            Số lượng cần tuyển
+        <th class="width-short-column">
+            Số lượng
         </th>
         <th class="width-short-column">
             Giới tính
         </th>
         <th class="width-long-column">
-            Yêu cầu bằng cấp
+            Nghành nghề
         </th>
-        <th class="width-long-column">
-            Yêu cầu độ tuổi
+        <th class="width-short-column">
+            Độ tuổi
         </th>
         <th class="width-short-column">
             Hình ảnh
@@ -62,7 +68,13 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>            
+            <td>
                 @Html.DisplayFor(modelItem => item.ImmigrationService.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Noc.Title)
