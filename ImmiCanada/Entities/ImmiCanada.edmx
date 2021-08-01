@@ -87,6 +87,8 @@
           <Property Name="Benefic" Type="nvarchar(max)" />
           <Property Name="NumberOfView" Type="int" />
           <Property Name="Base64Image" Type="varchar(max)" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Language" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <Association Name="FK__Immigrati__Perma__5070F446">
           <End Role="PermanentResident" Type="Self.PermanentResident" Multiplicity="0..1" />
@@ -372,6 +374,8 @@
           <Property Name="Benefic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NumberOfView" Type="Int32" />
           <Property Name="Base64Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ImmigrationService" Relationship="ImmiCanadaModel.FK_Work_ImmigrationService" FromRole="Work" ToRole="ImmigrationService" />
           <NavigationProperty Name="Noc" Relationship="ImmiCanadaModel.FK_Work_Noc" FromRole="Work" ToRole="Noc" />
         </EntityType>
@@ -536,6 +540,8 @@
           <EntitySetMapping Name="Works">
             <EntityTypeMapping TypeName="ImmiCanadaModel.Work">
               <MappingFragment StoreEntitySet="Work">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Base64Image" ColumnName="Base64Image" />
                 <ScalarProperty Name="NumberOfView" ColumnName="NumberOfView" />
                 <ScalarProperty Name="Benefic" ColumnName="Benefic" />
