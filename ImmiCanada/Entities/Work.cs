@@ -30,6 +30,8 @@ namespace ImmiCanada.Entities
         public string Benefic { get; set; }
         public Nullable<int> NumberOfView { get; set; }
         public string Base64Image { get; set; }
+        public string Title { get; set; }
+        public string Language { get; set; }
     
         public virtual ImmigrationService ImmigrationService { get; set; }
         public virtual Noc Noc { get; set; }
