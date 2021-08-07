@@ -32,6 +32,7 @@ namespace ImmiCanada.Entities
         public string Base64Image { get; set; }
         public string Title { get; set; }
         public string Language { get; set; }
+        public string WorkNumber { get; set; }
     
         public virtual ImmigrationService ImmigrationService { get; set; }
         public virtual Noc Noc { get; set; }
