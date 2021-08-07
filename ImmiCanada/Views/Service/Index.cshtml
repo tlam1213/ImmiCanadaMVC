@@ -7,6 +7,29 @@
     var outstandingServices = (List<ImmiCanada.Entities.ImmigrationService>)ViewData["OutstandingServices"];
     var immigrationServices = (List<ImmiCanada.Controllers.ServiceByType>)ViewData["ImmigrationServices"];
 }
+@{
+    string GetDetailUrl(ImmiCanada.Entities.ImmigrationService service)
+    {
+        return convertToUnSign2(string.Format("/dich-vu/tinh-bang-{0}/{1}/{2}", service.State1.Name.ToLower().Replace(" ", "-"), service.Title.ToLower().Replace(" ", "-"), service.Id));
+    }
+
+    string convertToUnSign2(string s)
+    {
+        string stFormD = s.Normalize(System.Text.NormalizationForm.FormD);
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        for (int ich = 0; ich < stFormD.Length; ich++)
+        {
+            System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+            if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+            {
+                sb.Append(stFormD[ich]);
+            }
+        }
+        sb = sb.Replace('Đ', 'D');
+        sb = sb.Replace('đ', 'd');
+        return (sb.ToString().Normalize(System.Text.NormalizationForm.FormD));
+    }
+}
 <div class="container-fluid service-search-container">
     @using (Html.BeginForm("Search", "Service", FormMethod.Post))
     {
@@ -22,14 +45,14 @@
                     <option value="-1">Địa điểm</option>
                     @foreach (var state in metaData.States)
                     {
-                        <option value="@state.Id" @(state.Id == Model.StateId ? "selected" :String.Empty) >@state.Name</option>
+                        <option value="@state.Id" @(state.Id == Model.StateId ? "selected" : String.Empty)>@state.Name</option>
                     }
                 </select>&nbsp;&nbsp;
                 <select class="form-control col-2" name="ImmigrationServiceTypeId">
                     <option value="-1">Loại chương trình</option>
                     @foreach (var immigrationServiceType in metaData.ImmigrationServiceTypes)
                     {
-                        <option value="@immigrationServiceType.Id" @(immigrationServiceType.Id == Model.ImmigrationServiceTypeId ? "selected" :String.Empty)>@immigrationServiceType.Name</option>
+                        <option value="@immigrationServiceType.Id" @(immigrationServiceType.Id == Model.ImmigrationServiceTypeId ? "selected" : String.Empty)>@immigrationServiceType.Name</option>
                     }
                 </select>&nbsp;&nbsp;
                 <select class="form-control  col-2">
@@ -92,7 +115,7 @@
                                 </div>
                             </div>
                             <div class="row outstanding-form-footer">
-                                <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" onclick="javascript: window.location.href='/Service/Detail/@outstandingservice.Id'" />
+                                <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" onclick="javascript: window.location.href = '@GetDetailUrl(outstandingservice)'" />
                             </div>
                         </div>
                     </div>
@@ -149,7 +172,7 @@
                                     </div>
                                 </div>
                                 <div class="row outstanding-form-footer">
-                                    <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" onclick="javascript: window.location.href='/Service/Detail/@immigrationService.Id'"/>
+                                    <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" onclick="javascript: window.location.href='@GetDetailUrl(immigrationService)'" />
                                 </div>
                             </div>
                         </div>

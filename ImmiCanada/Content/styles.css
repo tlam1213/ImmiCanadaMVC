@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .slogan {
-    color: #000099;
+    color: #006190;
     font-weight: 600;
     font-size: 25px;
     margin-left: -100px;
@@ -522,7 +522,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
 
 .main-line p {
-    color: #000099;
+    color: #006190;
     font-weight: 700;
     font-size: 30px;
 }
@@ -930,7 +930,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .immigration-service-type-title {
-    color: #000099 !important;
+    color: #006190 !important;
 }
 
 .service-search-container .search-criteria .text-search {
@@ -1034,7 +1034,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
 
 .works-container .works-container-title {
-    color: #000099 !important;
+    color: #006190 !important;
     font-weight: 700;
     font-size: 30px;
 }

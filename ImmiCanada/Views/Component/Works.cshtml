@@ -1,5 +1,30 @@
 ﻿@{
-    @model List<ImmiCanada.Entities.Work>
+    @model List<ImmiCanada.Entities.Work>    
+}
+@{ 
+    string GetWorkDetailUrl(ImmiCanada.Entities.Work work)
+    {
+        return convertToUnSign2(string.Format("/viec-lam-canada/{0}/{1}",
+                                string.IsNullOrEmpty(work.Title) ? "tieu-de" : work.Title.ToLower().Replace(" ", "-"),
+                                work.WorkId));
+    }
+
+    string convertToUnSign2(string s)
+    {
+        string stFormD = s.Normalize(System.Text.NormalizationForm.FormD);
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        for (int ich = 0; ich < stFormD.Length; ich++)
+        {
+            System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+            if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+            {
+                sb.Append(stFormD[ich]);
+            }
+        }
+        sb = sb.Replace('Đ', 'D');
+        sb = sb.Replace('đ', 'd');
+        return (sb.ToString().Normalize(System.Text.NormalizationForm.FormD));
+    }
 }
 @{
     if (Model.Count > 0)
@@ -16,7 +41,7 @@
                     <div class="card float-right card-highlight text-right">
                         <img src="@work.Base64Image" class="card-img-top" alt="Card image cap" style="height: 230px" />
                         <div class="card-body pos-rel text-left min-height210px remove-paddingbottom ">
-                            <div class="work-item-main-title font-size14px">@work.Position</div>
+                            <div class="work-item-main-title font-size14px">@work.Title</div>
                             <hr />
                             <div class="row mar-top10px mar-bottom10px">
                                 <div class="col-sm-6 text-left">
@@ -28,7 +53,7 @@
                                 <div class="col-sm-6 text-left">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i><strong>Yêu cầu ngôn ngữ</strong>
                                 </div>
-                                <div class="col-sm-6 text-right">N/A</div>
+                                <div class="col-sm-6 text-right">@work.Language</div>
                             </div>
                             <div class="row mar-top10px mar-bottom10px">
                                 <div class="col-sm-6 text-left">
@@ -45,7 +70,7 @@
                         </div>
                         <div class="works-form-footer text-center">
                             <hr />
-                            <input type="button" id="btnJoinUrban" value="XEM CHI TIẾT" class="btn-join mar-bottom30px" onclick="javascript: window.location.href = '/WorkInterface/Detail/@work.WorkId'" />
+                            <input type="button" id="btnJoinUrban" value="XEM CHI TIẾT" class="btn-join mar-bottom30px" onclick="javascript: window.location.href = '@GetWorkDetailUrl(work)'" />
                         </div>
                     </div>
                 </div>

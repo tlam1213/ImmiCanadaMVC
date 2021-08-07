@@ -12,7 +12,7 @@
 <div class="row work-defail-container">
     <div class="col-sm-8 offset-2 work-detail-block">
         <div class="row main-line">
-            <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">@Model.Occupation</p>
+            <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">@Model.Title</p>
         </div>
         <div class="row work-detail-banner">
             <img src="@Model.Base64Image" class="img-fluid" />
@@ -37,7 +37,7 @@
                     <i class="fa fa-usd" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Mức lương:</strong> @Model.Income
                 </div>
                 <div class="col-sm-6 text-left">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Yêu cầu ngôn ngữ:</strong> N/A
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Yêu cầu ngôn ngữ:</strong> @Model.Language
                 </div>
             </div>
         </div>
