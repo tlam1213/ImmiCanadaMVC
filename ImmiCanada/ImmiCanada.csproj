@@ -204,6 +204,7 @@
     <Content Include="Content\carousel.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\13_suc_khoe_canada.png" />
     <Content Include="Content\images\Banner-bk.png" />
     <Content Include="Content\images\banner-homepage.png" />
     <Content Include="Content\images\Banner.jpg" />
@@ -211,6 +212,7 @@
     <Content Include="Content\images\chatluongcuocsong.jpg" />
     <Content Include="Content\images\chatluongcuocsong1.jpg" />
     <Content Include="Content\images\chuyengianhapcu.png" />
+    <Content Include="Content\images\Cohoidandenthanhcong.jpg" />
     <Content Include="Content\images\daihienhopphap.png" />
     <Content Include="Content\images\danhgiamienphi.png" />
     <Content Include="Content\images\Dichvunoibat1.jpg" />
@@ -239,11 +241,14 @@
     <Content Include="Content\images\News\News6.png" />
     <Content Include="Content\images\News\News7.jpg" />
     <Content Include="Content\images\News\News8.png" />
+    <Content Include="Content\images\Nhanvienkinhdoanh.jpg" />
     <Content Include="Content\images\nuoidayconcai.png" />
     <Content Include="Content\images\phunu.png" />
+    <Content Include="Content\images\plane-bg.jpg" />
     <Content Include="Content\images\quyencongdan.png" />
     <Content Include="Content\images\quyenluc.png" />
     <Content Include="Content\images\ServiceBanner.jpg" />
+    <Content Include="Content\images\smiling-young-businessman.jpg" />
     <Content Include="Content\images\support-employee.jpg" />
     <Content Include="Content\images\tiepcanthitruongtoancau.png" />
     <Content Include="Content\images\tieuchixephang.png" />

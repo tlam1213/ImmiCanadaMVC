@@ -35,6 +35,17 @@ namespace ImmiCanada
             );
 
             routes.MapRoute(
+                name: "DanhSachViecLam",
+                url: "viec-lam-canada",
+                defaults: new
+                {
+                    controller = "WorkInterface",
+                    action = "Search",
+                    id = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
                 name: "ChiTietViecLam",
                 url: "viec-lam-canada/{job_name}/{id}",
                 defaults: new

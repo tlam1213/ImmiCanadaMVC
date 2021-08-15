@@ -1,9 +1,155 @@
 ﻿@{
     @model ImmiCanada.Controllers.ServiceSearchCriteria
-}
-<div class="container-fluid work-interface-container">
+    Layout = "~/Views/Shared/_Layout_Without_Banner.cshtml";
+    ViewBag.Title = "Danh sách việc làm";
 
+    var works = (List<ImmiCanada.Entities.Work>)ViewData["works"];
+    int totalPage = (int)ViewData["totalPage"];
+}
+@{
+    string GetWorkDetailUrl(ImmiCanada.Entities.Work work)
+    {
+        return convertToUnSign2(string.Format("/viec-lam-canada/{0}/{1}",
+                                string.IsNullOrEmpty(work.Title) ? "tieu-de" : work.Title.ToLower().Replace(" ", "-"),
+                                work.WorkId));
+    }
+
+    string GetWorkPageUrl(int pageNUmber)
+    {
+        return convertToUnSign2(string.Format("viec-lam-canada?page={0}",pageNUmber));
+    }
+
+    string convertToUnSign2(string s)
+    {
+        string stFormD = s.Normalize(System.Text.NormalizationForm.FormD);
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        for (int ich = 0; ich < stFormD.Length; ich++)
+        {
+            System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+            if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+            {
+                sb.Append(stFormD[ich]);
+            }
+        }
+        sb = sb.Replace('Đ', 'D');
+        sb = sb.Replace('đ', 'd');
+        return (sb.ToString().Normalize(System.Text.NormalizationForm.FormD));
+    }
+}
+<div class="service-search-container work-search-container work-grey-bk pos-rel pad-bot10px">
+    <img src="../Content/images/smiling-young-businessman.jpg" class="work-logo" />
+    <div class="container work-while-bk">
+        <div class="row">
+            <div class="col-12 remove-paddingleft remove-paddingright">
+                @using (Html.BeginForm("Search", "WorkInterface", FormMethod.Post))
+                {
+                    <div class="work-search-criteria">
+                        <div class="form-group has-search">
+                            <span class="fa fa-search form-control-feedback"></span>
+                            <input type="text" class="form-control text-search" placeholder="Nhập tên vị trí việc làm" name="q" value="">
+                            <input type="submit" value="Tìm Kiếm" class="btn btn-primary mar-botttom6px btn-search" />
+                        </div>
+                        <div class="form-group row remove-marginbottom pad-bot30px">
+                            <select class="form-control offset-1 col-2" name="StateId">
+                                <option value="-1">Ngành nghề</option>
+                                @*@foreach (var state in metaData.States)
+                                    {
+                                        <option value="@state.Id" @(state.Id == Model.StateId ? "selected" : String.Empty)>@state.Name</option>
+                                    }*@
+                            </select>&nbsp;&nbsp;
+                            <select class="form-control col-2" name="ImmigrationServiceTypeId">
+                                <option value="-1">Cấp bậc</option>
+                                @*@foreach (var immigrationServiceType in metaData.ImmigrationServiceTypes)
+                                    {
+                                        <option value="@immigrationServiceType.Id" @(immigrationServiceType.Id == Model.ImmigrationServiceTypeId ? "selected" : String.Empty)>@immigrationServiceType.Name</option>
+                                    }*@
+                            </select>&nbsp;&nbsp;
+                            <select class="form-control  col-2">
+                                <option>Ngôn ngữ</option>
+                            </select>&nbsp;&nbsp;
+                            <select class="form-control  col-2">
+                                <option>NOC</option>
+                            </select>&nbsp;&nbsp;
+                            <select class="form-control  col-2">
+                                <option>Học vấn</option>
+                            </select>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="search-result container work-while-bk">
+        <div class="row">
+            <div class="col-9">
+                @{
+                    foreach (var work in works)
+                    {
+                        <div class="row work-item-detail mar-bottom20px pad-top10px">
+                            <div class="col-5">
+                                <img class="img-thumbnail work-detail-img" src="@work.Base64Image" />
+                            </div>
+                            <div class="col-7">
+                                <div class="row work-detail-title mar-bottom10px"><strong>@work.Title</strong></div>
+                                <div class="row mar-bottom20px font-size14px">
+                                    Lượt xem: @work.NumberOfView | Cấp độ kỹ năng: @work.Noc.Title | Mã NOC: @work.WorkNumber
+                                </div>
+                                <div class="row mar-bottom10px">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;
+                                    <strong>Yêu cầu ngôn ngữ:</strong> &nbsp;&nbsp;@work.Language
+                                </div>
+                                <div class="row mar-bottom10px">
+                                    <i class="fa fa-university" aria-hidden="true"></i> &nbsp;&nbsp;
+                                    <strong>Yêu cầu bằng cấp: </strong>&nbsp;&nbsp;@work.Certificate
+                                </div>
+                                <div class="row mar-bottom10px">
+                                    <i class="fa fa-usd" aria-hidden="true"></i> &nbsp;&nbsp;
+                                    <strong>Mức lương:</strong>&nbsp;&nbsp; @work.Income
+                                </div>
+                                <div class="row text-right">
+                                    <div class="col-12">
+                                        <input type="button" id="btnWorkDetail" value="XEM CHI TIẾT" class="btn-work-detail mar-bottom30px" onclick="javascript: window.location.href = '@GetWorkDetailUrl(work)'" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="row mar-top40px">
+                    <div class="col-12">
+                        <ul class="pagination">
+                            @*<li class="page-item"><a class="page-link" href="javascript: window.location.href='/WorkInterface/search?page=1'">Previous</a></li>*@
+                            @{
+                                for (int i = 0; i < totalPage; i++)
+                                {
+                                    <li class="page-item"><a class="page-link" href="javascript: window.location.href='@GetWorkPageUrl(i+1)'">@(i+1)</a></li>
+                                }
+                            }
+                            @*<li class="page-item"><a class="page-link" href="javascript: window.location.href='/WorkInterface/search?page=1'">Next</a></li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 pos-rel">
+                <div class="work-ads">
+                    <img class="img-fluid" src="../Content/images/Nhanvienkinhdoanh.jpg" />
+                    <img class="img-fluid" src="../Content/images/Cohoidandenthanhcong.jpg" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row plane-ads-bg mar-top25px">
+    <img class="col-4" src="../Content/images/13_suc_khoe_canada.png" />
+    <div class="col-7 offset-1 pad-top40px">
+        <div class="first-line">Tất cả khách hàng của chúng tôi</div>
+        <div class="second-line">
+            <span>tin tưởng</span> &nbsp;
+            <span>thành công của họ cho chúng tôi</span>
+        </div>
+    </div>
 </div>
 <div class="container-fluid pad-top40px mar-bottom60px">
     @{Html.RenderAction("InterestedSection", "Home");}
 </div>
+@{Html.RenderAction("NewsSlide", "Home");}

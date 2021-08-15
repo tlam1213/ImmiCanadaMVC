@@ -21,6 +21,9 @@ namespace ImmiCanada.Controllers
                 case "Service":
                     banner = "service-banner";
                     break;
+                case "WorkInterface":
+                    banner = "work-banner";
+                    break;
                 default:
                     banner = "default-banner";
                     break;
