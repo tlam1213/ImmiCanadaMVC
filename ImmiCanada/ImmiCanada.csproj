@@ -208,11 +208,13 @@
     <Content Include="Content\images\Banner-bk.png" />
     <Content Include="Content\images\banner-homepage.png" />
     <Content Include="Content\images\Banner.jpg" />
+    <Content Include="Content\images\businessman-showing-changes-report.jpg" />
     <Content Include="Content\images\businessman.jpg" />
     <Content Include="Content\images\chatluongcuocsong.jpg" />
     <Content Include="Content\images\chatluongcuocsong1.jpg" />
     <Content Include="Content\images\chuyengianhapcu.png" />
     <Content Include="Content\images\Cohoidandenthanhcong.jpg" />
+    <Content Include="Content\images\Cap-Work-Permit.jpg" />
     <Content Include="Content\images\daihienhopphap.png" />
     <Content Include="Content\images\danhgiamienphi.png" />
     <Content Include="Content\images\Dichvunoibat1.jpg" />
@@ -226,8 +228,12 @@
     <Content Include="Content\images\footer1.jpg" />
     <Content Include="Content\images\footer2.jpg" />
     <Content Include="Content\images\giaoduc.jpg" />
+    <Content Include="Content\images\i-con-3.jpg" />
+    <Content Include="Content\images\icon-1.jpg" />
+    <Content Include="Content\images\icon-2.jpg" />
     <Content Include="Content\images\left-bg.jpg" />
     <Content Include="Content\images\Lienhe.jpg" />
+    <Content Include="Content\images\LMIA.jpg" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\main-photo.png" />
     <Content Include="Content\images\map canada.png" />
@@ -250,10 +256,12 @@
     <Content Include="Content\images\ServiceBanner.jpg" />
     <Content Include="Content\images\smiling-young-businessman.jpg" />
     <Content Include="Content\images\support-employee.jpg" />
+    <Content Include="Content\images\thu-moi-tuyen-dung-job-offer.jpg" />
     <Content Include="Content\images\tiepcanthitruongtoancau.png" />
     <Content Include="Content\images\tieuchixephang.png" />
     <Content Include="Content\images\trusochinhcuatongcongty.jpg" />
     <Content Include="Content\images\uytinchuyennghiep.png" />
+    <Content Include="Content\images\work-permit-banner.jpg" />
     <Content Include="Content\pgwslider.css" />
     <Content Include="Content\pgwslider.min.css" />
     <Content Include="Content\styles.css" />
@@ -908,6 +916,7 @@
     <Content Include="Views\WorkInterface\Detail.cshtml" />
     <Content Include="Views\WorkInterface\Index.cshtml" />
     <Content Include="Views\Home\NewsSlide.cshtml" />
+    <Content Include="Views\WorkInterface\WorkPermit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

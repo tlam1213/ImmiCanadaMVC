@@ -46,6 +46,17 @@ namespace ImmiCanada
             );
 
             routes.MapRoute(
+                name: "WorkPermit",
+                url: "viec-lam-canada/{work_permit}",
+                defaults: new
+                {
+                    controller = "WorkInterface",
+                    action = "WorkPermit",
+                    id = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
                 name: "ChiTietViecLam",
                 url: "viec-lam-canada/{job_name}/{id}",
                 defaults: new
@@ -55,6 +66,8 @@ namespace ImmiCanada
                     id = UrlParameter.Optional
                 }
             );
+
+            
 
             routes.MapRoute(
                 name: "Default",

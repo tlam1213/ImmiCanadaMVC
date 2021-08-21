@@ -47,6 +47,11 @@ namespace ImmiCanada.Controllers
             return View(work);
         }
 
+        public ActionResult WorkPermit()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

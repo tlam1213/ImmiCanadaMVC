@@ -1,0 +1,236 @@
+﻿@{
+    @model ImmiCanada.Controllers.ServiceSearchCriteria
+    Layout = "~/Views/Shared/_Layout_Without_Banner.cshtml";
+    ViewBag.Title = "Work permit";
+}
+@{
+    string GetWorkDetailUrl(ImmiCanada.Entities.Work work)
+    {
+        return convertToUnSign2(string.Format("/viec-lam-canada/{0}/{1}",
+                                string.IsNullOrEmpty(work.Title) ? "tieu-de" : work.Title.ToLower().Replace(" ", "-"),
+                                work.WorkId));
+    }
+
+    string GetWorkPageUrl(int pageNUmber)
+    {
+        return convertToUnSign2(string.Format("viec-lam-canada?page={0}",pageNUmber));
+    }
+
+    string convertToUnSign2(string s)
+    {
+        string stFormD = s.Normalize(System.Text.NormalizationForm.FormD);
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        for (int ich = 0; ich < stFormD.Length; ich++)
+        {
+            System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+            if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+            {
+                sb.Append(stFormD[ich]);
+            }
+        }
+        sb = sb.Replace('Đ', 'D');
+        sb = sb.Replace('đ', 'd');
+        return (sb.ToString().Normalize(System.Text.NormalizationForm.FormD));
+    }
+}
+<div class="service-search-container work-search-container work-permit-container pos-rel pad-bot10px">
+    <img src="../Content/images/work-permit-banner.jpg" class="work-logo" />
+    <div class="container">
+        <div class="row pad-top10px slogon-main">
+            <div class="col-12 text-center">-- Canada là điểm đến tuyệt vời cho những cá nhân muốn làm việc ở nước ngoài --</div>
+        </div>
+        <div class="row main-line">
+            <div class="col-6 offset-3 ">
+                <img src="~/Content/images/left-bg.jpg" class="img-left-icon pull-left" /><p class="immigration-service-type-title">GIẤY PHÉP LAO ĐỘNG CANADA</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                Là một trong những nền kinh tế hàng đầu thế giới Canada là điểm đến tuyệt vời cho những cá nhân muốn làm việc ở nước ngoài. Thông thường, các ứng viên cần phải có một thư mời làm việc trong tay để xin thị thực giấy phép lao động. Giấy phép lao động Canada, hoặc Thị thực làm việc, được cấp cho các cá nhân ở nước ngoài đủ điều kiện để làm việc tại quốc gia đó trong một khoảng thời gian cụ thể. Mọi người chỉ cần nộp đơn xin Thị thực làm việc sau khi nhận được lời mời làm việc hoặc hợp đồng lao động từ chủ lao động Canada. Người sử dụng lao động phải nhận được từ ESDC (Việc làm và Phát triển Xã hội Canada) một LMIA (Đánh giá Tác động Thị trường Lao động), cho phép họ tuyển dụng lao động có kỹ năng nước ngoài
+            </div>
+        </div>
+        <div class="row mar-top40px">
+            <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
+                <div class="card float-right card-highlight text-right">
+                    <img src="~/Content/images/i-con-3.jpg" class="card-img-top" alt="Card image cap" style="height: 300px" />
+                    <div class="card-body pos-rel text-left remove-paddingbottom ">
+                        <div class="row">
+                            <div class="col-12 line-box-main-text">Nhà tuyển dụng</div>
+                            <hr class="pull-left" />
+                        </div>
+
+                        <div class="row mar-top10px mar-bottom10px cb ">
+                            <div class="col-sm-12 text-left line-box-text-content">
+                                Nhà tuyển dụng: Làm việc ở Canada dưới quyền  chủ lao động mà bạn đã đề cập  trong đơn xin giấy phép lao động.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
+                <div class="card float-right card-highlight text-right">
+                    <img src="~/Content/images/icon-2.jpg" class="card-img-top" alt="Card image cap" style="height: 300px" />
+                    <div class="card-body pos-rel text-left remove-paddingbottom ">
+                        <div class="row">
+                            <div class="col-12 line-box-main-text">Có thể mang theo cả gia đình</div>
+                            <hr class="pull-left" />
+                        </div>
+
+                        <div class="row mar-top10px mar-bottom10px cb ">
+                            <div class="col-sm-12 text-left line-box-text-content">
+                                Đương đơn có thể dẫn theo gia  đình của mình và có thể nộp đơn  xin thị thực du học hoặc làm việc  Canada.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
+                <div class="card float-right card-highlight text-right">
+                    <img src="~/Content/images/icon-1.jpg" class="card-img-top" alt="Card image cap" style="height: 300px" />
+                    <div class="card-body pos-rel text-left remove-paddingbottom ">
+                        <div class="row">
+                            <div class="col-12 line-box-main-text">Cơ hội nhận PR</div>
+                            <hr class="pull-left" />
+                        </div>
+
+                        <div class="row mar-top10px mar-bottom10px cb ">
+                            <div class="col-sm-12 text-left line-box-text-content">
+                                Nếu đủ điều kiện có thể nộp đơn  xin thường trú nhân.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="row mar-top40px work-grey-bk pad30px">
+    <div class="col-10 offset-1 row row-business-condition">
+        <div class="col-6">
+            <div class="col-12">
+                <img src="~/Content/images/businessman-showing-changes-report.jpg" class="img-fluid" />
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="col-12">
+                <div class="row main-line">
+                    <div class="col-12 ">
+                        <img src="~/Content/images/left-bg.jpg" class="img-left-icon pull-left" />
+                        <p class="immigration-service-type-title">Yếu tố quyết định đủ điều kiện xin</p>
+                        <p class="document-temporary-canada">Giấy phép lao động tạm thời Canada</p>
+                    </div>
+                </div>
+                <div class="row pad-bot10px">
+                    <div class="col-12"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Chứng minh với viên chức rằng bạn sẽ rời Canada  khi giấy phép lao động của bạn hết hạn</div>
+                </div>
+                <div class="row pad-bot10px">
+                    <div class="col-12"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Chứng minh tài chính đủ tiền để hỗ trợ bản thân và  gia đình trong thời gian ở Canada</div>
+                </div>
+                <div class="row pad-bot10px">
+                    <div class="col-12"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Không có tiền án tiền sự</div>
+                </div>
+                <div class="row pad-bot10px">
+                    <div class="col-12"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Tình trạng sức khỏe tốt và vượt qua bài kiểm tra y tế  (nếu được yêu cầu) </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="service-search-container work-search-container work-permit-container pos-rel pad-bot10px mar-top40px">
+    <div class="container">
+        <div class="row main-line">
+            <div class="col-6 offset-4 ">
+                <img src="~/Content/images/left-bg.jpg" class="img-left-icon pull-left" />
+                <p class="immigration-service-type-title">LÀM THẾ NÀO ĐỂ XIN</p>
+            </div>
+            <div class="col-6 offset-3">
+                <p class="document-temporary-canada">Giấy phép lao động tạm thời Canada</p>
+            </div>
+        </div>
+        <div class="row mar-top40px">
+            <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
+                <div class="card float-right card-highlight text-right">
+                    <img src="~/Content/images/LMIA.jpg" class="card-img-top" alt="Card image cap" style="height: 230px" />
+                    <div class="card-body pos-rel text-left remove-paddingbottom ">
+                        <div class="row">
+                            <div class="col-12 line-box-main-text text-center">Xác nhận LMIA</div>
+                        </div>
+
+                        <div class="row mar-top10px mar-bottom10px cb ">
+                            <div class="col-sm-12 text-left line-box-text-content">
+                                Bước đầu tiên để có được giấy  phép lao động Canada là nộp  đơn xin Đánh giá Tác động Thị  trường Lao động (LMIA) từ Cơ  quan Việc làm và Phát triển Xã  hội Canada (ESDC)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pad-bot30px">
+                        <div class="col-12 text-center">
+                            <button class="btn-more-red">Tìm hiểu thêm</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
+                <div class="card float-right card-highlight text-right">
+                    <img src="~/Content/images/thu-moi-tuyen-dung-job-offer.jpg" class="card-img-top" alt="Card image cap" style="height: 230px" />
+                    <div class="card-body pos-rel text-left remove-paddingbottom ">
+                        <div class="row">
+                            <div class="col-12 line-box-main-text text-center">Thư mời tuyển dụng</div>
+                        </div>
+
+                        <div class="row mar-top10px mar-bottom10px cb ">
+                            <div class="col-sm-12 text-left line-box-text-content">
+                                Người sử dụng lao động phải  gửi một bản sao của LMIA tích  cực cùng với 'thư mời làm việc’ chi tiết cho người lao động có  kỹ năng nước ngoài
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pad-bot30px">
+                        <div class="col-12 text-center">
+                            <button class="btn-more-red">Tìm hiểu thêm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
+                <div class="card float-right card-highlight text-right">
+                    <img src="~/Content/images/Cap-Work-Permit.jpg" class="card-img-top" alt="Card image cap" style="height: 230px" />
+                    <div class="card-body pos-rel text-left remove-paddingbottom ">
+                        <div class="row">
+                            <div class="col-12 line-box-main-text text-center">Cấp work permit</div>
+                        </div>
+
+                        <div class="row mar-top10px mar-bottom10px cb ">
+                            <div class="col-sm-12 text-left line-box-text-content">
+                                Bạn sẽ nhận được một thư chấp  thuận cho biết bạn được phép  làm việc ở Canada. Thư này  được gọi là thư giới thiệu cảng  nhập cảnh
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pad-bot30px">
+                        <div class="col-12 text-center">
+                            <button class="btn-more-red">Tìm hiểu thêm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row plane-ads-bg mar-top25px">
+    <img class="col-4" src="../Content/images/13_suc_khoe_canada.png" />
+    <div class="col-7 offset-1 pad-top40px">
+        <div class="first-line">Tất cả khách hàng của chúng tôi</div>
+        <div class="second-line">
+            <span>tin tưởng</span> &nbsp;
+            <span>thành công của họ cho chúng tôi</span>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pad-top40px mar-bottom60px">
+    @{Html.RenderAction("InterestedSection", "Home");}
+</div>
+@{Html.RenderAction("NewsSlide", "Home");}

@@ -163,6 +163,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     padding-top: 40px;
 }
 
+.pad30px {
+    padding: 30px;
+}
+
 .pad-top5px {
     padding-top: 5px !important;
 }
@@ -1003,8 +1007,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
 
 .work-search-container .work-item-detail {
-    box-shadow: 5px 10px 18px #888888;
+    /*box-shadow: 5px 10px 18px #888888;*/
     border-radius: 5px;
+    border: 1px solid #f7eeee;
 }
 
 .work-grey-bk {
@@ -1240,6 +1245,62 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .search-result .pagination {
     display: flex;
     justify-content: center;
+}
+
+.slogon-main {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.line-box-main-text {
+    color: #006190;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+    .line-box-main-text + hr {
+        width: 30%;
+        border-top: 2px solid #ed2025;
+        margin-top: -1px;
+        margin-left: 16px;
+        height: 0px;
+    }
+
+.cb {
+    clear: both;
+}
+
+.line-box-text-content {
+    font-size: 15px;
+}
+
+.work-permit-container .card-highlight {
+    min-height: 33rem !important;
+}
+
+.row-business-condition img {
+    border-radius: 5px;
+}
+
+.row-business-condition i {
+    color: #ed2025;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.document-temporary-canada {
+    color: #ed2025 !important;
+    font-size: 27px !important;
+    margin-top: -25px;
+}
+
+.btn-more-red {
+    background-color: red;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 5px 20px;
+    border: none;
+    font-size: 18px;
 }
 /* Support for client - BEGIN */
 table.text-editor-supported {
