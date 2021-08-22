@@ -123,63 +123,80 @@
             }
         </div>
 
-        @foreach (var serviceByType in immigrationServices)
+        @for (int i = 0; i < immigrationServices.Count; i++)
         {
             <div class="row pad-top85px canada-deserve-to-life">
                 <div class="row col-sm-12 canada-deserve-to-life-title">
-                    <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">Chương Trình Tỉnh Bang</p> &nbsp; <p>@serviceByType.ImmigrationServiceState</p>
+                    <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">Chương Trình Tỉnh Bang</p> &nbsp; <p>@immigrationServices[i].ImmigrationServiceState</p>
                 </div>
             </div>
             <div class="row col-sm-10 offset-1">
-                @foreach (var immigrationService in serviceByType.LstImmigrationServices)
-                {
-                    <div class="col-sm-4 mar-bottom30px" data-aos="zoom-in-down">
-                        <div class="card float-right card-highlight text-right">
-                            <img class="card-img-top" src="@immigrationService.Base64Image1" alt="Card image cap">
-                            <div class="card-body pos-rel">
-                                <div class="card-main-outstanding-title">@immigrationService.Title</div>
-                                <div class="outstanding-form">
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-sm-6 text-left">
-                                            <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
+                <div id="carousel-custom-@i" class="carousel slide carousel-custom carousel-custom-@i" data-pause="hover">
+                    @*data-ride="carousel"*@
+                    <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                        @for (int j = 0; j < immigrationServices[i].LstImmigrationServices.Count; j++)
+                        {
+                            var immigrationService = immigrationServices[i].LstImmigrationServices[j];
+                            
+                            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4  mar-bottom30px @(j == 0 ? "active" : string.Empty)">                                
+                                <div class="mar-bottom30px" data-aos="zoom-in-down">
+                                        <div class="card float-right card-highlight text-right">
+                                            <img class="card-img-top" src="@immigrationService.Base64Image1" alt="Card image cap">
+                                            <div class="card-body pos-rel">
+                                                <div class="card-main-outstanding-title">@immigrationService.Title</div>
+                                                <div class="outstanding-form">
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div class="col-sm-6 text-left">
+                                                            <i class="fa fa-address-card-o" aria-hidden="true"></i>Địa điểm
+                                                        </div>
+                                                        <div class="col-sm-6">@immigrationService.State1.Name</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 text-left">
+                                                            <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
+                                                        </div>
+                                                        <div class="col-sm-6">@immigrationService.PermanentResident1.Name</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 text-left">
+                                                            <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
+                                                        </div>
+                                                        <div class="col-sm-6">@immigrationService.Fee</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 text-left">
+                                                            <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
+                                                        </div>
+                                                        <div class="col-sm-6">@immigrationService.Time</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 text-left">
+                                                            <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
+                                                        </div>
+                                                        <div class="col-sm-6">@immigrationService.ImmigrationServiceType.Name</div>
+                                                    </div>
+                                                </div>
+                                                <div class="row outstanding-form-footer">
+                                                    <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" onclick="javascript: window.location.href='@GetDetailUrl(immigrationService)'" />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-6">@immigrationService.State1.Name</div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 text-left">
-                                            <i class="fa fa-address-book" aria-hidden="true"></i>Thường trú nhân
-                                        </div>
-                                        <div class="col-sm-6">@immigrationService.PermanentResident1.Name</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 text-left">
-                                            <i class="fa fa-money" aria-hidden="true"></i>Phí dịch vụ
-                                        </div>
-                                        <div class="col-sm-6">@immigrationService.Fee</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 text-left">
-                                            <i class="fa fa-hourglass-o" aria-hidden="true"></i>Thời gian
-                                        </div>
-                                        <div class="col-sm-6">@immigrationService.Time</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 text-left">
-                                            <i class="fa fa-server" aria-hidden="true"></i>Loại chương trình
-                                        </div>
-                                        <div class="col-sm-6">@immigrationService.ImmigrationServiceType.Name</div>
-                                    </div>
-                                </div>
-                                <div class="row outstanding-form-footer">
-                                    <input type="button" id="btnJoinUrban" value="THAM GIA" class="btn-join" onclick="javascript: window.location.href='@GetDetailUrl(immigrationService)'" />
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                }
-            </div>
 
+                        }
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel-custom-@i" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-custom-@i" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
         }
 
 
@@ -188,3 +205,199 @@
 <div class="container-fluid pad-top40px mar-bottom60px">
     @{Html.RenderAction("InterestedSection", "Home");}
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var count = @immigrationServices.Count;
+
+        $('.carousel-custom-0').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-0 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-0 .carousel-item').eq(i).appendTo('.carousel-custom-0 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-0 .carousel-item').eq(0).appendTo('.carousel-custom-0 .carousel-inner');
+                    }
+                }
+            }
+        });
+
+        $('.carousel-custom-1').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-1 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-1 .carousel-item').eq(i).appendTo('.carousel-custom-1 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-1 .carousel-item').eq(0).appendTo('.carousel-custom-1 .carousel-inner');
+                    }
+                }
+            }
+        });
+
+        $('.carousel-custom-2').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-2 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-2 .carousel-item').eq(i).appendTo('.carousel-custom-2 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-2 .carousel-item').eq(0).appendTo('.carousel-custom-2 .carousel-inner');
+                    }
+                }
+            }
+        });
+
+        $('.carousel-custom-3').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-3 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-3 .carousel-item').eq(i).appendTo('.carousel-custom-3 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-3 .carousel-item').eq(0).appendTo('.carousel-custom-3 .carousel-inner');
+                    }
+                }
+            }
+        });
+
+        $('.carousel-custom-4').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-4 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-4 .carousel-item').eq(i).appendTo('.carousel-custom-4 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-4 .carousel-item').eq(0).appendTo('.carousel-custom-4 .carousel-inner');
+                    }
+                }
+            }
+        });
+
+        $('.carousel-custom-5').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-5 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-5 .carousel-item').eq(i).appendTo('.carousel-custom-5 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-5 .carousel-item').eq(0).appendTo('.carousel-custom-5 .carousel-inner');
+                    }
+                }
+            }
+        });
+
+        $('.carousel-custom-6').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-6 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-6 .carousel-item').eq(i).appendTo('.carousel-custom-6 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-6 .carousel-item').eq(0).appendTo('.carousel-custom-6 .carousel-inner');
+                    }
+                }
+            }
+        });
+
+        $('.carousel-custom-7').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-7 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-7 .carousel-item').eq(i).appendTo('.carousel-custom-7 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-7 .carousel-item').eq(0).appendTo('.carousel-custom-7 .carousel-inner');
+                    }
+                }
+            }
+        });
+
+        $('.carousel-custom-8').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-8 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-8 .carousel-item').eq(i).appendTo('.carousel-custom-8 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-8 .carousel-item').eq(0).appendTo('.carousel-custom-8 .carousel-inner');
+                    }
+                }
+            }
+        });
+
+        $('.carousel-custom-9').on('slide.bs.carousel', function (e) {
+            var $e = $(e.relatedTarget);
+            var idx = $e.index();
+            var itemsPerSlide = 4;
+            var totalItems = $('.carousel-custom-9 .carousel-item').length;
+            if (idx >= totalItems - (itemsPerSlide - 1)) {
+                var it = itemsPerSlide - (totalItems - idx);
+                for (var i = 0; i < it; i++) {
+                    // append slides to end
+                    if (e.direction == "left") {
+                        $('.carousel-custom-9 .carousel-item').eq(i).appendTo('.carousel-custom-9 .carousel-inner');
+                    }
+                    else {
+                        $('.carousel-custom-9 .carousel-item').eq(0).appendTo('.carousel-custom-9 .carousel-inner');
+                    }
+                }
+            }
+        });
+    });
+</script>

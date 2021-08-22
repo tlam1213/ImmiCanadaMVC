@@ -1270,12 +1270,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     clear: both;
 }
 
+.hide {
+    display: none !important;
+}
+
 .line-box-text-content {
     font-size: 15px;
 }
 
 .work-permit-container .card-highlight {
-    min-height: 33rem !important;
+    min-height: 30rem !important;
 }
 
 .row-business-condition img {
@@ -1295,7 +1299,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .btn-more-red {
-    background-color: red;
+    background-color: #c82333;
     color: #FFFFFF;
     border-radius: 4px;
     padding: 5px 20px;
