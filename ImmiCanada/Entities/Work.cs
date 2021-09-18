@@ -19,12 +19,10 @@ namespace ImmiCanada.Entities
         public Nullable<int> NocId { get; set; }
         public string Income { get; set; }
         public string Experience { get; set; }
-        public string Position { get; set; }
         public string Certificate { get; set; }
         public string WorkType { get; set; }
         public Nullable<int> NumberOfRecruitments { get; set; }
         public string Sex { get; set; }
-        public string Occupation { get; set; }
         public string Age { get; set; }
         public string Detail { get; set; }
         public string Benefic { get; set; }
@@ -33,8 +31,12 @@ namespace ImmiCanada.Entities
         public string Title { get; set; }
         public string Language { get; set; }
         public string WorkNumber { get; set; }
+        public Nullable<int> OccupationId { get; set; }
+        public Nullable<int> PositionId { get; set; }
     
         public virtual ImmigrationService ImmigrationService { get; set; }
         public virtual Noc Noc { get; set; }
+        public virtual Occupation Occupation { get; set; }
+        public virtual Position Position { get; set; }
     }
 }

@@ -42,6 +42,13 @@
           <Property Name="Title" Type="nvarchar" MaxLength="200" />
           <Property Name="Skill" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="Occupation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="PermanentResident">
           <Key>
             <PropertyRef Name="Id" />
@@ -49,12 +56,19 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -76,12 +90,10 @@
           <Property Name="NocId" Type="int" />
           <Property Name="Income" Type="nvarchar" MaxLength="200" />
           <Property Name="Experience" Type="nvarchar" MaxLength="200" />
-          <Property Name="Position" Type="nvarchar" MaxLength="200" />
           <Property Name="Certificate" Type="nvarchar" MaxLength="200" />
           <Property Name="WorkType" Type="nvarchar" MaxLength="200" />
           <Property Name="NumberOfRecruitments" Type="int" />
           <Property Name="Sex" Type="nvarchar" MaxLength="200" />
-          <Property Name="Occupation" Type="nvarchar(max)" />
           <Property Name="Age" Type="nvarchar" MaxLength="200" />
           <Property Name="Detail" Type="nvarchar(max)" />
           <Property Name="Benefic" Type="nvarchar(max)" />
@@ -90,8 +102,10 @@
           <Property Name="Title" Type="nvarchar" MaxLength="200" />
           <Property Name="Language" Type="nvarchar" MaxLength="200" />
           <Property Name="WorkNumber" Type="varchar" MaxLength="200" />
+          <Property Name="OccupationId" Type="int" />
+          <Property Name="PositionId" Type="int" />
         </EntityType>
-        <Association Name="FK__Immigrati__Perma__5070F446">
+        <Association Name="FK__Immigrati__Perma__403A8C7D">
           <End Role="PermanentResident" Type="Self.PermanentResident" Multiplicity="0..1" />
           <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -103,7 +117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Immigrati__State__5165187F">
+        <Association Name="FK__Immigrati__State__412EB0B6">
           <End Role="State" Type="Self.State" Multiplicity="0..1" />
           <End Role="ImmigrationService" Type="Self.ImmigrationService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,6 +126,30 @@
             </Principal>
             <Dependent Role="ImmigrationService">
               <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Work__Occupation__5BE2A6F2">
+          <End Role="Occupation" Type="Self.Occupation" Multiplicity="0..1" />
+          <End Role="Work" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Occupation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="OccupationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Work__PositionId__5CD6CB2B">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+          <End Role="Work" Type="Self.Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="PositionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -151,52 +189,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ImmiCanadaModelStoreContainer">
           <EntitySet Name="ImmigrationService" EntityType="Self.ImmigrationService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImmigrationServiceType" EntityType="Self.ImmigrationServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Noc" EntityType="Self.Noc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Occupation" EntityType="Self.Occupation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PermanentResident" EntityType="Self.PermanentResident" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Immigrati__Perma__5070F446" Association="Self.FK__Immigrati__Perma__5070F446">
+          <AssociationSet Name="FK__Immigrati__Perma__403A8C7D" Association="Self.FK__Immigrati__Perma__403A8C7D">
             <End Role="PermanentResident" EntitySet="PermanentResident" />
             <End Role="ImmigrationService" EntitySet="ImmigrationService" />
           </AssociationSet>
-          <AssociationSet Name="FK__Immigrati__State__5165187F" Association="Self.FK__Immigrati__State__5165187F">
+          <AssociationSet Name="FK__Immigrati__State__412EB0B6" Association="Self.FK__Immigrati__State__412EB0B6">
             <End Role="State" EntitySet="State" />
             <End Role="ImmigrationService" EntitySet="ImmigrationService" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Work__Occupation__5BE2A6F2" Association="Self.FK__Work__Occupation__5BE2A6F2">
+            <End Role="Occupation" EntitySet="Occupation" />
+            <End Role="Work" EntitySet="Work" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Work__PositionId__5CD6CB2B" Association="Self.FK__Work__PositionId__5CD6CB2B">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Work" EntitySet="Work" />
           </AssociationSet>
           <AssociationSet Name="FK_ImmigrationService_ImmigrationServiceType" Association="Self.FK_ImmigrationService_ImmigrationServiceType">
             <End Role="ImmigrationServiceType" EntitySet="ImmigrationServiceType" />
@@ -249,15 +266,17 @@
           <EntitySet Name="ImmigrationServices" EntityType="ImmiCanadaModel.ImmigrationService" />
           <EntitySet Name="ImmigrationServiceTypes" EntityType="ImmiCanadaModel.ImmigrationServiceType" />
           <EntitySet Name="Nocs" EntityType="ImmiCanadaModel.Noc" />
+          <EntitySet Name="Occupations" EntityType="ImmiCanadaModel.Occupation" />
           <EntitySet Name="PermanentResidents" EntityType="ImmiCanadaModel.PermanentResident" />
+          <EntitySet Name="Positions" EntityType="ImmiCanadaModel.Position" />
           <EntitySet Name="States" EntityType="ImmiCanadaModel.State" />
           <EntitySet Name="sysdiagrams" EntityType="ImmiCanadaModel.sysdiagram" />
           <EntitySet Name="Works" EntityType="ImmiCanadaModel.Work" />
-          <AssociationSet Name="FK__Immigrati__Perma__5070F446" Association="ImmiCanadaModel.FK__Immigrati__Perma__5070F446">
+          <AssociationSet Name="FK__Immigrati__Perma__403A8C7D" Association="ImmiCanadaModel.FK__Immigrati__Perma__403A8C7D">
             <End Role="PermanentResident" EntitySet="PermanentResidents" />
             <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
           </AssociationSet>
-          <AssociationSet Name="FK__Immigrati__State__5165187F" Association="ImmiCanadaModel.FK__Immigrati__State__5165187F">
+          <AssociationSet Name="FK__Immigrati__State__412EB0B6" Association="ImmiCanadaModel.FK__Immigrati__State__412EB0B6">
             <End Role="State" EntitySet="States" />
             <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
           </AssociationSet>
@@ -271,6 +290,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_Work_Noc" Association="ImmiCanadaModel.FK_Work_Noc">
             <End Role="Noc" EntitySet="Nocs" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Work__Occupation__5BE2A6F2" Association="ImmiCanadaModel.FK__Work__Occupation__5BE2A6F2">
+            <End Role="Occupation" EntitySet="Occupations" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Work__PositionId__5CD6CB2B" Association="ImmiCanadaModel.FK__Work__PositionId__5CD6CB2B">
+            <End Role="Position" EntitySet="Positions" />
             <End Role="Work" EntitySet="Works" />
           </AssociationSet>
           </EntityContainer>
@@ -306,8 +333,8 @@
           <Property Name="Base64Image4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Base64Image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IsOutstanding" Type="Boolean" />
-          <NavigationProperty Name="PermanentResident1" Relationship="ImmiCanadaModel.FK__Immigrati__Perma__5070F446" FromRole="ImmigrationService" ToRole="PermanentResident" />
-          <NavigationProperty Name="State1" Relationship="ImmiCanadaModel.FK__Immigrati__State__5165187F" FromRole="ImmigrationService" ToRole="State" />
+          <NavigationProperty Name="PermanentResident1" Relationship="ImmiCanadaModel.FK__Immigrati__Perma__403A8C7D" FromRole="ImmigrationService" ToRole="PermanentResident" />
+          <NavigationProperty Name="State1" Relationship="ImmiCanadaModel.FK__Immigrati__State__412EB0B6" FromRole="ImmigrationService" ToRole="State" />
           <NavigationProperty Name="ImmigrationServiceType" Relationship="ImmiCanadaModel.FK_ImmigrationService_ImmigrationServiceType" FromRole="ImmigrationService" ToRole="ImmigrationServiceType" />
           <NavigationProperty Name="Works" Relationship="ImmiCanadaModel.FK_Work_ImmigrationService" FromRole="ImmigrationService" ToRole="Work" />
         </EntityType>
@@ -328,22 +355,38 @@
           <Property Name="Skill" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Works" Relationship="ImmiCanadaModel.FK_Work_Noc" FromRole="Noc" ToRole="Work" />
         </EntityType>
+        <EntityType Name="Occupation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Works" Relationship="ImmiCanadaModel.FK__Work__Occupation__5BE2A6F2" FromRole="Occupation" ToRole="Work" />
+        </EntityType>
         <EntityType Name="PermanentResident">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ImmigrationServices" Relationship="ImmiCanadaModel.FK__Immigrati__Perma__5070F446" FromRole="PermanentResident" ToRole="ImmigrationService" />
+          <NavigationProperty Name="ImmigrationServices" Relationship="ImmiCanadaModel.FK__Immigrati__Perma__403A8C7D" FromRole="PermanentResident" ToRole="ImmigrationService" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Works" Relationship="ImmiCanadaModel.FK__Work__PositionId__5CD6CB2B" FromRole="Position" ToRole="Work" />
         </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ImmigrationServices" Relationship="ImmiCanadaModel.FK__Immigrati__State__5165187F" FromRole="State" ToRole="ImmigrationService" />
+          <NavigationProperty Name="ImmigrationServices" Relationship="ImmiCanadaModel.FK__Immigrati__State__412EB0B6" FromRole="State" ToRole="ImmigrationService" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -364,12 +407,10 @@
           <Property Name="NocId" Type="Int32" />
           <Property Name="Income" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Experience" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Position" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Certificate" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="WorkType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NumberOfRecruitments" Type="Int32" />
           <Property Name="Sex" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Occupation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Benefic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -378,10 +419,14 @@
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Language" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="WorkNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OccupationId" Type="Int32" />
+          <Property Name="PositionId" Type="Int32" />
           <NavigationProperty Name="ImmigrationService" Relationship="ImmiCanadaModel.FK_Work_ImmigrationService" FromRole="Work" ToRole="ImmigrationService" />
           <NavigationProperty Name="Noc" Relationship="ImmiCanadaModel.FK_Work_Noc" FromRole="Work" ToRole="Noc" />
+          <NavigationProperty Name="Occupation" Relationship="ImmiCanadaModel.FK__Work__Occupation__5BE2A6F2" FromRole="Work" ToRole="Occupation" />
+          <NavigationProperty Name="Position" Relationship="ImmiCanadaModel.FK__Work__PositionId__5CD6CB2B" FromRole="Work" ToRole="Position" />
         </EntityType>
-        <Association Name="FK__Immigrati__Perma__5070F446">
+        <Association Name="FK__Immigrati__Perma__403A8C7D">
           <End Type="ImmiCanadaModel.PermanentResident" Role="PermanentResident" Multiplicity="0..1" />
           <End Type="ImmiCanadaModel.ImmigrationService" Role="ImmigrationService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -393,7 +438,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Immigrati__State__5165187F">
+        <Association Name="FK__Immigrati__State__412EB0B6">
           <End Type="ImmiCanadaModel.State" Role="State" Multiplicity="0..1" />
           <End Type="ImmiCanadaModel.ImmigrationService" Role="ImmigrationService" Multiplicity="*" />
           <ReferentialConstraint>
@@ -441,36 +486,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Work__Occupation__5BE2A6F2">
+          <End Type="ImmiCanadaModel.Occupation" Role="Occupation" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.Work" Role="Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Occupation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="OccupationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Work__PositionId__5CD6CB2B">
+          <End Type="ImmiCanadaModel.Position" Role="Position" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.Work" Role="Work" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Work">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ImmiCanadaModelStoreContainer" CdmEntityContainer="ImmiCanadaEntities">
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ImmiCanadaModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ImmiCanadaModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ImmiCanadaModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ImmiCanadaModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ImmiCanadaModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ImmiCanadaModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ImmiCanadaModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ImmiCanadaModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ImmiCanadaModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="ImmigrationServices">
             <EntityTypeMapping TypeName="ImmiCanadaModel.ImmigrationService">
               <MappingFragment StoreEntitySet="ImmigrationService">
@@ -511,9 +556,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Occupations">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.Occupation">
+              <MappingFragment StoreEntitySet="Occupation">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PermanentResidents">
             <EntityTypeMapping TypeName="ImmiCanadaModel.PermanentResident">
               <MappingFragment StoreEntitySet="PermanentResident">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.Position">
+              <MappingFragment StoreEntitySet="Position">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -542,6 +603,8 @@
           <EntitySetMapping Name="Works">
             <EntityTypeMapping TypeName="ImmiCanadaModel.Work">
               <MappingFragment StoreEntitySet="Work">
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="OccupationId" ColumnName="OccupationId" />
                 <ScalarProperty Name="WorkNumber" ColumnName="WorkNumber" />
                 <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -550,12 +613,10 @@
                 <ScalarProperty Name="Benefic" ColumnName="Benefic" />
                 <ScalarProperty Name="Detail" ColumnName="Detail" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="NumberOfRecruitments" ColumnName="NumberOfRecruitments" />
                 <ScalarProperty Name="WorkType" ColumnName="WorkType" />
                 <ScalarProperty Name="Certificate" ColumnName="Certificate" />
-                <ScalarProperty Name="Position" ColumnName="Position" />
                 <ScalarProperty Name="Experience" ColumnName="Experience" />
                 <ScalarProperty Name="Income" ColumnName="Income" />
                 <ScalarProperty Name="NocId" ColumnName="NocId" />
@@ -564,7 +625,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

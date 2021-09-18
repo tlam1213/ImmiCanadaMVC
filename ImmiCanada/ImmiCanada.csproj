@@ -144,6 +144,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImmigrationServicesController.cs" />
     <Compile Include="Controllers\ImmigrationServiceTypesController.cs" />
+    <Compile Include="Controllers\OccupationsController.cs" />
+    <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\WorkInterfaceController.cs" />
     <Compile Include="Controllers\WorksController.cs" />
@@ -171,7 +173,13 @@
     <Compile Include="Entities\Noc.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Occupation.cs">
+      <DependentUpon>ImmiCanada.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\PermanentResident.cs">
+      <DependentUpon>ImmiCanada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Position.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sp_helpdiagramdefinition_Result.cs">
@@ -917,6 +925,14 @@
     <Content Include="Views\WorkInterface\Index.cshtml" />
     <Content Include="Views\Home\NewsSlide.cshtml" />
     <Content Include="Views\WorkInterface\WorkPermit.cshtml" />
+    <Content Include="Views\Occupations\Create.cshtml" />
+    <Content Include="Views\Occupations\Delete.cshtml" />
+    <Content Include="Views\Occupations\Edit.cshtml" />
+    <Content Include="Views\Occupations\Index.cshtml" />
+    <Content Include="Views\Positions\Create.cshtml" />
+    <Content Include="Views\Positions\Delete.cshtml" />
+    <Content Include="Views\Positions\Edit.cshtml" />
+    <Content Include="Views\Positions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

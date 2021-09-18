@@ -84,7 +84,7 @@
                         <div class="col-sm-4 remove-paddingright ">
                             <i class="fa fa-id-badge" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Chức vụ:</strong> 
                         </div>
-                        <div class="col-sm-8 remove-paddingleft">@Model.Position</div>
+                        <div class="col-sm-8 remove-paddingleft">@Model.Position.Name</div>
                     </div>
                     
                 </div>
@@ -113,7 +113,7 @@
         <div class="row pad-top5px">
             <div class="row col-sm-12">
                 <div class="col-sm-6 text-left">
-                    <i class="fa fa-bars" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Ngành nghề:</strong> @Model.Occupation
+                    <i class="fa fa-bars" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Ngành nghề:</strong> @Model.Occupation.Name
                 </div>
                 <div class="col-sm-6 text-left">
                     <i class="fa fa-birthday-cake" aria-hidden="true"></i> &nbsp;&nbsp;<strong class="font-weight600">Yêu cầu độ tuổi:</strong> @Model.Age

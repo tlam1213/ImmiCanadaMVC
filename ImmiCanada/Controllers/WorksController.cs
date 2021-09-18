@@ -44,6 +44,8 @@ namespace ImmiCanada.Controllers
         {
             ViewBag.ImmigrationServiceId = new SelectList(db.ImmigrationServices, "Id", "Title");
             ViewBag.NocId = new SelectList(db.Nocs, "NocId", "Title");
+            ViewBag.PositionId = new SelectList(db.Positions, "Id", "Name");
+            ViewBag.OccupationId = new SelectList(db.Occupations, "Id", "Name");
             return View();
         }
 
@@ -75,6 +77,8 @@ namespace ImmiCanada.Controllers
             }
             ViewBag.ImmigrationServiceId = new SelectList(db.ImmigrationServices, "Id", "Title", workOriginal.ImmigrationServiceId);
             ViewBag.NocId = new SelectList(db.Nocs, "NocId", "Title", workOriginal.NocId);
+            ViewBag.PositionId = new SelectList(db.Positions, "Id", "Name", workOriginal.PositionId);
+            ViewBag.OccupationId = new SelectList(db.Occupations, "Id", "Name", workOriginal.OccupationId);
             return View(workOriginal);
         }
 

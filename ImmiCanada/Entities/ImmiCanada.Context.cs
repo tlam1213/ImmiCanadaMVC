@@ -30,7 +30,9 @@ namespace ImmiCanada.Entities
         public virtual DbSet<ImmigrationService> ImmigrationServices { get; set; }
         public virtual DbSet<ImmigrationServiceType> ImmigrationServiceTypes { get; set; }
         public virtual DbSet<Noc> Nocs { get; set; }
+        public virtual DbSet<Occupation> Occupations { get; set; }
         public virtual DbSet<PermanentResident> PermanentResidents { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Work> Works { get; set; }

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ImmiCanada.Entities.Position>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Thêm cấp bật", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th width="300">
+            Cấp bật
+        </th>
+        <th width="250">
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
