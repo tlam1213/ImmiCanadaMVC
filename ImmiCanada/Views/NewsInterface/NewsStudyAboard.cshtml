@@ -1,0 +1,26 @@
+﻿@{
+    @model ImmiCanada.Controllers.ServiceSearchCriteria
+    Layout = "~/Views/Shared/_Layout_Without_Banner.cshtml";
+    ViewBag.Title = "Bản tin Canada";
+}
+
+<div class="news-container pad-bot10px">
+    <img src="../Content/images/bannertintuc.jpg" class="news-logo" />
+    <div class="container">
+        @Html.Partial("PartialNewsSubMenu")
+
+        @{Html.RenderAction("PartialNewsStudyAboard", "NewsInterface");}
+
+        @{Html.RenderAction("PartialNewsList", "NewsInterface");}
+
+        @*<div class="row col-9 news-second-section-all">
+            @{Html.RenderAction("NewsImmigration", "NewsInterface");}
+        </div>*@
+
+    </div>
+</div>
+
+<div class="container-fluid pad-top40px mar-bottom60px">
+    @{Html.RenderAction("InterestedSection", "Home");}
+</div>
+@{Html.RenderAction("NewsSlide", "Home");}
