@@ -957,6 +957,8 @@
     <Content Include="Views\NewsInterface\PartialNewsTravelling.cshtml" />
     <Content Include="Views\NewsInterface\NewsTravelling.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsStudyAboard.cshtml" />
+    <Content Include="Views\NewsInterface\NewsPolitics.cshtml" />
+    <Content Include="Views\NewsInterface\PartialNewsPolitics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
