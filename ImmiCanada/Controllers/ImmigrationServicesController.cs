@@ -68,6 +68,8 @@ namespace ImmiCanada.Controllers
             immigrationService.Base64Image3 = getBase64Image(Base64Image3, 3);
             immigrationService.Base64Image4 = getBase64Image(Base64Image4, 4);
             immigrationService.Base64Image5 = getBase64Image(Base64Image5, 5);
+            immigrationService.CreatedDate = DateTime.Now;
+            immigrationService.ModifiedDate = DateTime.Now;
             db.ImmigrationServices.Add(immigrationService);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -112,7 +114,7 @@ namespace ImmiCanada.Controllers
             immigrationService.Base64Image3 = getBase64Image(Base64Image3, 3);
             immigrationService.Base64Image4 = getBase64Image(Base64Image4, 4);
             immigrationService.Base64Image5 = getBase64Image(Base64Image5, 5);
-
+            immigrationService.ModifiedDate = DateTime.Now;
             db.Entry(immigrationService).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");

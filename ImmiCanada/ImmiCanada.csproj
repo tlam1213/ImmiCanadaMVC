@@ -144,12 +144,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImmigrationServicesController.cs" />
     <Compile Include="Controllers\ImmigrationServiceTypesController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\OccupationsController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\NewsInterfaceController.cs" />
     <Compile Include="Controllers\WorkInterfaceController.cs" />
     <Compile Include="Controllers\WorksController.cs" />
+    <Compile Include="Entities\Creator.cs">
+      <DependentUpon>ImmiCanada.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\ImmiCanada.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,6 +175,9 @@
     <Compile Include="Entities\ImmigrationServiceType.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\News.cs">
+      <DependentUpon>ImmiCanada.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Noc.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>
@@ -183,7 +190,13 @@
     <Compile Include="Entities\Position.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\sp_helpdiagramdefinition1_Result.cs">
+      <DependentUpon>ImmiCanada.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ImmiCanada.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\sp_helpdiagrams1_Result.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sp_helpdiagrams_Result.cs">
@@ -946,7 +959,7 @@
     <Content Include="Views\Positions\Delete.cshtml" />
     <Content Include="Views\Positions\Edit.cshtml" />
     <Content Include="Views\Positions\Index.cshtml" />
-    <Content Include="Views\NewsInterface\Index.cshtml" />
+	<Content Include="Views\NewsInterface\Index.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsSubMenu.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsIndex.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsList.cshtml" />
@@ -959,6 +972,10 @@
     <Content Include="Views\NewsInterface\PartialNewsStudyAboard.cshtml" />
     <Content Include="Views\NewsInterface\NewsPolitics.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsPolitics.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

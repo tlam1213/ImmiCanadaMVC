@@ -1,0 +1,102 @@
+﻿@model ImmiCanada.Entities.News
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2 style="text-align: center ">Chỉnh sửa tin tức</h2>
+
+@using (Html.BeginForm("Edit", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+
+<div class="container-fluid">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-group mt-3">
+        <input type="submit" value="Chỉnh sửa" class="btn btn-primary" /> @Html.ActionLink("Trở về", "Index")
+    </div>
+
+    <div class="form-group row">
+        <div class="col-6">
+            <label>Tin tức</label>
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-6">
+            <label>Tác giả</label>
+            @Html.DropDownList("Creator", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Creator, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-6">
+            <label>Số lượng view</label>
+            @Html.EditorFor(model => model.NumberOfView, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NumberOfView, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-6">
+            <label>Số lượng like</label>
+            @Html.EditorFor(model => model.NumberOfLike, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NumberOfLike, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-12">
+            <label>Tìm kiếm liên quan</label>
+            @Html.EditorFor(model => model.RelationshipKeyword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.RelationshipKeyword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-6">
+            <label>Nổi bật</label>
+            <input type="checkbox" id="IsOutstanding" name="IsOutstanding" @(Model.IsOutstanding == true ? "checked" : string.Empty) />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-12">
+            <label>Hình ảnh</label>
+            <div class="custom-file">
+                @Html.TextBox("Base64Image", "", new { type = "file" }) <br />
+                (XXXXpx X XXXXpx)
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-12">
+            <label>Tổng quan</label>
+            @Html.TextAreaFor(model => model.Overview, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-12">
+            <label>Chi tiết</label>
+            @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group mt-3">
+        <input type="submit" value="Chỉnh sửa" class="btn btn-primary" /> @Html.ActionLink("Trở về", "Index")
+    </div>
+
+    <script>
+        CKEDITOR.replace('Overview');
+        CKEDITOR.replace('Description');
+    </script>
+</div>
+}
+<script type="text/javascript">
+    $("form").submit(function () {
+        $("#IsOutstanding").val($('input[id="IsOutstanding"]').is(':checked'));
+        return true;
+    });
+</script>

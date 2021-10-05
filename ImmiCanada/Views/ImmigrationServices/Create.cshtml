@@ -92,3 +92,9 @@
         </script>
     </div>
 }
+<script type="text/javascript">
+    $("form").submit(function () {
+        $("#IsOutstanding").val($('input[id="IsOutstanding"]').is(':checked'));
+        return true;
+    });
+</script>

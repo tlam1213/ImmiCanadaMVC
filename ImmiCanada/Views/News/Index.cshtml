@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ImmiCanada.Entities.News>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<style>
+    .width-short-column {
+        width: 250px;
+    }
+
+    .width-long-column {
+        width: 500px;
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Thêm mới tin tức", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th class="width-long-column">
+            Tin tức
+        </th>
+        <th class="width-short-column">
+            Tác giả
+        </th>
+        <th class="width-short-column">
+            Số lượng view
+        </th>
+        <th class="width-short-column">
+            Số lượng like
+        </th>
+        <th class="width-short-column">
+            Tìm kiếm liên quan
+        </th>
+        <th class="width-short-column">
+            Hình ảnh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creator1.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfView)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfLike)
+        </td>            
+        <td>
+            @Html.DisplayFor(modelItem => item.RelationshipKeyword)
+        </td>
+        <td>
+            @if (@item.Base64Image.Length != 0)
+            {
+                <img width="100" height="100" src="@item.Base64Image" />
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

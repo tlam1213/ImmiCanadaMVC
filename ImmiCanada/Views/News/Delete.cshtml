@@ -1,0 +1,16 @@
+﻿@model ImmiCanada.Entities.News
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<h3>Bạn có chắc chắn muốn xóa?</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Xóa" class="btn btn-primary" /> @Html.ActionLink("Trở về", "Index")
+    </div>
+}
