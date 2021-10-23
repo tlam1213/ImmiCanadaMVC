@@ -21,9 +21,11 @@
         <AssociationConnector Association="ImmiCanadaModel.FK_Work_Noc" />
         <AssociationConnector Association="ImmiCanadaModel.FK__Work__Occupation__5BE2A6F2" />
         <AssociationConnector Association="ImmiCanadaModel.FK__Work__PositionId__5CD6CB2B" />
-        <EntityTypeShape EntityType="ImmiCanadaModel.Creator" Width="1.5" PointX="7.375" PointY="1.875" />
+        <EntityTypeShape EntityType="ImmiCanadaModel.Creator" Width="1.5" PointX="7.375" PointY="10.125" />
         <EntityTypeShape EntityType="ImmiCanadaModel.News" Width="1.5" PointX="9.625" PointY="1" />
+        <EntityTypeShape EntityType="ImmiCanadaModel.NewsType" Width="1.5" PointX="7.375" PointY="2.125" />
         <AssociationConnector Association="ImmiCanadaModel.FK__News__Creator__71D1E811" />
+        <AssociationConnector Association="ImmiCanadaModel.FK__News__TypeId__02FC7413" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

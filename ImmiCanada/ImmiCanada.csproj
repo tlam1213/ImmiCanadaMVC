@@ -178,6 +178,9 @@
     <Compile Include="Entities\News.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\NewsType.cs">
+      <DependentUpon>ImmiCanada.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Noc.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>
@@ -959,7 +962,7 @@
     <Content Include="Views\Positions\Delete.cshtml" />
     <Content Include="Views\Positions\Edit.cshtml" />
     <Content Include="Views\Positions\Index.cshtml" />
-	<Content Include="Views\NewsInterface\Index.cshtml" />
+    <Content Include="Views\NewsInterface\Index.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsSubMenu.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsIndex.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsList.cshtml" />

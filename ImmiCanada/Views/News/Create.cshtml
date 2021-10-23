@@ -23,9 +23,9 @@
             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         </div>
         <div class="col-6">
-            <label>Tác giả</label>
-            @Html.DropDownList("Creator", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Creator, "", new { @class = "text-danger" })
+            <label>Loại tin tức</label>
+            @Html.DropDownList("TypeId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TypeId, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -43,7 +43,12 @@
     </div>
 
     <div class="form-group row">
-        <div class="col-12">
+        <div class="col-6">
+            <label>Tác giả</label>
+            @Html.DropDownList("Creator", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Creator, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-6">
             <label>Tìm kiếm liên quan</label>
             @Html.EditorFor(model => model.RelationshipKeyword, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.RelationshipKeyword, "", new { @class = "text-danger" })

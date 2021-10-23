@@ -58,6 +58,14 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="IsOutstanding" Type="bit" />
+          <Property Name="TypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="NewsType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Noc">
           <Key>
@@ -166,6 +174,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__News__TypeId__02FC7413">
+          <End Role="NewsType" Type="Self.NewsType" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Work__Occupation__5BE2A6F2">
           <End Role="Occupation" Type="Self.Occupation" Multiplicity="0..1" />
           <End Role="Work" Type="Self.Work" Multiplicity="*" />
@@ -262,6 +282,7 @@
           <EntitySet Name="ImmigrationService" EntityType="Self.ImmigrationService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImmigrationServiceType" EntityType="Self.ImmigrationServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsType" EntityType="Self.NewsType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Noc" EntityType="Self.Noc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Occupation" EntityType="Self.Occupation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PermanentResident" EntityType="Self.PermanentResident" Schema="dbo" store:Type="Tables" />
@@ -279,6 +300,10 @@
           </AssociationSet>
           <AssociationSet Name="FK__News__Creator__71D1E811" Association="Self.FK__News__Creator__71D1E811">
             <End Role="Creator" EntitySet="Creator" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK__News__TypeId__02FC7413" Association="Self.FK__News__TypeId__02FC7413">
+            <End Role="NewsType" EntitySet="NewsType" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
           <AssociationSet Name="FK__Work__Occupation__5BE2A6F2" Association="Self.FK__Work__Occupation__5BE2A6F2">
@@ -406,8 +431,13 @@
           <FunctionImport Name="sp_upgraddiagrams1" />
           <EntitySet Name="Creators" EntityType="ImmiCanadaModel.Creator" />
           <EntitySet Name="News" EntityType="ImmiCanadaModel.News" />
+          <EntitySet Name="NewsTypes" EntityType="ImmiCanadaModel.NewsType" />
           <AssociationSet Name="FK__News__Creator__71D1E811" Association="ImmiCanadaModel.FK__News__Creator__71D1E811">
             <End Role="Creator" EntitySet="Creators" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK__News__TypeId__02FC7413" Association="ImmiCanadaModel.FK__News__TypeId__02FC7413">
+            <End Role="NewsType" EntitySet="NewsTypes" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
           </EntityContainer>
@@ -656,7 +686,17 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="IsOutstanding" Type="Boolean" />
+          <Property Name="TypeId" Type="Int32" />
           <NavigationProperty Name="Creator1" Relationship="ImmiCanadaModel.FK__News__Creator__71D1E811" FromRole="News" ToRole="Creator" />
+          <NavigationProperty Name="NewsType" Relationship="ImmiCanadaModel.FK__News__TypeId__02FC7413" FromRole="News" ToRole="NewsType" />
+        </EntityType>
+        <EntityType Name="NewsType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="News" Relationship="ImmiCanadaModel.FK__News__TypeId__02FC7413" FromRole="NewsType" ToRole="News" />
         </EntityType>
         <Association Name="FK__News__Creator__71D1E811">
           <End Type="ImmiCanadaModel.Creator" Role="Creator" Multiplicity="0..1" />
@@ -667,6 +707,18 @@
             </Principal>
             <Dependent Role="News">
               <PropertyRef Name="Creator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__News__TypeId__02FC7413">
+          <End Type="ImmiCanadaModel.NewsType" Role="NewsType" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -821,6 +873,7 @@
           <EntitySetMapping Name="News">
             <EntityTypeMapping TypeName="ImmiCanadaModel.News">
               <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="IsOutstanding" ColumnName="IsOutstanding" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -832,6 +885,14 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Overview" ColumnName="Overview" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsTypes">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.NewsType">
+              <MappingFragment StoreEntitySet="NewsType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
