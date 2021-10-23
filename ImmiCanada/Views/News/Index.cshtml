@@ -23,6 +23,9 @@
         <th class="width-long-column">
             Tin tức
         </th>
+        <th class="width-long-column">
+            Loại tin tức
+        </th>
         <th class="width-short-column">
             Tác giả
         </th>
@@ -45,6 +48,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsType.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Creator1.FullName)
