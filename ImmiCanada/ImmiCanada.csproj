@@ -959,7 +959,7 @@
     <Content Include="Views\Positions\Delete.cshtml" />
     <Content Include="Views\Positions\Edit.cshtml" />
     <Content Include="Views\Positions\Index.cshtml" />
-	<Content Include="Views\NewsInterface\Index.cshtml" />
+    <Content Include="Views\NewsInterface\Index.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsSubMenu.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsIndex.cshtml" />
     <Content Include="Views\NewsInterface\PartialNewsList.cshtml" />
@@ -976,6 +976,8 @@
     <Content Include="Views\News\Delete.cshtml" />
     <Content Include="Views\News\Edit.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\NewsInterface\Detail.cshtml" />
+    <Content Include="Views\NewsInterface\PartialNewsDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
