@@ -26,7 +26,9 @@ namespace ImmiCanada.Entities
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<bool> IsOutstanding { get; set; }
+        public Nullable<int> TypeId { get; set; }
     
         public virtual Creator Creator1 { get; set; }
+        public virtual NewsType NewsType { get; set; }
     }
 }

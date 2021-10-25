@@ -38,6 +38,7 @@ namespace ImmiCanada.Entities
         public virtual DbSet<Work> Works { get; set; }
         public virtual DbSet<Creator> Creators { get; set; }
         public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<NewsType> NewsTypes { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

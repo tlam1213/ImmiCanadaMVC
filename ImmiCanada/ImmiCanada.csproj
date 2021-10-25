@@ -178,6 +178,9 @@
     <Compile Include="Entities\News.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\NewsType.cs">
+      <DependentUpon>ImmiCanada.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Noc.cs">
       <DependentUpon>ImmiCanada.tt</DependentUpon>
     </Compile>

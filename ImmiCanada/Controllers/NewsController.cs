@@ -43,6 +43,7 @@ namespace ImmiCanada.Controllers
         public ActionResult Create()
         {
             ViewBag.Creator = new SelectList(db.Creators, "Id", "FullName");
+            ViewBag.TypeId = new SelectList(db.NewsTypes, "Id", "Name");
             return View();
         }
 
@@ -78,6 +79,7 @@ namespace ImmiCanada.Controllers
             if (newsOriginal.IsOutstanding == null || newsOriginal.IsOutstanding == false)
                 newsOriginal.IsOutstanding = false;
             ViewBag.Creator = new SelectList(db.Creators, "Id", "FullName", newsOriginal.Creator);
+            ViewBag.TypeId = new SelectList(db.NewsTypes, "Id", "Name", newsOriginal.NewsType);
             return View(newsOriginal);
         }
 
