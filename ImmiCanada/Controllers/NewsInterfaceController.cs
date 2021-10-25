@@ -45,6 +45,12 @@ namespace ImmiCanada.Controllers
             return View();
         }
 
+        public ActionResult Detail()
+        {
+            ViewData["submenuActive"] = "NewsIndex";
+            return View();
+        }
+
         public ActionResult PartialNewsIndex()
         {
             return PartialView();
@@ -76,6 +82,11 @@ namespace ImmiCanada.Controllers
         }
 
         public ActionResult PartialNewsList()
+        {
+            return PartialView();
+        }
+
+        public ActionResult PartialNewsDetail()
         {
             return PartialView();
         }
