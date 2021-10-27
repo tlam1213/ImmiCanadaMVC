@@ -1,7 +1,37 @@
-﻿<div class="row mar-top40px news-list-container">
+﻿@{ 
+    var NewsList = (List<ImmiCanada.Entities.News>)ViewData["NewsList"];
+    int totalPage = Convert.ToInt32(ViewData["totalPage"]);
+}
+<div class="row mar-top40px news-list-container">
     <div class="row col-12 remove-paddingright">
         <div class="col-9">
-            <div class="row col-12 news-item">
+            @{
+                foreach (var News in NewsList)
+                {
+                    <div class="row col-12 news-item mar-bottom30px">
+                        <div class="row col-12 news-item-title">@News.Title</div>
+                        @*<div class="row col-12 news-item-sec-title">@Html.Raw(News.Overview)</div>*@
+                        <div class="row col-12">
+                            <div class="col-2 remove-paddingleft by-canada-visa remove-paddingright">By Canada Visa</div>
+                            <div class="count-seen pad-left25px">@News.NumberOfView</div>&nbsp;
+                            <div class="count-like pad-left25px">@News.NumberOfLike</div>&nbsp;
+                            <div class="count-message pad-left25px">999</div>
+                        </div>
+                        <div class="row col-12">
+                            <div class="col-4 remove-paddingleft">
+                                <img src="@News.Base64Image" class="img-fluid" />
+                            </div>
+                            <div class="col-8">
+                                @*@Html.Raw(String.Join(" ", System.Text.RegularExpressions.Regex.Replace(News.Description, "<.*?>", String.Empty).Split().Take(50).ToArray()))*@
+                                @Html.Raw(News.Overview)
+                                <br />
+                                <p class="read-more"><a href="/NewsInterface/Detail/@News.Id">[Đọc thêm...]</a></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            @*<div class="row col-12 news-item">
                 <div class="row col-12 news-item-title">Quebec phát hành hướng dẫn để chuẩn bị cho người nhập cư cho "thử nghiệm giá trị" mới</div>
                 <div class="row col-12 news-item-sec-title">Người nhập cư đến Quebec sẽ được yêu cầu vượt qua "thử nghiệm giá trị" bắt đầu từ ngày 1 tháng 1</div>
                 <div class="row col-12">
@@ -20,126 +50,17 @@
                         <p class="read-more">[Đọc thêm...]</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="row col-12 news-item">
-                <div class="row col-12 news-item-title">Quebec phát hành hướng dẫn để chuẩn bị cho người nhập cư cho "thử nghiệm giá trị" mới</div>
-                <div class="row col-12 news-item-sec-title">Người nhập cư đến Quebec sẽ được yêu cầu vượt qua "thử nghiệm giá trị" bắt đầu từ ngày 1 tháng 1</div>
-                <div class="row col-12">
-                    <div class="col-2 remove-paddingleft by-canada-visa remove-paddingright">By Canada Visa</div>
-                    <div class="count-seen pad-left25px">999</div>&nbsp;
-                    <div class="count-like pad-left25px">999</div>&nbsp;
-                    <div class="count-message pad-left25px">999</div>
-                </div>
-                <div class="row col-12">
-                    <div class="col-4 remove-paddingleft">
-                        <img src="../Content/images/tin-nhap-cu-4.jpg" class="img-fluid" />
-                    </div>
-                    <div class="col-8">
-                        Chính phủ Quebec đã cung cấp chi tiết mới về bài kiểm tra giá trị được gọi là các ứng cử viên nhập cư sẽ phải vượt qua để đủ điều kiện lựa chọn của tỉnh
-                        <br />
-                        <p class="read-more">[Đọc thêm...]</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row col-12 news-item">
-                <div class="row col-12 news-item-title">Quebec phát hành hướng dẫn để chuẩn bị cho người nhập cư cho "thử nghiệm giá trị" mới</div>
-                <div class="row col-12 news-item-sec-title">Người nhập cư đến Quebec sẽ được yêu cầu vượt qua "thử nghiệm giá trị" bắt đầu từ ngày 1 tháng 1</div>
-                <div class="row col-12">
-                    <div class="col-2 remove-paddingleft by-canada-visa remove-paddingright">By Canada Visa</div>
-                    <div class="count-seen pad-left25px">999</div>&nbsp;
-                    <div class="count-like pad-left25px">999</div>&nbsp;
-                    <div class="count-message pad-left25px">999</div>
-                </div>
-                <div class="row col-12">
-                    <div class="col-4 remove-paddingleft">
-                        <img src="../Content/images/tin-nhap-cu-4.jpg" class="img-fluid" />
-                    </div>
-                    <div class="col-8">
-                        Chính phủ Quebec đã cung cấp chi tiết mới về bài kiểm tra giá trị được gọi là các ứng cử viên nhập cư sẽ phải vượt qua để đủ điều kiện lựa chọn của tỉnh
-                        <br />
-                        <p class="read-more">[Đọc thêm...]</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row col-12 news-item">
-                <div class="row col-12 news-item-title">Quebec phát hành hướng dẫn để chuẩn bị cho người nhập cư cho "thử nghiệm giá trị" mới</div>
-                <div class="row col-12 news-item-sec-title">Người nhập cư đến Quebec sẽ được yêu cầu vượt qua "thử nghiệm giá trị" bắt đầu từ ngày 1 tháng 1</div>
-                <div class="row col-12">
-                    <div class="col-2 remove-paddingleft by-canada-visa remove-paddingright">By Canada Visa</div>
-                    <div class="count-seen pad-left25px">999</div>&nbsp;
-                    <div class="count-like pad-left25px">999</div>&nbsp;
-                    <div class="count-message pad-left25px">999</div>
-                </div>
-                <div class="row col-12">
-                    <div class="col-4 remove-paddingleft">
-                        <img src="../Content/images/tin-nhap-cu-4.jpg" class="img-fluid" />
-                    </div>
-                    <div class="col-8">
-                        Chính phủ Quebec đã cung cấp chi tiết mới về bài kiểm tra giá trị được gọi là các ứng cử viên nhập cư sẽ phải vượt qua để đủ điều kiện lựa chọn của tỉnh
-                        <br />
-                        <p class="read-more">[Đọc thêm...]</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row col-12 news-item">
-                <div class="row col-12 news-item-title">Quebec phát hành hướng dẫn để chuẩn bị cho người nhập cư cho "thử nghiệm giá trị" mới</div>
-                <div class="row col-12 news-item-sec-title">Người nhập cư đến Quebec sẽ được yêu cầu vượt qua "thử nghiệm giá trị" bắt đầu từ ngày 1 tháng 1</div>
-                <div class="row col-12">
-                    <div class="col-2 remove-paddingleft by-canada-visa remove-paddingright">By Canada Visa</div>
-                    <div class="count-seen pad-left25px">999</div>&nbsp;
-                    <div class="count-like pad-left25px">999</div>&nbsp;
-                    <div class="count-message pad-left25px">999</div>
-                </div>
-                <div class="row col-12">
-                    <div class="col-4 remove-paddingleft">
-                        <img src="../Content/images/tin-nhap-cu-4.jpg" class="img-fluid" />
-                    </div>
-                    <div class="col-8">
-                        Chính phủ Quebec đã cung cấp chi tiết mới về bài kiểm tra giá trị được gọi là các ứng cử viên nhập cư sẽ phải vượt qua để đủ điều kiện lựa chọn của tỉnh
-                        <br />
-                        <p class="read-more">[Đọc thêm...]</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row col-12 news-item">
-                <div class="row col-12 news-item-title">Quebec phát hành hướng dẫn để chuẩn bị cho người nhập cư cho "thử nghiệm giá trị" mới</div>
-                <div class="row col-12 news-item-sec-title">Người nhập cư đến Quebec sẽ được yêu cầu vượt qua "thử nghiệm giá trị" bắt đầu từ ngày 1 tháng 1</div>
-                <div class="row col-12">
-                    <div class="col-2 remove-paddingleft by-canada-visa remove-paddingright">By Canada Visa</div>
-                    <div class="count-seen pad-left25px">999</div>&nbsp;
-                    <div class="count-like pad-left25px">999</div>&nbsp;
-                    <div class="count-message pad-left25px">999</div>
-                </div>
-                <div class="row col-12">
-                    <div class="col-4 remove-paddingleft">
-                        <img src="../Content/images/tin-nhap-cu-4.jpg" class="img-fluid" />
-                    </div>
-                    <div class="col-8">
-                        Chính phủ Quebec đã cung cấp chi tiết mới về bài kiểm tra giá trị được gọi là các ứng cử viên nhập cư sẽ phải vượt qua để đủ điều kiện lựa chọn của tỉnh
-                        <br />
-                        <p class="read-more">[Đọc thêm...]</p>
-                    </div>
-                </div>
-            </div>
+            </div>*@
 
             <div class="row mar-top15px">
                 <div class="col-12">
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#'"> 1 </a></li>
-                        <li class="page-item"><a class="page-link" href="#'"> 2 </a></li>
-                        <li class="page-item"><a class="page-link" href="#'"> 3 </a></li>
-                        <li class="page-item"><a class="page-link" href="#'"> 4 </a></li>
-                        <li class="page-item"><a class="page-link" href="#'"> 5 </a></li>
-                        <li class="page-item"><a class="page-link" href="#'"> 6 </a></li>
-                        <li class="page-item"><a class="page-link" href="#'"> 7 </a></li>
-                        <li class="page-item"><a class="page-link" href="#'"> 8 </a></li>
-                        <li class="page-item"><a class="page-link" href="#'"> 9 </a></li>
-                        <li class="page-item"><a class="page-link" href="#'"> 10 </a></li>
+                        @{ 
+                            for (int i = 0; i < totalPage; i++)
+                            {
+                                <li class="page-item"><a class="page-link" href="javascript: window.location.href='@string.Format("/NewsInterface/Index?page={0}", i+1)'">@(i + 1)</a></li>
+                            }
+                        }
                     </ul>
                 </div>
             </div>

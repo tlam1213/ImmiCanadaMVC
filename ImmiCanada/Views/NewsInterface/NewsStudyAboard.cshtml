@@ -2,16 +2,18 @@
     @model ImmiCanada.Controllers.ServiceSearchCriteria
     Layout = "~/Views/Shared/_Layout_Without_Banner.cshtml";
     ViewBag.Title = "Bản tin Canada";
+    var News = (List<ImmiCanada.Entities.News>)ViewData["NewsList"];
+    int totalPage = Convert.ToInt32(ViewData["totalPage"]);
 }
 
 <div class="news-container pad-bot10px">
-    <img src="../Content/images/bannertintuc.jpg" class="news-logo" />
+    <img src="~/Content/images/bannertintuc.jpg" class="news-logo" />
     <div class="container">
         @Html.Partial("PartialNewsSubMenu")
 
         @{Html.RenderAction("PartialNewsStudyAboard", "NewsInterface");}
 
-        @{Html.RenderAction("PartialNewsList", "NewsInterface");}
+        @{Html.RenderAction("PartialNewsList", "NewsInterface", new { NewsList = News, totalPage = totalPage });}
 
         @*<div class="row col-9 news-second-section-all">
             @{Html.RenderAction("NewsImmigration", "NewsInterface");}

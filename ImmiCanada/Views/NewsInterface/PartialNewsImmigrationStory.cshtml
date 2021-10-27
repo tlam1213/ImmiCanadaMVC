@@ -1,13 +1,16 @@
-﻿<div class="row mar-top25px news-index news-immigration-story">
+﻿@{
+    List<ImmiCanada.Entities.News> News = (List<ImmiCanada.Entities.News>)ViewData["NewsImmigrationStory"];
+}
+<div class="row mar-top25px news-index news-immigration-story">
     <div class="row col-12">
         <div class="col-8 pos-rel">
-            <img src="../Content/images/tin-nhap-cu-1.jpg" class="img-fluid full-height" />
+            <img src="@News[0].Base64Image" class="img-fluid full-height" />
             <div class="news-info">
-                <div>Quyền tự do của bạn ở Canada</div>
+                <div>@News[0].Title</div>
                 <div class="row new-sec-info">
                     <div class="col-2">By Canada</div>
-                    <div class="count-seen">999</div>
-                    <div class="count-like">999</div>
+                    <div class="count-seen">@News[0].NumberOfView</div>
+                    <div class="count-like">@News[0].NumberOfLike</div>
                     <div class="count-message">999</div>
                 </div>
             </div>
@@ -81,6 +84,6 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>

@@ -1,9 +1,7 @@
 ﻿@{
-    @model ImmiCanada.Controllers.ServiceSearchCriteria
+    @model ImmiCanada.Entities.News
     Layout = "~/Views/Shared/_Layout_Without_Banner.cshtml";
     ViewBag.Title = "Bản tin Canada";
-    var News = (List<ImmiCanada.Entities.News>)ViewData["NewsList"];
-    int totalPage = Convert.ToInt32(ViewData["totalPage"]);
 }
 
 <div class="news-container pad-bot10px">
@@ -11,14 +9,13 @@
     <div class="container">
         @Html.Partial("PartialNewsSubMenu")
 
-        @{Html.RenderAction("PartialNewsPolitics", "NewsInterface");}
 
-        @{Html.RenderAction("PartialNewsList", "NewsInterface", new { NewsList = News, totalPage = totalPage });}
+        @{Html.RenderAction("PartialNewsDetail", "NewsInterface", new { News = Model});}
 
         @*<div class="row col-9 news-second-section-all">
             @{Html.RenderAction("NewsImmigration", "NewsInterface");}
         </div>*@
-
+        
     </div>
 </div>
 
