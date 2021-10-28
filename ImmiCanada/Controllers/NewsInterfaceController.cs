@@ -24,6 +24,8 @@ namespace ImmiCanada.Controllers
             ViewData["totalPage"] = totalPage;
             ViewData["NewsList"] = db.News.Where(i => i.TypeId == 4).OrderByDescending(i => i.CreatedDate).Skip((page - 1) * ITEMPERPAGE).Take(ITEMPERPAGE).ToList();
 
+            ViewData["LastestNewsScrolling"] = ViewData["NewsList"];
+
             return View();
         }
 
@@ -35,6 +37,7 @@ namespace ImmiCanada.Controllers
             int totalPage = Convert.ToInt32(Math.Ceiling(count));
             ViewData["totalPage"] = totalPage;
             ViewData["NewsList"] = db.News.Where(i => i.TypeId == 5).OrderByDescending(i => i.CreatedDate).Skip((page - 1) * ITEMPERPAGE).Take(ITEMPERPAGE).ToList();
+            ViewData["LastestNewsScrolling"] = ViewData["NewsList"];
 
             return View();
         }
@@ -47,6 +50,7 @@ namespace ImmiCanada.Controllers
             int totalPage = Convert.ToInt32(Math.Ceiling(count));
             ViewData["totalPage"] = totalPage;
             ViewData["NewsList"] = db.News.Where(i => i.TypeId == 1).OrderByDescending(i => i.CreatedDate).Skip((page - 1) * ITEMPERPAGE).Take(ITEMPERPAGE).ToList();
+            ViewData["LastestNewsScrolling"] = ViewData["NewsList"];
 
             return View();
         }
@@ -59,6 +63,7 @@ namespace ImmiCanada.Controllers
             int totalPage = Convert.ToInt32(Math.Ceiling(count));
             ViewData["totalPage"] = totalPage;
             ViewData["NewsList"] = db.News.Where(i => i.TypeId == 2).OrderByDescending(i => i.CreatedDate).Skip((page - 1) * ITEMPERPAGE).Take(ITEMPERPAGE).ToList();
+            ViewData["LastestNewsScrolling"] = ViewData["NewsList"];
 
             return View();
         }
@@ -71,6 +76,7 @@ namespace ImmiCanada.Controllers
             int totalPage = Convert.ToInt32(Math.Ceiling(count));
             ViewData["totalPage"] = totalPage;
             ViewData["NewsList"] = db.News.Where(i => i.TypeId == 3).OrderByDescending(i => i.CreatedDate).Skip((page - 1) * ITEMPERPAGE).Take(ITEMPERPAGE).ToList();
+            ViewData["LastestNewsScrolling"] = ViewData["NewsList"];
 
             return View();
         }
@@ -79,6 +85,28 @@ namespace ImmiCanada.Controllers
         {
             ViewData["submenuActive"] = "NewsIndex";
             var News = db.News.FirstOrDefault(i => i.Id == id);
+
+            switch (News.TypeId)
+            {
+                case 1:
+                    ViewData["submenuActive"] = "NewsStudyAboard";
+                    break;
+                case 2:
+                    ViewData["submenuActive"] = "NewsTravelling";
+                    break;
+                case 3:
+                    ViewData["submenuActive"] = "NewsPolitics";
+                    break;
+                case 4:
+                    ViewData["submenuActive"] = "NewsIndex";
+                    break;
+                case 5:
+                    ViewData["submenuActive"] = "NewsImmigrationStory";
+                    break;
+            }
+
+            ViewData["LastestNewsScrolling"] = db.News.Where(i => i.TypeId == News.TypeId).OrderByDescending(i => i.CreatedDate).Take(5).ToList();
+
             return View(News);
         }
 
@@ -128,6 +156,12 @@ namespace ImmiCanada.Controllers
         public ActionResult PartialNewsDetail(News News)
         {
             return PartialView(News);
+        }
+
+        public ActionResult PartialMenu()
+        {
+            //ViewData["LastestNewsScrolling"] = db.News.Where(i => i.TypeId == NewsTypeId).OrderByDescending(i => i.CreatedDate).Take(5).ToList();
+            return PartialView("PartialNewsSubMenu");
         }
 
         protected override void Dispose(bool disposing)

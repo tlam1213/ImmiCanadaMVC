@@ -13,7 +13,7 @@
                 <div class="count-message">999</div>
             </div>
             <div class="pad-left15px pad-top10px pad-bot10px grey-text-color">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                @Html.Raw(News[0].Overview)
             </div>
         </div>
         <div class="col-6 pos-rel remove-paddingright pad-left30px">
@@ -30,37 +30,37 @@
                 </div>
             </div>
             <div class="row right-banner mar-top15px">
-                <div class="col-4 remove-paddingleft remove-paddingright"><img src="../Content/images/tin-nhap-cu-1.jpg" class="full-width" /></div>
+                <div class="col-4 remove-paddingleft remove-paddingright"><img src="@News[2].Base64Image" class="full-width" /></div>
                 <div class="col-8 remove-paddingleft">
-                    <div class="new-item-main-title-left pad-left15px pad-top15px pad-bot10px">Quyền tự do của bạn ở Canada</div>
+                    <div class="new-item-main-title-left pad-left15px pad-top15px pad-bot10px">@News[2].Title</div>
                     <div class="row new-sec-info pad-left15px">
                         <div class="col-5 grey-text-color">By Canada</div>
-                        <div class="count-seen">999</div>
-                        <div class="count-like">999</div>
+                        <div class="count-seen">@News[2].NumberOfView</div>
+                        <div class="count-like">@News[2].NumberOfLike</div>
                         <div class="count-message">999</div>
                     </div>
                 </div>
             </div>
             <div class="row right-banner mar-top15px">
-                <div class="col-4 remove-paddingleft remove-paddingright"><img src="../Content/images/tin-nhap-cu-1.jpg" class="full-width" /></div>
+                <div class="col-4 remove-paddingleft remove-paddingright"><img src="@News[3].Base64Image" class="full-width" /></div>
                 <div class="col-8 remove-paddingleft">
-                    <div class="new-item-main-title-left pad-left15px pad-top15px pad-bot10px">Quyền tự do của bạn ở Canada</div>
+                    <div class="new-item-main-title-left pad-left15px pad-top15px pad-bot10px">@News[3].Title"</div>
                     <div class="row new-sec-info pad-left15px">
                         <div class="col-5 grey-text-color">By Canada</div>
-                        <div class="count-seen">999</div>
-                        <div class="count-like">999</div>
+                        <div class="count-seen">@News[3].NumberOfView"</div>
+                        <div class="count-like">@News[3].NumberOfLike"</div>
                         <div class="count-message">999</div>
                     </div>
                 </div>
             </div>
             <div class="row right-banner mar-top15px">
-                <div class="col-4 remove-paddingleft remove-paddingright"><img src="../Content/images/tin-nhap-cu-1.jpg" class="full-width" /></div>
+                <div class="col-4 remove-paddingleft remove-paddingright"><img src="@News[4].Base64Image" class="full-width" /></div>
                 <div class="col-8 remove-paddingleft">
-                    <div class="new-item-main-title-left pad-left15px pad-top15px pad-bot10px">Quyền tự do của bạn ở Canada</div>
+                    <div class="new-item-main-title-left pad-left15px pad-top15px pad-bot10px">@News[4].Title"</div>
                     <div class="row new-sec-info pad-left15px">
                         <div class="col-5 grey-text-color">By Canada</div>
-                        <div class="count-seen">999</div>
-                        <div class="count-like">999</div>
+                        <div class="count-seen">@News[4].NumberOfView"</div>
+                        <div class="count-like">@News[4].NumberOfLike"</div>
                         <div class="count-message">999</div>
                     </div>
                 </div>
