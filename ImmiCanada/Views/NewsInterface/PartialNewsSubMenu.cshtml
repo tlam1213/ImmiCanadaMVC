@@ -1,4 +1,8 @@
-﻿<div class="row mar-top25px news-sub-menu" >
+﻿@{ 
+    var latestNewsScrolling = (List<ImmiCanada.Entities.News>)ViewData["LastestNewsScrolling"];
+    
+}
+<div class="row mar-top25px news-sub-menu" >
     <div class="row col-12">
         <div class="col-3 remove-paddingleft">
             <div class="news-main-menu-item">Bản Tin Canada Visa</div>
@@ -13,4 +17,22 @@
             </div>
         </div>
     </div>
+</div>
+<div class="row col-12 latest-news-container remove-paddingleft">
+    <div class="col-2 latest-news">TIN MỚI NHẤT</div>
+    <div class="col-10 pad-top5px">        
+        <marquee direction="left" onmouseover="this.stop()" onmouseout="this.start()" Behavior="Scroll">
+            @{
+                foreach (var News in latestNewsScrolling)
+                {
+                        <div class='block-scroll-content'>
+                            <img src='@News.Base64Image' class='img-fluid full-height' />&nbsp;&nbsp;
+                            <a href='#'>@News.Title</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    
+                }
+            }
+        </marquee>
+    </div>
+    
 </div>

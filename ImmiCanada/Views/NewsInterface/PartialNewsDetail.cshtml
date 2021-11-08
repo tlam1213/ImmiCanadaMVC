@@ -1,0 +1,138 @@
+﻿@model ImmiCanada.Entities.News
+<div class="row mar-top40px news-list-container">
+    <div class="row col-12 remove-paddingright">
+        <div class="col-9">
+            <div class="row main-line">
+                <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">@Model.Title</p>
+            </div>
+            <div class="row mar-top25px">
+                <i>@Html.Raw(Model.Overview)</i>
+            </div>
+            <div class="row pad-top10px">
+                <div class="col-6 remove-paddingleft">
+                    <div class="col-12 row remove-paddingleft remove-paddingright ">
+                        <div class="col-6 border-right-red">
+                            <img class="rounded-circle personal-support" src="@Model.Creator1.Base64Image" />
+                            <strong class="grey-text-color">@Model.Creator1.FullName</strong>
+                        </div>
+                        <div class="col-6">
+                            <i class="grey-text-color">Thứ 3, 27/04/2021 15:06 (GTM +7)</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-6">
+                    <div class="col-4 grey-text-color remove-paddingleft remove-paddingright">888 <br />Lượt chia sẻ</div>
+                    <div class="col-8 row remove-paddingleft remove-paddingright">
+                        <div class="col-3 remove-paddingleft remove-paddingright social-box-like"><i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;@Model.NumberOfLike</div>&nbsp;
+                        <div class="col-3 remove-paddingleft remove-paddingright social-box-facebook"><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;facebook</div>&nbsp;
+                        <div class="col-3 remove-paddingleft remove-paddingright social-box-email"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;email</div>&nbsp;
+                        <div class="col-3 remove-paddingleft remove-paddingright social-box-print"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Bản in</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mar-top40px">
+                <div class="col-12 remove-paddingleft remove-paddingright mar-top25px">
+                    @Html.Raw(Model.Description)
+                </div>
+            </div>
+
+            <div class="row mar-top15px">
+                <div class="row col-6">
+                    <div class="col-9 row remove-paddingright">
+                        <div class="col-3 remove-paddingleft remove-paddingright social-box-like"><i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;@Model.NumberOfLike</div>&nbsp;
+                        <div class="col-3 remove-paddingleft remove-paddingright social-box-facebook"><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;facebook</div>&nbsp;
+                        <div class="col-3 remove-paddingleft remove-paddingright social-box-email"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;email</div>&nbsp;
+                        <div class="col-3 remove-paddingleft remove-paddingright social-box-print"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;Bản in</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 remove-paddingright">
+            <div class="news-ads">
+                <img class="img-fluid" src="~/Content/images/QC1.jpg" />
+                <img class="img-fluid" src="~/Content/images/QC2.jpg" />
+            </div>
+            <div class="right-contact">
+                <div class="row col-sm-12 mar-botttom6px"><h3>Liên hệ tư vấn</h3></div>
+                <div class=" row col-sm-8 offset-2 mar-botttom6px">
+                    <img src="~/Content/images/support-employee.jpg" class="img-fluid" />
+                </div>
+                <div class="row col-sm-12 mar-top10px"><h5 class="suppor-already-title">Chuyên viên đã sẵn sàng hỗ trợ</h5></div>
+                <div class="row col-sm-10 offset-1 suppor-already-title-sec mar-botttom6px">Tư vấn hoàn toàn miễn phí</div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <p class="text-small-center real-estate">
+                            <span><strong>Định cư Canada</strong></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="btn btn-call-support full-width mar-top10px" onclick="javascript: window.location.href='tel:0948009988'"><i class="fa fa-phone mar-right3px" aria-hidden="true"></i>Gọi chuyên viên ngay</button>
+                    </div>
+                </div>
+                <div class="row mar-bottom10px mar-top10px">
+                    <div class="col-sm-12 text-center">Hoặc</div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <a href="https://www.facebook.com/dichvucanadavisa/" target="_blank" class="chat-to-revert">Chát với Canada Visa</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mar-top40px">
+        <div class="col-12 remove-paddingright news-index news-study-aboard">
+            <div class="row main-line">
+                <img src="~/Content/images/left-bg.jpg" class="img-left-icon" /><p class="immigration-service-type-title">TIN TỨC LIÊN QUAN</p>
+            </div>
+            <div class="row col-12 mar-left15px mar-top15px new-info-sec-line remove-paddingleft remove-paddingright">
+                <div class="one-third-news-item pos-rel">
+                    <img src="~/Content/images/tin-nhap-cu-1.jpg" class="img-fluid full-height" />
+                    <div class="news-info full-width">
+                        <div>Quyền tự do của bạn ở Canada</div>
+                        <div class="row new-sec-info">
+                            <div class="col-3">By Canada</div>
+
+                            <div class="count-seen pad-left20px">999</div>&nbsp;
+                            <div class="count-like pad-left20px">999</div>&nbsp;
+                            <div class="count-message pad-left20px">999</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one-third-news-item pos-rel">
+                    <img src="~/Content/images/tin-nhap-cu-1.jpg" class="img-fluid full-height" />
+                    <div class="news-info full-width">
+                        <div>Quyền tự do của bạn ở Canada</div>
+                        <div class="row new-sec-info">
+                            <div class="col-3">By Canada</div>
+
+                            <div class="count-seen pad-left20px">999</div>&nbsp;
+                            <div class="count-like pad-left20px">999</div>&nbsp;
+                            <div class="count-message pad-left20px">999</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="one-third-news-item pos-rel">
+                    <img src="~/Content/images/tin-nhap-cu-1.jpg" class="img-fluid full-height" />
+                    <div class="news-info full-width">
+                        <div>Quyền tự do của bạn ở Canada</div>
+                        <div class="row new-sec-info">
+                            <div class="col-3">By Canada</div>
+
+                            <div class="count-seen pad-left20px">999</div>&nbsp;
+                            <div class="count-like pad-left20px">999</div>&nbsp;
+                            <div class="count-message pad-left20px">999</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

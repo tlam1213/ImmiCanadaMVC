@@ -1,25 +1,28 @@
-﻿<div class="row mar-top25px news-index news-study-aboard">
+﻿@{
+    List<ImmiCanada.Entities.News> News = (List<ImmiCanada.Entities.News>)ViewData["NewsTravelling"];
+}
+<div class="row mar-top25px news-index news-study-aboard">
     <div class="row col-12 remove-paddingright one-two-news-item">
         <div class="col-6 pos-rel remove-paddingright">
-            <img src="../Content/images/tin-nhap-cu-1.jpg" class="img-fluid full-height" />
+            <img src="@News[0].Base64Image" class="img-fluid full-height" />
             <div class="news-info">
-                <div>Quyền tự do của bạn ở Canada</div>
+                <div>@News[0].Title</div>
                 <div class="row new-sec-info">
                     <div class="col-3">By Canada</div>
-                    <div class="count-seen">999</div>
-                    <div class="count-like">999</div>
+                    <div class="count-seen">@News[0].NumberOfView</div>
+                    <div class="count-like">@News[0].NumberOfLike</div>
                     <div class="count-message">999</div>
                 </div>
             </div>
         </div>
         <div class="col-6 pos-rel remove-paddingright">
-            <img src="../Content/images/tin-nhap-cu-1.jpg" class="img-fluid full-height" />
+            <img src="@News[1].Base64Image" class="img-fluid full-height" />
             <div class="news-info">
-                <div>Quyền tự do của bạn ở Canada</div>
+                <div>@News[1].Title</div>
                 <div class="row new-sec-info">
                     <div class="col-3">By Canada</div>
-                    <div class="count-seen">999</div>
-                    <div class="count-like">999</div>
+                    <div class="count-seen">@News[1].NumberOfView</div>
+                    <div class="count-like">@News[1].NumberOfLike</div>
                     <div class="count-message">999</div>
                 </div>
             </div>
@@ -27,44 +30,44 @@
     </div>
     <div class="row col-12 mar-left15px mar-top15px new-info-sec-line remove-paddingleft remove-paddingright">
         <div class="one-third-news-item pos-rel">
-            <img src="../Content/images/tin-nhap-cu-1.jpg" class="img-fluid full-height" />
+            <img src="@News[2].Base64Image" class="img-fluid full-height" />
             <div class="news-info full-width">
-                <div>Quyền tự do của bạn ở Canada</div>
+                <div>@News[2].Title</div>
                 <div class="row new-sec-info">
                     <div class="col-3">By Canada</div>
 
-                    <div class="count-seen pad-left20px">999</div>&nbsp;
-                    <div class="count-like pad-left20px">999</div>&nbsp;
+                    <div class="count-seen pad-left20px">@News[2].NumberOfView</div>&nbsp;
+                    <div class="count-like pad-left20px">@News[2].NumberOfLike</div>&nbsp;
                     <div class="count-message pad-left20px">999</div>
                 </div>
             </div>
         </div>
         <div class="one-third-news-item pos-rel">
-            <img src="../Content/images/tin-nhap-cu-1.jpg" class="img-fluid full-height" />
+            <img src="@News[3].Base64Image" class="img-fluid full-height" />
             <div class="news-info full-width">
-                <div>Quyền tự do của bạn ở Canada</div>
+                <div>@News[3].Title</div>
                 <div class="row new-sec-info">
                     <div class="col-3">By Canada</div>
 
-                    <div class="count-seen pad-left20px">999</div>&nbsp;
-                    <div class="count-like pad-left20px">999</div>&nbsp;
+                    <div class="count-seen pad-left20px">@News[3].NumberOfView</div>&nbsp;
+                    <div class="count-like pad-left20px">@News[3].NumberOfLike</div>&nbsp;
                     <div class="count-message pad-left20px">999</div>
                 </div>
             </div>
         </div>
         <div class="one-third-news-item pos-rel">
-            <img src="../Content/images/tin-nhap-cu-1.jpg" class="img-fluid full-height" />
+            <img src="@News[4].Base64Image" class="img-fluid full-height" />
             <div class="news-info full-width">
-                <div>Quyền tự do của bạn ở Canada</div>
+                <div>@News[1].Title</div>
                 <div class="row new-sec-info">
                     <div class="col-3">By Canada</div>
 
-                    <div class="count-seen pad-left20px">999</div>&nbsp;
-                    <div class="count-like pad-left20px">999</div>&nbsp;
+                    <div class="count-seen pad-left20px">@News[1].NumberOfView</div>&nbsp;
+                    <div class="count-like pad-left20px">@News[1].NumberOfLike</div>&nbsp;
                     <div class="count-message pad-left20px">999</div>
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
