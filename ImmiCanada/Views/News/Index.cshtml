@@ -36,6 +36,9 @@
             Số lượng like
         </th>
         <th class="width-short-column">
+            Số lượng share
+        </th>
+        <th class="width-short-column">
             Tìm kiếm liên quan
         </th>
         <th class="width-short-column">
@@ -60,7 +63,10 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NumberOfLike)
-        </td>            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfShare)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.RelationshipKeyword)
         </td>

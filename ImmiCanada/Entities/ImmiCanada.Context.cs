@@ -27,8 +27,11 @@ namespace ImmiCanada.Entities
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Creator> Creators { get; set; }
         public virtual DbSet<ImmigrationService> ImmigrationServices { get; set; }
         public virtual DbSet<ImmigrationServiceType> ImmigrationServiceTypes { get; set; }
+        public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<NewsType> NewsTypes { get; set; }
         public virtual DbSet<Noc> Nocs { get; set; }
         public virtual DbSet<Occupation> Occupations { get; set; }
         public virtual DbSet<PermanentResident> PermanentResidents { get; set; }
@@ -36,9 +39,6 @@ namespace ImmiCanada.Entities
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Work> Works { get; set; }
-        public virtual DbSet<Creator> Creators { get; set; }
-        public virtual DbSet<News> News { get; set; }
-        public virtual DbSet<NewsType> NewsTypes { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

@@ -59,6 +59,7 @@
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="IsOutstanding" Type="bit" />
           <Property Name="TypeId" Type="int" />
+          <Property Name="NumberOfShare" Type="int" />
         </EntityType>
         <EntityType Name="NewsType">
           <Key>
@@ -362,43 +363,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="ImmigrationServices" EntityType="ImmiCanadaModel.ImmigrationService" />
-          <EntitySet Name="ImmigrationServiceTypes" EntityType="ImmiCanadaModel.ImmigrationServiceType" />
-          <EntitySet Name="Nocs" EntityType="ImmiCanadaModel.Noc" />
-          <EntitySet Name="Occupations" EntityType="ImmiCanadaModel.Occupation" />
-          <EntitySet Name="PermanentResidents" EntityType="ImmiCanadaModel.PermanentResident" />
-          <EntitySet Name="Positions" EntityType="ImmiCanadaModel.Position" />
-          <EntitySet Name="States" EntityType="ImmiCanadaModel.State" />
-          <EntitySet Name="sysdiagrams" EntityType="ImmiCanadaModel.sysdiagram" />
-          <EntitySet Name="Works" EntityType="ImmiCanadaModel.Work" />
-          <AssociationSet Name="FK__Immigrati__Perma__403A8C7D" Association="ImmiCanadaModel.FK__Immigrati__Perma__403A8C7D">
-            <End Role="PermanentResident" EntitySet="PermanentResidents" />
-            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Immigrati__State__412EB0B6" Association="ImmiCanadaModel.FK__Immigrati__State__412EB0B6">
-            <End Role="State" EntitySet="States" />
-            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ImmigrationService_ImmigrationServiceType" Association="ImmiCanadaModel.FK_ImmigrationService_ImmigrationServiceType">
-            <End Role="ImmigrationServiceType" EntitySet="ImmigrationServiceTypes" />
-            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Work_ImmigrationService" Association="ImmiCanadaModel.FK_Work_ImmigrationService">
-            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
-            <End Role="Work" EntitySet="Works" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Work_Noc" Association="ImmiCanadaModel.FK_Work_Noc">
-            <End Role="Noc" EntitySet="Nocs" />
-            <End Role="Work" EntitySet="Works" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Work__Occupation__5BE2A6F2" Association="ImmiCanadaModel.FK__Work__Occupation__5BE2A6F2">
-            <End Role="Occupation" EntitySet="Occupations" />
-            <End Role="Work" EntitySet="Works" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Work__PositionId__5CD6CB2B" Association="ImmiCanadaModel.FK__Work__PositionId__5CD6CB2B">
-            <End Role="Position" EntitySet="Positions" />
-            <End Role="Work" EntitySet="Works" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram1">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -430,15 +394,52 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams1" />
           <EntitySet Name="Creators" EntityType="ImmiCanadaModel.Creator" />
+          <EntitySet Name="ImmigrationServices" EntityType="ImmiCanadaModel.ImmigrationService" />
+          <EntitySet Name="ImmigrationServiceTypes" EntityType="ImmiCanadaModel.ImmigrationServiceType" />
           <EntitySet Name="News" EntityType="ImmiCanadaModel.News" />
           <EntitySet Name="NewsTypes" EntityType="ImmiCanadaModel.NewsType" />
+          <EntitySet Name="Nocs" EntityType="ImmiCanadaModel.Noc" />
+          <EntitySet Name="Occupations" EntityType="ImmiCanadaModel.Occupation" />
+          <EntitySet Name="PermanentResidents" EntityType="ImmiCanadaModel.PermanentResident" />
+          <EntitySet Name="Positions" EntityType="ImmiCanadaModel.Position" />
+          <EntitySet Name="States" EntityType="ImmiCanadaModel.State" />
+          <EntitySet Name="sysdiagrams" EntityType="ImmiCanadaModel.sysdiagram" />
+          <EntitySet Name="Works" EntityType="ImmiCanadaModel.Work" />
           <AssociationSet Name="FK__News__Creator__71D1E811" Association="ImmiCanadaModel.FK__News__Creator__71D1E811">
             <End Role="Creator" EntitySet="Creators" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
+          <AssociationSet Name="FK__Immigrati__Perma__403A8C7D" Association="ImmiCanadaModel.FK__Immigrati__Perma__403A8C7D">
+            <End Role="PermanentResident" EntitySet="PermanentResidents" />
+            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Immigrati__State__412EB0B6" Association="ImmiCanadaModel.FK__Immigrati__State__412EB0B6">
+            <End Role="State" EntitySet="States" />
+            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImmigrationService_ImmigrationServiceType" Association="ImmiCanadaModel.FK_ImmigrationService_ImmigrationServiceType">
+            <End Role="ImmigrationServiceType" EntitySet="ImmigrationServiceTypes" />
+            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_ImmigrationService" Association="ImmiCanadaModel.FK_Work_ImmigrationService">
+            <End Role="ImmigrationService" EntitySet="ImmigrationServices" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
           <AssociationSet Name="FK__News__TypeId__02FC7413" Association="ImmiCanadaModel.FK__News__TypeId__02FC7413">
             <End Role="NewsType" EntitySet="NewsTypes" />
             <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_Noc" Association="ImmiCanadaModel.FK_Work_Noc">
+            <End Role="Noc" EntitySet="Nocs" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Work__Occupation__5BE2A6F2" Association="ImmiCanadaModel.FK__Work__Occupation__5BE2A6F2">
+            <End Role="Occupation" EntitySet="Occupations" />
+            <End Role="Work" EntitySet="Works" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Work__PositionId__5CD6CB2B" Association="ImmiCanadaModel.FK__Work__PositionId__5CD6CB2B">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Work" EntitySet="Works" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -452,6 +453,26 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition1_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams1_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Creator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Base64Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="News" Relationship="ImmiCanadaModel.FK__News__Creator__71D1E811" FromRole="Creator" ToRole="News" />
+        </EntityType>
         <EntityType Name="ImmigrationService">
           <Key>
             <PropertyRef Name="Id" />
@@ -485,6 +506,35 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ImmigrationServices" Relationship="ImmiCanadaModel.FK_ImmigrationService_ImmigrationServiceType" FromRole="ImmigrationServiceType" ToRole="ImmigrationService" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Overview" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Creator" Type="Int32" />
+          <Property Name="NumberOfView" Type="Int32" />
+          <Property Name="NumberOfLike" Type="Int32" />
+          <Property Name="RelationshipKeyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Base64Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsOutstanding" Type="Boolean" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="NumberOfShare" Type="Int32" />
+          <NavigationProperty Name="Creator1" Relationship="ImmiCanadaModel.FK__News__Creator__71D1E811" FromRole="News" ToRole="Creator" />
+          <NavigationProperty Name="NewsType" Relationship="ImmiCanadaModel.FK__News__TypeId__02FC7413" FromRole="News" ToRole="NewsType" />
+        </EntityType>
+        <EntityType Name="NewsType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="News" Relationship="ImmiCanadaModel.FK__News__TypeId__02FC7413" FromRole="NewsType" ToRole="News" />
         </EntityType>
         <EntityType Name="Noc">
           <Key>
@@ -566,6 +616,18 @@
           <NavigationProperty Name="Occupation" Relationship="ImmiCanadaModel.FK__Work__Occupation__5BE2A6F2" FromRole="Work" ToRole="Occupation" />
           <NavigationProperty Name="Position" Relationship="ImmiCanadaModel.FK__Work__PositionId__5CD6CB2B" FromRole="Work" ToRole="Position" />
         </EntityType>
+        <Association Name="FK__News__Creator__71D1E811">
+          <End Type="ImmiCanadaModel.Creator" Role="Creator" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creator">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="Creator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Immigrati__Perma__403A8C7D">
           <End Type="ImmiCanadaModel.PermanentResident" Role="PermanentResident" Multiplicity="0..1" />
           <End Type="ImmiCanadaModel.ImmigrationService" Role="ImmigrationService" Multiplicity="*" />
@@ -614,6 +676,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__News__TypeId__02FC7413">
+          <End Type="ImmiCanadaModel.NewsType" Role="NewsType" Multiplicity="0..1" />
+          <End Type="ImmiCanadaModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Work_Noc">
           <End Type="ImmiCanadaModel.Noc" Role="Noc" Multiplicity="0..1" />
           <End Type="ImmiCanadaModel.Work" Role="Work" Multiplicity="*" />
@@ -650,84 +724,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="sp_helpdiagramdefinition1_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams1_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="Creator">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Base64Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="News" Relationship="ImmiCanadaModel.FK__News__Creator__71D1E811" FromRole="Creator" ToRole="News" />
-        </EntityType>
-        <EntityType Name="News">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Overview" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Creator" Type="Int32" />
-          <Property Name="NumberOfView" Type="Int32" />
-          <Property Name="NumberOfLike" Type="Int32" />
-          <Property Name="RelationshipKeyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Base64Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <Property Name="IsOutstanding" Type="Boolean" />
-          <Property Name="TypeId" Type="Int32" />
-          <NavigationProperty Name="Creator1" Relationship="ImmiCanadaModel.FK__News__Creator__71D1E811" FromRole="News" ToRole="Creator" />
-          <NavigationProperty Name="NewsType" Relationship="ImmiCanadaModel.FK__News__TypeId__02FC7413" FromRole="News" ToRole="NewsType" />
-        </EntityType>
-        <EntityType Name="NewsType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="News" Relationship="ImmiCanadaModel.FK__News__TypeId__02FC7413" FromRole="NewsType" ToRole="News" />
-        </EntityType>
-        <Association Name="FK__News__Creator__71D1E811">
-          <End Type="ImmiCanadaModel.Creator" Role="Creator" Multiplicity="0..1" />
-          <End Type="ImmiCanadaModel.News" Role="News" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Creator">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="News">
-              <PropertyRef Name="Creator" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__News__TypeId__02FC7413">
-          <End Type="ImmiCanadaModel.NewsType" Role="NewsType" Multiplicity="0..1" />
-          <End Type="ImmiCanadaModel.News" Role="News" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NewsType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="News">
-              <PropertyRef Name="TypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ImmiCanadaModelStoreContainer" CdmEntityContainer="ImmiCanadaEntities">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram1" FunctionName="ImmiCanadaModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram1" FunctionName="ImmiCanadaModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram1" FunctionName="ImmiCanadaModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition1" FunctionName="ImmiCanadaModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ImmiCanadaModel.sp_helpdiagramdefinition1_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams1" FunctionName="ImmiCanadaModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ImmiCanadaModel.sp_helpdiagrams1_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="ImmiCanadaModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="ImmiCanadaModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Creators">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.Creator">
+              <MappingFragment StoreEntitySet="Creator">
+                <ScalarProperty Name="Base64Image" ColumnName="Base64Image" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ImmigrationServices">
             <EntityTypeMapping TypeName="ImmiCanadaModel.ImmigrationService">
               <MappingFragment StoreEntitySet="ImmigrationService">
@@ -754,6 +789,34 @@
           <EntitySetMapping Name="ImmigrationServiceTypes">
             <EntityTypeMapping TypeName="ImmiCanadaModel.ImmigrationServiceType">
               <MappingFragment StoreEntitySet="ImmigrationServiceType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NumberOfShare" ColumnName="NumberOfShare" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="IsOutstanding" ColumnName="IsOutstanding" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Base64Image" ColumnName="Base64Image" />
+                <ScalarProperty Name="RelationshipKeyword" ColumnName="RelationshipKeyword" />
+                <ScalarProperty Name="NumberOfLike" ColumnName="NumberOfLike" />
+                <ScalarProperty Name="NumberOfView" ColumnName="NumberOfView" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Overview" ColumnName="Overview" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsTypes">
+            <EntityTypeMapping TypeName="ImmiCanadaModel.NewsType">
+              <MappingFragment StoreEntitySet="NewsType">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -837,67 +900,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram1" FunctionName="ImmiCanadaModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram1" FunctionName="ImmiCanadaModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram1" FunctionName="ImmiCanadaModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition1" FunctionName="ImmiCanadaModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ImmiCanadaModel.sp_helpdiagramdefinition1_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams1" FunctionName="ImmiCanadaModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ImmiCanadaModel.sp_helpdiagrams1_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="ImmiCanadaModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="ImmiCanadaModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="Creators">
-            <EntityTypeMapping TypeName="ImmiCanadaModel.Creator">
-              <MappingFragment StoreEntitySet="Creator">
-                <ScalarProperty Name="Base64Image" ColumnName="Base64Image" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="ImmiCanadaModel.News">
-              <MappingFragment StoreEntitySet="News">
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-                <ScalarProperty Name="IsOutstanding" ColumnName="IsOutstanding" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Base64Image" ColumnName="Base64Image" />
-                <ScalarProperty Name="RelationshipKeyword" ColumnName="RelationshipKeyword" />
-                <ScalarProperty Name="NumberOfLike" ColumnName="NumberOfLike" />
-                <ScalarProperty Name="NumberOfView" ColumnName="NumberOfView" />
-                <ScalarProperty Name="Creator" ColumnName="Creator" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Overview" ColumnName="Overview" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NewsTypes">
-            <EntityTypeMapping TypeName="ImmiCanadaModel.NewsType">
-              <MappingFragment StoreEntitySet="NewsType">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
