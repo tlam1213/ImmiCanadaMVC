@@ -1,10 +1,49 @@
-﻿<div class="row section-news pad-top40px" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+﻿@{ 
+    List<ImmiCanada.Entities.Work> list = (List<ImmiCanada.Entities.Work>)ViewData["WorksSlide"];
+    string GetWorkDetailUrl(ImmiCanada.Entities.Work work)
+    {
+        return convertToUnSign2(string.Format("/viec-lam-canada/{0}/{1}",
+                                string.IsNullOrEmpty(work.Title) ? "tieu-de" : work.Title.ToLower().Replace(" ", "-"),
+                                work.WorkId));
+    }
+
+    string GetWorkPageUrl(int pageNUmber)
+    {
+        return convertToUnSign2(string.Format("viec-lam-canada?page={0}", pageNUmber));
+    }
+
+    string convertToUnSign2(string s)
+    {
+        string stFormD = s.Normalize(System.Text.NormalizationForm.FormD);
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        for (int ich = 0; ich < stFormD.Length; ich++)
+        {
+            System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+            if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+            {
+                sb.Append(stFormD[ich]);
+            }
+        }
+        sb = sb.Replace('Đ', 'D');
+        sb = sb.Replace('đ', 'd');
+        return (sb.ToString().Normalize(System.Text.NormalizationForm.FormD));
+    }
+}
+<div class="row section-news pad-top40px mar-top60px" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
     @*Link for Carousel multiple items : https://azmind.com/bootstrap-carousel-multiple-items/*@
     <div class="top-content">
         <div class="container-fluid">
             <div id="NewsSlide" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
+                    @{ 
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 @(i == 0? "active": string.Empty) slide-news-item" onclick="window.location.href='@GetWorkDetailUrl(list[i])'">
+                                <img src="@list[i].Base64Image" class="img-fluid mx-auto d-block" alt="img1">
+                            </div>
+                            }
+                        }
+                    @*<div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
                         <img src="~/Content/images/News/News4.jpg" class="img-fluid mx-auto d-block" alt="img1">
                     </div>
                     <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
@@ -27,7 +66,7 @@
                     </div>
                     <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
                         <img src="~/Content/images/News/News4.jpg" class="img-fluid mx-auto d-block" alt="img8">
-                    </div>
+                    </div>*@
                 </div>
                 <a class="carousel-control-prev" href="#NewsSlide" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="row col-6">
-                    <div class="col-4 grey-text-color remove-paddingleft remove-paddingright">888 <br />Lượt chia sẻ</div>
+                    <div class="col-4 grey-text-color remove-paddingleft remove-paddingright">@(Model.NumberOfShare == null || Model.NumberOfShare == 0 ? 888 : Model.NumberOfShare) <br />Lượt chia sẻ</div>
                     <div class="col-8 row remove-paddingleft remove-paddingright">
                         <div class="col-3 remove-paddingleft remove-paddingright social-box-like"><i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;@Model.NumberOfLike</div>&nbsp;
                         <div class="col-3 remove-paddingleft remove-paddingright social-box-facebook"><i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;facebook</div>&nbsp;

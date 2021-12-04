@@ -9,7 +9,7 @@
                 foreach (var News in NewsList)
                 {
                     <div class="row col-12 news-item mar-bottom30px">
-                        <div class="row col-12 news-item-title">@News.Title</div>
+                        <div class="row col-12 news-item-title"><a href="/NewsInterface/Detail/@News.Id"> @News.Title </a></div>
                         @*<div class="row col-12 news-item-sec-title">@Html.Raw(News.Overview)</div>*@
                         <div class="row col-12">
                             <div class="col-2 remove-paddingleft by-canada-visa remove-paddingright">By Canada Visa</div>
@@ -19,7 +19,7 @@
                         </div>
                         <div class="row col-12">
                             <div class="col-4 remove-paddingleft">
-                                <img src="@News.Base64Image" class="img-fluid" />
+                                <img src="@News.Base64Image" class="img-fluid" onclick="window.location.href='/NewsInterface/Detail/@News.Id'" />
                             </div>
                             <div class="col-8">
                                 @*@Html.Raw(String.Join(" ", System.Text.RegularExpressions.Regex.Replace(News.Description, "<.*?>", String.Empty).Split().Take(50).ToArray()))*@

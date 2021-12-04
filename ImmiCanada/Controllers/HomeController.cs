@@ -37,6 +37,7 @@ namespace ImmiCanada.Controllers
 
         public ActionResult NewsSlide()
         {
+            ViewData["WorksSlide"] = db.Works.OrderByDescending(i => i.WorkId).Take(8).ToList();
             return PartialView();
         }
     }
