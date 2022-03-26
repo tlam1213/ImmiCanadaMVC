@@ -1,0 +1,101 @@
+﻿@{
+    int totalPage = (int)ViewData["totalPage"];
+    var works = (List<ImmiCanada.Entities.Work>)ViewData["works"];
+}
+@{
+    string GetWorkDetailUrl(ImmiCanada.Entities.Work work)
+    {
+        return convertToUnSign2(string.Format("/viec-lam-canada/{0}/{1}",
+                                string.IsNullOrEmpty(work.Title) ? "tieu-de" : work.Title.ToLower().Replace(" ", "-"),
+                                work.WorkId));
+    }
+
+    string GetWorkPageUrl(int pageNUmber)
+    {
+        return convertToUnSign2(string.Format("viec-lam-canada?page={0}", pageNUmber));
+    }
+
+    string convertToUnSign2(string s)
+    {
+        string stFormD = s.Normalize(System.Text.NormalizationForm.FormD);
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        for (int ich = 0; ich < stFormD.Length; ich++)
+        {
+            System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+            if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+            {
+                sb.Append(stFormD[ich]);
+            }
+        }
+        sb = sb.Replace('Đ', 'D');
+        sb = sb.Replace('đ', 'd');
+        return (sb.ToString().Normalize(System.Text.NormalizationForm.FormD));
+    }
+}
+<div class="service-search-container pos-rel pad-bot10px">
+    <div class="canada-deserve-to-life remove-paddingleft">
+        <div class="row col-sm-12 canada-deserve-to-life-title remove-paddingleft">
+            <img src="Content/images/left-bg.jpg" class="img-left-icon" />
+            <p>VIỆC LÀM</p>
+            &nbsp; ĐỀ XUẤT
+        </div>
+    </div>
+    <div class="search-result work-while-bk work-search-container">
+        
+        <div class="row mar-bottom20px pad-top10px">
+            @{
+                for (int i = 0; i < works.Count; i++)
+                {
+                    <div class="col-sm-6 mar-top15px">
+                        <div class='row min-height306px work-item-detail @(i % 2 == 0 ? "remove-marginleft" : "") '>
+                            <div class="col-5">
+                                <img class="img-thumbnail work-detail-img height190px" src="@works[i].Base64Image" />
+                            </div>
+                            <div class="col-7">
+                                <div class="row work-detail-title mar-bottom10px"><strong>@works[i].Title</strong></div>
+                                <div class="row mar-bottom20px font-size14px">
+                                    Lượt xem: @works[i].NumberOfView | Cấp độ kỹ năng: @works[i].Noc.Title | Mã NOC: @works[i].WorkNumber
+                                </div>
+                                <div class="row mar-bottom10px">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;
+                                    <strong>Yêu cầu ngôn ngữ:</strong> &nbsp;&nbsp;@works[i].Language
+                                </div>
+                                <div class="row mar-bottom10px">
+                                    <i class="fa fa-university" aria-hidden="true"></i> &nbsp;&nbsp;
+                                    <strong>Yêu cầu bằng cấp: </strong>&nbsp;&nbsp;@works[i].Certificate
+                                </div>
+                                <div class="row mar-bottom10px">
+                                    <i class="fa fa-usd" aria-hidden="true"></i> &nbsp;&nbsp;
+                                    <strong>Mức lương:</strong>&nbsp;&nbsp; @works[i].Income
+                                </div>
+                                <div class="row text-right">
+                                    <div class="col-12">
+                                        <input type="button" id="btnWorkDetail" value="XEM CHI TIẾT" class="btn-work-detail mar-bottom30px" onclick="javascript: window.location.href = '@GetWorkDetailUrl(works[i])'" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+            }
+
+        </div>
+        <div class="row mar-top40px">
+            <div class="col-12">
+                <ul class="pagination">
+                    @*<li class="page-item"><a class="page-link" href="javascript: window.location.href='/WorkInterface/search?page=1'">Previous</a></li>*@
+                    @{
+                        for (int i = 0; i < totalPage; i++)
+                        {
+                            <li class="page-item"><a class="page-link" href="javascript: window.location.href='@GetWorkPageUrl(i+1)'">@(i+1)</a></li>
+                        }
+                    }
+                    @*<li class="page-item"><a class="page-link" href="javascript: window.location.href='/WorkInterface/search?page=1'">Next</a></li>*@
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

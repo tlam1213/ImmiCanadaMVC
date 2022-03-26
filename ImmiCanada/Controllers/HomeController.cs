@@ -40,5 +40,10 @@ namespace ImmiCanada.Controllers
             ViewData["WorksSlide"] = db.Works.OrderByDescending(i => i.WorkId).Take(8).ToList();
             return PartialView();
         }
+
+        public ActionResult CanadaDeserveToLife()
+        {
+            return PartialView();
+        }
     }
 }

@@ -52,6 +52,16 @@ namespace ImmiCanada.Controllers
             return View();
         }
 
+        public ActionResult WorkRecommended()
+        {
+            int page = 1;
+            double count = Convert.ToDouble(db.Works.Count()) / ITEMPERPAGE;
+            int totalPage = Convert.ToInt32(Math.Ceiling(count));
+            ViewData["totalPage"] = totalPage;
+            ViewData["works"] = db.Works.OrderByDescending(i => i.WorkId).Skip((page - 1) * ITEMPERPAGE).Take(ITEMPERPAGE).ToList();
+            return PartialView();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

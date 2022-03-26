@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=900, initial-scale=1.0, shrink-to-fit=no">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=140057183061041&autoLogAppEvents=1" nonce="yRruhlDd"></script>
+    <div class="full-width">
+        <div class="row top-banner">
+            <div class="col-sm-6">&nbsp;</div>
+            <div class="col-sm-6 text-right pad-right30px">
+                Liên hệ với chúng tôi: &nbsp;&nbsp;&nbsp;<i class="fa fa-phone mar-right3px" aria-hidden="true"></i>0948 00 9988 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-envelope-o" aria-hidden="true"></i> Email: info@canadavisa.vn
+            </div>
+        </div>
+    </div>
+    <div class="full-width">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="offset-2 col-sm-2">
+                    <img src="~/Content/images/logo.png" class="img-fluid main-logo" />
+                </div>
+                <div class="col-sm-2 slogan">
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                </div>
+                <div class="offset-1 col-sm-5 display-table">
+                    <i class="fa fa-envelope-o vertical-middle red-main" aria-hidden="true"></i> <span class="vertical-middle">Email: info@canadavisa.vn</span>
+                    <i class="fa fa-clock-o vertical-middle red-main" aria-hidden="true"></i> <span class="vertical-middle">08:00 - 17:00</span>
+                    <i class="fa fa-phone vertical-middle red-main" aria-hidden="true"></i> <span class="vertical-middle">+84 948 00 9988 </span>
+                </div>
+
+            </div>
+            <div class="row main-menu-new">
+                <nav class="navbar navbar-expand-sm offset-2 col-sm-11 remove-marginright">
+                    <!-- Links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TRANG CHỦ</a>
+                        </li>
+                        <!-- Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarIntroduce" data-toggle="dropdown">
+                                GIỚI THIỆU
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">GIỚI THIỆU 1</a>
+                                <a class="dropdown-item" href="#">GIỚI THIỆU 2</a>
+                                <a class="dropdown-item" href="#">GIỚI THIỆU 3</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarActive" data-toggle="dropdown">
+                                LĨNH VỰC HOẠT ĐỘNG
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">LĨNH VỰC HOẠT ĐỘNG 1</a>
+                                <a class="dropdown-item" href="#">LĨNH VỰC HOẠT ĐỘNG 2</a>
+                                <a class="dropdown-item" href="#">LĨNH VỰC HOẠT ĐỘNG 3</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarNews" data-toggle="dropdown">
+                                TIN TỨC
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">TIN TỨC 1</a>
+                                <a class="dropdown-item" href="#">TIN TỨC 2</a>
+                                <a class="dropdown-item" href="#">TIN TỨC 3</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarClientStory" data-toggle="dropdown">
+                                CÂU CHUYỆN KHÁCH HÀNG
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">CÂU CHUYỆN KHÁCH HÀNG 1</a>
+                                <a class="dropdown-item" href="#">CÂU CHUYỆN KHÁCH HÀNG 2</a>
+                                <a class="dropdown-item" href="#">CÂU CHUYỆN KHÁCH HÀNG 3</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TUYỂN DỤNG</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LIÊN HỆ</a>
+                        </li>
+                    </ul>
+                </nav>
+                <img class="card-img-top" src="~/Content/images/banner-canada-visa.jpg" />
+            </div>
+            <div class="row">
+                <div class="row offset-1 col-sm-10">
+                    <div class="col-sm-4 mar-top25px check-evaluate remove-paddingleft">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td class="width-75Percent eveluate-text">Đánh giá</td>
+                                <td rowspan="2" class="evaluate-icon"><i class="fa fa-paper-plane" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Tìm hiểu xem bạn có đủ điều kiện để nhập cư Canada</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-4 mar-top25px check-evaluate study-abroad-canada remove-paddingleft">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td class="width-75Percent study-abroad-canada-text">Du học Canada</td>
+                                <td rowspan="2" class="study-abroad-canada-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Tìm hiểu xem bạn có đủ điều kiện để trở thành sinh viên tại Canada</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-2 mar-top25px login remove-paddingleft remove-paddingright">
+                        <table class="table table-borderless">
+                            <tr><td align="center"><i class="fa fa-sign-in" aria-hidden="true"></i></td></tr>
+                            <tr><td align="center">Đăng Nhập</td></tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-2 mar-top25px logout  remove-paddingleft remove-paddingright">
+                        <table class="table table-borderless">
+                            <tr><td align="center"><i class="fa fa-user-plus" aria-hidden="true"></i></td></tr>
+                            <tr><td align="center">Đăng Ký</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div class="container-fluid footer">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="col-sm-12 text-center">
+                    <img src="~/Content/images/logo.png" class="img-fluid main-logo" />
+                </div>
+                <div class="col-sm-12">
+                    <p class="main-text-foot">Việc làm - đầu tư - định cư Canada</p>
+                    <p class="sec-text-foot">Chúng tôi hỗ trợ và hướng dẫn gia đình Việt Nam nhập cư Canada bằng cách hoàn thành các mục tiêu của họ về thường trú nhân.</p>
+                    <p class="sec-text-foot">Nếu bạn đang tìm kiếm một giải pháp nhập cư hoặc hỗ trợ nhập cư vào Canada, hãy liên hệ với chúng tôi.</p>
+                </div>
+            </div>
+            <div class="col-sm-3 contact-info">
+                <h5>Thông Tin Liên Hệ</h5>
+                <hr class="contact-info-line" />
+                <p>Tầng 14 Tòa nhà HM, 421 Nguyễn Thị Minh Khai, Q3, TP.HCM</p>
+                <p>
+                    <i class="fa fa-phone mar-right3px" aria-hidden="true"></i>Hotline:  (+84) 948 00 9988
+                </p>
+                <p><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: info@canadavisa.vn</p>
+            </div>
+            <div class="col-sm-3 client-support">
+                <h5>Hỗ Trợ Khách Hàng</h5>
+                <hr class="contact-info-line" />
+                <a href="#">Liên hệ chúng tôi</a><br />
+                <a href="#">Về chúng tôi</a><br />
+                <a href="#">Chính sách bảo mật</a><br />
+                <a href="#">Câu hỏi thường gặp</a>
+            </div>
+            <div class="col-sm-3">
+                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-width="250" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 text-center canada-visa-copy-right">
+                Bản quyền thuộc về Canada Visa - Việc làm đầu tư định cư Canada @{ WriteLiteral("@"); }2021
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/mainscript")
+    @RenderSection("scripts", required: false)
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
