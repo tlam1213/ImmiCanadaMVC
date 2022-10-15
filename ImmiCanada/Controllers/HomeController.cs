@@ -35,6 +35,11 @@ namespace ImmiCanada.Controllers
             return PartialView();
         }
 
+        public ActionResult SchoolList()
+        {
+            return PartialView();
+        }
+
         public ActionResult NewsSlide()
         {
             ViewData["WorksSlide"] = db.Works.OrderByDescending(i => i.WorkId).Take(8).ToList();

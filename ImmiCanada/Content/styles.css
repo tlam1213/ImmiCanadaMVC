@@ -1,4 +1,5 @@
 body {
+    font-family: 'Quicksand', sans-serif !important;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -11,7 +12,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .top-banner {
-    background-color: #99CCFF;
+    background-color: #446085;
     font-weight: 600;
     color: #FFFFFF;
     line-height: 2.3;
@@ -144,6 +145,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     border-right: 1px solid #CCC;
 }
 
+.border-radius8px {
+    border-radius: 8px;
+}
+
 .remove-width {
     width: unset !important;
 }
@@ -205,7 +210,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .pad-bot10px {
-    padding-bottom: 10px;
+    padding-bottom: 10px !important;
 }
 
 .pad-top40px {
@@ -244,6 +249,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     padding-top: 85px;
 }
 
+.pad-bottom200px {
+    padding-bottom: 200px;
+}
+
 .mar-bottom30px {
     margin-bottom: 30px;
 }
@@ -255,6 +264,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .mar-bottom3px {
     margin-bottom: 3px;
 }
+
+.mar-bottom20px {
+    margin-bottom: 20px;
+}
+
 
 .mar-right3px {
     margin-right: 3px;
@@ -320,8 +334,20 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     min-height: 306px;
 }
 
+.min-height263px {
+    min-height: 263px;
+}
+
+.min-height400px {
+    min-height: 400px;
+}
+
 .max-height245px {
     max-height: 245px;
+}
+
+.max-height228px {
+    max-height: 228px;
 }
 
 .height400px {
@@ -340,12 +366,32 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     height: 190px !important;
 }
 
+.height150px {
+    height: 150px !important;
+}
+
+.height180px {
+    height: 180px !important;
+}
+
+.height-auto {
+    height: auto !important;
+}
+
 .width-75Percent {
     width: 75%;
 }
 
+.width-95Percent {
+    width: 95%;
+}
+
 .font-weight600 {
     font-weight: 600;
+}
+
+.font-size12px {
+    font-size: 12px;
 }
 
 .font-size13px {
@@ -493,6 +539,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         text-align: center;
         border: 1px solid #CCCCCC;
         box-shadow: 5px 10px 18px #888888;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     }
 
     .card-highlight .card-text {
@@ -615,6 +662,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     background-color: #ed2025;
 }
 
+.text-red {
+    color: #ed2025;
+}
+
+.text-blue {
+    color: #497bb3 !important;
+}
+
 .canada-deserve-to-life {
     padding-left: 4%;
     padding-right: 4%;
@@ -650,39 +705,39 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .box-shadow-chatluongcuocsong {
-    box-shadow: 8px 8px 1px 0px #FFCC33;
+    box-shadow: 8px 8px 1px -4px #FFCC33;
 }
 
 .box-shadow-quyencongdan {
-    box-shadow: 8px 8px 1px 0px #669ACC;
+    box-shadow: 8px 8px 1px -4px #669ACC;
 }
 
 .box-shadow-quyenluc {
-    box-shadow: 8px 8px 1px 0px #66CCCE;
+    box-shadow: 8px 8px 1px -4px #66CCCE;
 }
 
 .box-shadow-mochodoanhnghiep {
-    box-shadow: 8px 8px 1px 0px #FF6666;
+    box-shadow: 8px 8px 1px -4px #FF6666;
 }
 
 .box-shadow-giaoduc {
-    box-shadow: 8px 8px 1px 0px #99CC33;
+    box-shadow: 8px 8px 1px -4px #99CC33;
 }
 
 .box-shadow-nuoidayconcai {
-    box-shadow: 8px 8px 1px 0px #FF66FF;
+    box-shadow: 8px 8px 1px -4px #FF66FF;
 }
 
 .box-shadow-minhbach {
-    box-shadow: 8px 8px 1px 0px #c3c4f1;
+    box-shadow: 8px 8px 1px -4px #c3c4f1;
 }
 
 .box-shadow-trusochinhcuatongcongty {
-    box-shadow: 8px 8px 1px 0px #F2C399;
+    box-shadow: 8px 8px 1px -4px #F2C399;
 }
 
 .box-shadow-phunu {
-    box-shadow: 8px 8px 1px 0px #ed2025;
+    box-shadow: 8px 8px 1px -4px #ed2025;
 }
 
 .ranking-criteria {
@@ -697,16 +752,17 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: #FFFFFF;
     padding: 15px;
     text-align: center;
-    left: 15px;
+    left: 20px;
     right: 0;
     /* margin-left: auto; */
     /* margin-right: auto; */
     bottom: 0;
     background-color: #006190;
     margin-bottom: 0;
-    width: 93%;
+    width: 83%;
     opacity: 0.8;
     border-left: 3px solid red;
+    font-size: 12px;
 }
 
 .outstanding-form {
@@ -739,6 +795,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         background-image: linear-gradient(to right, #1000ff, #b8bcef);
         color: #FFFFFF;
         border: none;
+        margin-left: 20%;
     }
 
 .outstanding-form-violet {
@@ -890,6 +947,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     border-radius: 4px;
     font-weight: 600;
     padding: 5px 40px;
+    border: none;
+}
+
+.btn-grey {
+    background-color: #cac0c026;
+    padding: 10px 40px;
     border: none;
 }
 
@@ -1087,9 +1150,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .work-search-container .work-detail-title {
-    font-size: 15px;
-    font-size: 22px;
+    width: 84%;
+    font-size: 16px;
 }
+
+    .work-search-container .work-detail-title strong {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
 .work-search-container .search-result i {
     font-size: 20px;
@@ -1805,11 +1874,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
 
         .check-evaluate table tr td {
-            padding: 0 0.75rem;
+            padding: 0 0.75rem 0 29px;
         }
 
             .check-evaluate table tr td.evaluate-icon {
                 vertical-align: middle;
+                padding-left: 15px;
             }
 
                 .check-evaluate table tr td.evaluate-icon i {
@@ -1820,15 +1890,20 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     .check-evaluate .eveluate-text {
         color: #ed2025;
         font-size: 25px;
+        font-weight: bold;
+        padding-top: 15px;
     }
 
 .study-abroad-canada .study-abroad-canada-text {
     color: #497bb3;
     font-size: 25px;
+    font-weight: bold;
+    padding-top: 15px;
 }
 
 .study-abroad-canada table tr td.study-abroad-canada-icon {
     vertical-align: middle;
+    padding-left: 15px;
 }
 
     .study-abroad-canada table tr td.study-abroad-canada-icon i {
@@ -1868,8 +1943,25 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         }
 
 #state-flag img {
+    height: 100px;
+    margin-right: 5px;
+    width: 70%;
+    margin-top: 25px;
+}
+
+#state-flag .carousel-inner .carousel-item .flag-item {
     width: 19%;
-    height: 140px;
+    float: left;
+    text-align: center;
+    background: #F1F9FF;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+#canada-derserve-to-live img {
+    /*width: 19%;*/
+    height: 170px;
+    margin-right: 5px;
 }
 
 .text-search-free-evaluate button,
@@ -1898,7 +1990,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .why-choose-us {
-    
 }
 
     .why-choose-us i {
@@ -1915,6 +2006,88 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         font-size: 25px;
         margin-left: -30px;
     }
+
+#work-recommended-cal .carousel-indicators {
+    bottom: -53px;
+}
+
+    #work-recommended-cal .carousel-indicators li {
+        background-color: #ed2025;
+    }
+
+#work-recommended-cal .top-right-hot {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    padding: 2px 20px;
+    background-color: #F96B6B;
+    border-radius: 4px;
+    color: #FFF;
+    font-weight: 600;
+    text-align: center;
+}
+
+#investing-projects {
+    padding-left: 6%;
+}
+
+    #investing-projects .carousel-item .carousel-item-background {
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 0;
+        padding-bottom: 26.04166667%;
+        border-radius: 6px;
+        width: 94%;
+    }
+
+    #investing-projects .carousel-inner {
+        /*min-height: 420px*/
+    }
+
+        #investing-projects .carousel-inner .project-detail-item {
+            background-color: #f4f4f7;
+            border-radius: 5px;
+            width: 75%;
+            padding: 17.5px 20px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: -140px;
+        }
+
+            #investing-projects .carousel-inner .project-detail-item .project-detail-item-description {
+                padding-top: 10px;
+            }
+
+                #investing-projects .carousel-inner .project-detail-item .project-detail-item-description .first-text {
+                    font-weight: 600;
+                }
+
+                #investing-projects .carousel-inner .project-detail-item .project-detail-item-description .second-text {
+                    color: #f7941d;
+                    font-style: italic;
+                    font-size: 10px;
+                    margin-bottom: 5px;
+                }
+
+                #investing-projects .carousel-inner .project-detail-item .project-detail-item-description .third-text {
+                    font-size: 13px;
+                }
+
+            #investing-projects .carousel-inner .project-detail-item > div {
+                background-color: #FFFFFF;
+            }
+
+            #investing-projects .carousel-inner .project-detail-item .project-detail-item-logo-img {
+                margin: 10px;
+            }
+
+    #investing-projects .carousel-indicators {
+        bottom: -40px;
+    }
+
+        #investing-projects .carousel-indicators li {
+            background-color: #ed2025;
+        }
 /* Support for client - BEGIN */
 table.text-editor-supported {
     border: 0;
@@ -1932,3 +2105,37 @@ table.text-editor-supported {
             font-weight: bolder;
         }
 /* Support for client - END */
+
+.school-list {
+    top: -120px;
+    padding-left: 80px;
+}
+
+    .school-list .school-item {
+        border: 1px solid #CCC;
+        padding: 0;
+    }
+
+        .school-list .school-item img {
+            border: 0;
+            padding: 0;
+            border-radius: unset;
+        }
+
+    .school-list .school-other-information {
+        padding: 50px;
+    }
+
+        .school-list .school-other-information .state-name {
+            width: 30%;
+            background-color: #436fff;
+            color: #FFFFFF;
+            padding-left: 24px;
+            position: absolute;
+            top: -10px;
+        }
+
+        .school-list .school-other-information .chool-criteria {
+            font-size: 13px;
+            padding-left: 5px;
+        }

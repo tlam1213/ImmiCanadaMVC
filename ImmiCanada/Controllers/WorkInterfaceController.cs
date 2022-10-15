@@ -55,10 +55,10 @@ namespace ImmiCanada.Controllers
         public ActionResult WorkRecommended()
         {
             int page = 1;
-            double count = Convert.ToDouble(db.Works.Count()) / ITEMPERPAGE;
+            double count = Convert.ToDouble(db.Works.Count()) / 12;
             int totalPage = Convert.ToInt32(Math.Ceiling(count));
             ViewData["totalPage"] = totalPage;
-            ViewData["works"] = db.Works.OrderByDescending(i => i.WorkId).Skip((page - 1) * ITEMPERPAGE).Take(ITEMPERPAGE).ToList();
+            ViewData["works"] = db.Works.OrderByDescending(i => i.WorkId).Skip((page - 1) * 12).Take(12).ToList();
             return PartialView();
         }
 
