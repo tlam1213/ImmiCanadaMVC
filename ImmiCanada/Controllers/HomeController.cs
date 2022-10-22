@@ -35,9 +35,54 @@ namespace ImmiCanada.Controllers
             return PartialView();
         }
 
-        public ActionResult SchoolList()
+        public ActionResult SchoolListOntario()
         {
-            return PartialView();
+            return PartialView("SchoolList/Ontario");
+        }
+
+        public ActionResult SchoolListALberta()
+        {
+            return PartialView("SchoolList/Alberta");
+        }
+
+        public ActionResult SchoolListBritishColumnbia()
+        {
+            return PartialView("SchoolList/BritishColumnbia");
+        }
+
+        public ActionResult SchoolListSaskatchewan()
+        {
+            return PartialView("SchoolList/Saskatchewan");
+        }
+
+        public ActionResult SchoolListManitoba()
+        {
+            return PartialView("SchoolList/Manitoba");
+        }
+
+        public ActionResult SchoolListNewBrun()
+        {
+            return PartialView("SchoolList/NewBrun");
+        }
+
+        public ActionResult SchoolListNL()
+        {
+            return PartialView("SchoolList/NL");
+        }
+
+        public ActionResult SchoolListNova()
+        {
+            return PartialView("SchoolList/Nova");
+        }
+
+        public ActionResult SchoolListPEI()
+        {
+            return PartialView("SchoolList/PEI");
+        }
+
+        public ActionResult SchoolListQuebec()
+        {
+            return PartialView("SchoolList/Quebec");
         }
 
         public ActionResult NewsSlide()
