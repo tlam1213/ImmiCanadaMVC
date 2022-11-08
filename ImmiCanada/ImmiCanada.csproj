@@ -309,6 +309,9 @@
     <Content Include="Content\images\States\Alberta\7_background_alberta.jpg" />
     <Content Include="Content\images\States\Alberta\8_truong_dai_hoc_Alberta.jpg" />
     <Content Include="Content\images\States\Alberta\9_truong_dai_hoc_Calgary.jpg" />
+    <Content Include="Content\images\States\Alberta\gioi-thieu-tinh-bang-alberta.jpg" />
+    <Content Include="Content\images\States\Alberta\hero-1.jpg" />
+    <Content Include="Content\images\States\Alberta\hero-sm-1.jpg" />
     <Content Include="Content\images\States\BritishColumbia\1-1-columbia-banner.jpg" />
     <Content Include="Content\images\States\BritishColumbia\1_British_Columbia_canada_visa.jpg" />
     <Content Include="Content\images\States\BritishColumbia\2_tinh_bang_bristish_columbia.jpg" />
@@ -320,6 +323,7 @@
     <Content Include="Content\images\States\BritishColumbia\7-1-truong-dai-hoc-British-Columbia.jpg" />
     <Content Include="Content\images\States\BritishColumbia\8-truong-dai-hoc-Simon Fraser.jpg" />
     <Content Include="Content\images\States\BritishColumbia\9-truong-dai-hoc- Victoria.jpg" />
+    <Content Include="Content\images\States\canada-drapeau.jpg" />
     <Content Include="Content\images\States\Manitoba\1-banner-manitoba.jpg" />
     <Content Include="Content\images\States\Manitoba\10-truong-dai-hoc- Brandon .jpg" />
     <Content Include="Content\images\States\Manitoba\2-map-manitoba.jpg" />

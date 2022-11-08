@@ -69,6 +69,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         color: #FFFFFF;
     }
 
+    .main-menu-new ul.navbar-nav li.nav-item .dropdown-menu a {
+        margin-bottom: 10px;
+    }
+
 .full-width {
     width: 100% !important;
 }
@@ -360,6 +364,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .height297px {
     height: 297px;
+}
+
+.height300px {
+    height: 300px !important;
 }
 
 .height190px {
@@ -2123,7 +2131,7 @@ table.text-editor-supported {
         }
 
     .school-list .school-other-information {
-        padding: 50px;
+        padding: 40px;
     }
 
         .school-list .school-other-information .state-name {
@@ -2139,3 +2147,36 @@ table.text-editor-supported {
             font-size: 13px;
             padding-left: 5px;
         }
+
+            .school-list .school-other-information .chool-criteria .country-name {
+                float: left;
+                border-right: 2px solid #ccc !important;
+                margin-right: 10px;
+                padding-right: 10px;
+            }
+
+            .school-list .school-other-information .chool-criteria .country-flag {
+                width: 25px;
+                margin-right: 3px;
+            }
+
+.dropdown-menu {
+    width: 72vw;
+}
+
+.img-state-list {
+    width: 90%;
+    margin-left: 40px;
+}
+
+.icon-general-item {
+    position: absolute;
+    left: -10px;
+    top: 3px;
+    font-size: 20px !important;
+    color: #ed2025;
+}
+
+.education-second-image {
+    border-radius: 0 50px 0 50px !important;
+}
